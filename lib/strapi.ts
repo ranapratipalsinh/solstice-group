@@ -9,21 +9,29 @@ type StrapiItemResponse<T> = {
 };
 
 async function strapiFetch<T>(path: string, init?: RequestInit): Promise<T | null> {
-    const response = await fetch(`${STRAPI_URL}/api${path}`, {
-        ...init,
-        headers: {
-            'Content-Type': 'application/json',
-            ...init?.headers,
-        },
-        next: { revalidate: 60 },
-    });
+    let response: Response;
+
+    try {
+        response = await fetch(`${STRAPI_URL}/api${path}`, {
+            ...init,
+            headers: {
+                'Content-Type': 'application/json',
+                ...init?.headers,
+            },
+            next: { revalidate: 60 },
+        });
+    } catch (error) {
+        console.error(`Strapi is unreachable at ${STRAPI_URL} (${path}):`, error);
+        return null;
+    }
 
     if (response.status === 404) {
         return null;
     }
 
     if (!response.ok) {
-        throw new Error(`Strapi request failed (${response.status}): ${path}`);
+        console.error(`Strapi request failed (${response.status}): ${path}`);
+        return null;
     }
 
     return response.json() as Promise<T>;
