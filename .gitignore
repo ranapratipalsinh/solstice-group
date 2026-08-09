@@ -19,5 +19,8 @@ exports/
 
 ############################
 # Uploaded media (runtime data, not code)
+# Keep the folder itself (via .gitkeep) so it exists on a fresh deploy;
+# ignore everything actually uploaded into it.
 ############################
-public/uploads/
+public/uploads/*
+!public/uploads/.gitkeep
