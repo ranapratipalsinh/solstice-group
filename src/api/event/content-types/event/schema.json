@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "events",
+  "info": {
+    "singularName": "event",
+    "pluralName": "events",
+    "displayName": "Event",
+    "description": "Upcoming and past events / exhibitions"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "slug": { "type": "uid", "targetField": "title", "required": true },
+    "date": { "type": "date", "required": true },
+    "location": { "type": "string" },
+    "description": { "type": "text" },
+    "coverImage": { "type": "media", "multiple": false, "allowedTypes": ["images"] }
+  }
+}

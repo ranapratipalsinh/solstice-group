@@ -1,0 +1,19 @@
+{
+  "kind": "singleType",
+  "collectionName": "csr_page",
+  "info": {
+    "singularName": "csr-page",
+    "pluralName": "csr-pages",
+    "displayName": "CSR Page",
+    "description": "Corporate social responsibility page content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heading": { "type": "string" },
+    "body": { "type": "text" },
+    "images": { "type": "media", "multiple": true, "allowedTypes": ["images"] }
+  }
+}

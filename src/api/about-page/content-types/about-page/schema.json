@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "about_page",
+  "info": {
+    "singularName": "about-page",
+    "pluralName": "about-pages",
+    "displayName": "About Page",
+    "description": "Editable content for the About page and founder message"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "mission": { "type": "text" },
+    "vision": { "type": "text" },
+    "groupHistory": { "type": "text" },
+    "founderStory": { "type": "text" },
+    "founderPhoto": { "type": "media", "multiple": false, "allowedTypes": ["images"] }
+  }
+}

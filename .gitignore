@@ -1,0 +1,23 @@
+############################
+# Node.js
+############################
+node_modules/
+build/
+dist/
+.cache/
+.temp/
+*.log
+
+############################
+# Misc
+############################
+.DS_Store
+.tmp/
+.env
+license.txt
+exports/
+
+############################
+# Uploaded media (runtime data, not code)
+############################
+public/uploads/
