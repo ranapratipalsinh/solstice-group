@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
         }
 
         return NextResponse.json({ success: true });
-    } catch (error) {
+    } catch {
         return NextResponse.json({ error: 'Contact form is not configured yet.' }, { status: 500 });
     }
 }

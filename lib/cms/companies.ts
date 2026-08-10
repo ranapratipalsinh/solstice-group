@@ -1,4 +1,4 @@
-import { strapiFind, strapiFindOne, strapiMediaUrl } from '@/lib/strapi';
+import { strapiFind, strapiMediaUrl } from '@/lib/strapi';
 import { StrapiMedia } from '@/lib/cms/types';
 
 export type Company = {
