@@ -4,6 +4,7 @@ import { getHomePage } from '@/lib/cms/pages';
 import { getRegions } from '@/lib/cms/regions';
 import { getUpcomingEvents } from '@/lib/cms/events';
 import { CompanyShowcase } from '@/components/CompanyShowcase';
+import { ScrollReveal } from '@/components/ScrollReveal';
 
 export const dynamic = 'force-dynamic';
 
@@ -102,11 +103,13 @@ export default async function HomePage() {
                         <h2 className="mt-2 font-display text-2xl font-semibold text-slate-950 sm:text-3xl">Group-level services</h2>
                     </div>
                     <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                        {GROUP_SERVICES.map((service) => (
-                            <div key={service} className="flex items-start gap-3 rounded-3xl bg-white p-6 shadow-sm">
-                                <span className="mt-0.5 text-solstice-600">✔</span>
-                                <p className="font-semibold text-slate-800">{service}</p>
-                            </div>
+                        {GROUP_SERVICES.map((service, index) => (
+                            <ScrollReveal key={service} delayMs={(index + 1) * 200}>
+                                <div className="flex items-start gap-3 rounded-3xl bg-white p-6 shadow-sm">
+                                    <span className="mt-0.5 text-solstice-600">✔</span>
+                                    <p className="font-semibold text-slate-800">{service}</p>
+                                </div>
+                            </ScrollReveal>
                         ))}
                     </div>
                 </div>
@@ -120,20 +123,21 @@ export default async function HomePage() {
                         <h2 className="mt-2 font-display text-2xl font-semibold sm:text-3xl">Where we operate</h2>
                     </div>
                     <div className="mt-10 grid grid-cols-2 gap-4 lg:grid-cols-4">
-                        {regions.map((region) => (
-                            <div
-                                key={region.name}
-                                className={`rounded-3xl p-6 text-center ${
-                                    region.isHeadquarters ? 'bg-solstice-600' : 'border border-solstice-800 bg-solstice-900'
-                                }`}
-                            >
-                                <p className="text-lg font-semibold">{region.name}</p>
-                                {region.isHeadquarters && (
-                                    <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-solstice-100">
-                                        Headquarters
-                                    </p>
-                                )}
-                            </div>
+                        {regions.map((region, index) => (
+                            <ScrollReveal key={region.name} delayMs={(index + 1) * 200}>
+                                <div
+                                    className={`rounded-3xl p-6 text-center ${
+                                        region.isHeadquarters ? 'bg-solstice-600' : 'border border-solstice-800 bg-solstice-900'
+                                    }`}
+                                >
+                                    <p className="text-lg font-semibold">{region.name}</p>
+                                    {region.isHeadquarters && (
+                                        <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-solstice-100">
+                                            Headquarters
+                                        </p>
+                                    )}
+                                </div>
+                            </ScrollReveal>
                         ))}
                     </div>
                 </div>
@@ -146,11 +150,13 @@ export default async function HomePage() {
                     <h2 className="mt-2 font-display text-2xl font-semibold text-slate-950 sm:text-3xl">A group built on trust and reach</h2>
                 </div>
                 <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                    {WHY_CHOOSE_US.map((reason) => (
-                        <div key={reason} className="flex items-start gap-3 rounded-3xl bg-solstice-50 p-6">
-                            <span className="mt-0.5 text-solstice-700">✔</span>
-                            <p className="font-semibold text-slate-800">{reason}</p>
-                        </div>
+                    {WHY_CHOOSE_US.map((reason, index) => (
+                        <ScrollReveal key={reason} delayMs={(index + 1) * 200}>
+                            <div className="flex items-start gap-3 rounded-3xl bg-solstice-50 p-6">
+                                <span className="mt-0.5 text-solstice-700">✔</span>
+                                <p className="font-semibold text-slate-800">{reason}</p>
+                            </div>
+                        </ScrollReveal>
                     ))}
                 </div>
             </section>
@@ -158,11 +164,13 @@ export default async function HomePage() {
             {/* 8. Group Stats */}
             <section className="container pb-14 sm:pb-16">
                 <div className="grid gap-4 rounded-[2rem] bg-solstice-50 p-8 sm:grid-cols-3 sm:p-10">
-                    {stats.map((stat) => (
-                        <div key={stat.label} className="rounded-3xl bg-white p-6 text-center shadow-sm">
-                            <p className="font-display text-3xl font-semibold text-solstice-700">{stat.value}</p>
-                            <p className="mt-2 text-sm uppercase tracking-[0.2em] text-slate-500">{stat.label}</p>
-                        </div>
+                    {stats.map((stat, index) => (
+                        <ScrollReveal key={stat.label} delayMs={(index + 1) * 200}>
+                            <div className="rounded-3xl bg-white p-6 text-center shadow-sm">
+                                <p className="font-display text-3xl font-semibold text-solstice-700">{stat.value}</p>
+                                <p className="mt-2 text-sm uppercase tracking-[0.2em] text-slate-500">{stat.label}</p>
+                            </div>
+                        </ScrollReveal>
                     ))}
                 </div>
             </section>
@@ -182,14 +190,16 @@ export default async function HomePage() {
 
                     {upcomingEvents.length > 0 && (
                         <div className="mx-auto mt-10 grid max-w-3xl gap-4 text-left sm:grid-cols-3">
-                            {upcomingEvents.map((event) => (
-                                <div key={event.slug} className="rounded-2xl border border-white/20 bg-white/10 p-5 backdrop-blur-sm">
-                                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-solstice-300">
-                                        {new Date(event.date).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' })}
-                                    </p>
-                                    <p className="mt-2 font-semibold text-white">{event.title}</p>
-                                    <p className="mt-1 text-xs text-solstice-100">{event.location}</p>
-                                </div>
+                            {upcomingEvents.map((event, index) => (
+                                <ScrollReveal key={event.slug} delayMs={(index + 1) * 200}>
+                                    <div className="rounded-2xl border border-white/20 bg-white/10 p-5 backdrop-blur-sm">
+                                        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-solstice-300">
+                                            {new Date(event.date).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' })}
+                                        </p>
+                                        <p className="mt-2 font-semibold text-white">{event.title}</p>
+                                        <p className="mt-1 text-xs text-solstice-100">{event.location}</p>
+                                    </div>
+                                </ScrollReveal>
                             ))}
                         </div>
                     )}

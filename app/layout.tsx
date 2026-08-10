@@ -4,6 +4,7 @@ import './globals.css';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { ScrollToTopButton } from '@/components/ScrollToTopButton';
+import { PageTransition } from '@/components/PageTransition';
 
 const playfairDisplay = Playfair_Display({
     subsets: ['latin'],
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <Footer />
                     <ScrollToTopButton />
                 </div>
+                <PageTransition />
             </body>
         </html>
     );
