@@ -1,6 +1,10 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
+
+function clamp(value: number, min: number, max: number) {
+    return Math.max(min, Math.min(max, value));
+}
 
 export function FounderSpotlight({
     name,
@@ -14,47 +18,45 @@ export function FounderSpotlight({
     description: string;
 }) {
     const sectionRef = useRef<HTMLDivElement>(null);
-    const parallaxRef = useRef<HTMLDivElement>(null);
-    const [isRevealed, setIsRevealed] = useState(false);
+    const textRef = useRef<HTMLDivElement>(null);
+    const imageRef = useRef<HTMLDivElement>(null);
 
-    // One-time fade + slide reveal when the section enters the viewport.
-    useEffect(() => {
-        const el = sectionRef.current;
-        if (!el) return;
-
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsRevealed(true);
-                    observer.disconnect();
-                }
-            },
-            { threshold: 0.2 }
-        );
-        observer.observe(el);
-        return () => observer.disconnect();
-    }, []);
-
-    // Continuous subtle parallax on the image while the section is on screen.
+    // Scroll-scrubbed reveal: opacity/position track scroll progress directly,
+    // so the image appears as the user scrolls (and reverses on scroll-up)
+    // instead of firing a fixed-length animation once on first view.
     useEffect(() => {
         let ticking = false;
 
         function update() {
             const section = sectionRef.current;
-            const image = parallaxRef.current;
-            if (!section || !image) return;
+            const text = textRef.current;
+            const image = imageRef.current;
+            if (!section || !text || !image) return;
 
             const rect = section.getBoundingClientRect();
-            const viewportCenter = window.innerHeight / 2;
-            const sectionCenter = rect.top + rect.height / 2;
-            const distance = sectionCenter - viewportCenter;
-            const offset = Math.max(-24, Math.min(24, distance * -0.06));
+            const vh = window.innerHeight;
 
-            image.style.transform = `translateY(${offset}px)`;
+            // Text starts appearing as soon as the section's top touches the
+            // bottom of the viewport, and is fully in by 60% of a viewport height later.
+            const textProgress = clamp((vh - rect.top) / (vh * 0.6), 0, 1);
+
+            // Image starts a bit later (once the section has scrolled up further),
+            // so it consistently lags behind the text - a scroll-driven stagger.
+            const imageProgress = clamp((vh * 0.85 - rect.top) / (vh * 0.6), 0, 1);
+
+            const sectionCenter = rect.top + rect.height / 2;
+            const parallax = clamp((sectionCenter - vh / 2) * -0.06, -24, 24);
+
+            text.style.opacity = String(textProgress);
+            text.style.transform = `translateY(${(1 - textProgress) * 32}px)`;
+
+            image.style.opacity = String(imageProgress);
+            image.style.transform = `translateY(${(1 - imageProgress) * 56 + parallax}px) scale(${0.94 + 0.06 * imageProgress})`;
+
             ticking = false;
         }
 
-        function onScroll() {
+        function onScrollOrResize() {
             if (!ticking) {
                 requestAnimationFrame(update);
                 ticking = true;
@@ -62,8 +64,12 @@ export function FounderSpotlight({
         }
 
         update();
-        window.addEventListener('scroll', onScroll, { passive: true });
-        return () => window.removeEventListener('scroll', onScroll);
+        window.addEventListener('scroll', onScrollOrResize, { passive: true });
+        window.addEventListener('resize', onScrollOrResize);
+        return () => {
+            window.removeEventListener('scroll', onScrollOrResize);
+            window.removeEventListener('resize', onScrollOrResize);
+        };
     }, []);
 
     const initials = name
@@ -78,11 +84,7 @@ export function FounderSpotlight({
 
             <div className="container relative z-10">
                 <div className="grid gap-14 lg:grid-cols-[0.9fr_1fr] lg:items-center">
-                    <div
-                        className={`transition-all duration-[900ms] ease-out ${
-                            isRevealed ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-                        }`}
-                    >
+                    <div ref={textRef} className="will-change-transform" style={{ opacity: 0, transform: 'translateY(32px)' }}>
                         <p className="text-xs font-semibold uppercase tracking-[0.35em] text-gold-400">Leadership</p>
                         <div className="mt-5 h-px w-16 bg-gold-500/60" />
                         <h2 className="mt-6 font-display text-4xl font-semibold text-white sm:text-5xl">Our Founder</h2>
@@ -91,23 +93,16 @@ export function FounderSpotlight({
                         <p className="mt-1 text-xs font-semibold uppercase tracking-[0.25em] text-gold-400">{role}</p>
                     </div>
 
-                    <div
-                        className={`transition-all duration-[1100ms] ease-out ${
-                            isRevealed ? 'translate-y-0 scale-100 opacity-100' : 'translate-y-16 scale-95 opacity-0'
-                        }`}
-                        style={{ transitionDelay: isRevealed ? '200ms' : '0ms' }}
-                    >
-                        <div ref={parallaxRef} className="will-change-transform">
-                            <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] shadow-[0_30px_80px_-20px_rgba(212,175,55,0.25)] ring-1 ring-gold-500/20">
-                                {photoUrl ? (
-                                    // eslint-disable-next-line @next/next/no-img-element
-                                    <img src={photoUrl} alt={name} className="h-full w-full object-cover" />
-                                ) : (
-                                    <div className="flex h-full w-full items-center justify-center bg-[#141414] text-6xl font-bold text-gold-500">
-                                        {initials}
-                                    </div>
-                                )}
-                            </div>
+                    <div ref={imageRef} className="will-change-transform" style={{ opacity: 0, transform: 'translateY(56px) scale(0.94)' }}>
+                        <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] shadow-[0_30px_80px_-20px_rgba(212,175,55,0.25)] ring-1 ring-gold-500/20">
+                            {photoUrl ? (
+                                // eslint-disable-next-line @next/next/no-img-element
+                                <img src={photoUrl} alt={name} className="h-full w-full object-cover" />
+                            ) : (
+                                <div className="flex h-full w-full items-center justify-center bg-[#141414] text-6xl font-bold text-gold-500">
+                                    {initials}
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
