@@ -7,17 +7,12 @@ const primaryNavItems = [
     { href: '/', label: 'Home' },
     { href: '/companies', label: 'Our Companies' },
     { href: '/industries', label: 'Industries' },
-    { href: '/careers', label: 'Careers' },
-    { href: '/news', label: 'News' },
-    { href: '/events', label: 'Events' },
     { href: '/contact', label: 'Contact' },
 ];
 
 const aboutDropdownItems = [
     { href: '/about', label: 'About the Group' },
-    { href: '/leadership', label: 'Leadership Team' },
     { href: '/founder-message', label: 'Founder Message' },
-    { href: '/csr', label: 'CSR / Social Work' },
     { href: '/gallery', label: 'Gallery' },
     { href: '/certifications', label: 'Certifications & Awards' },
     { href: '/partners', label: 'Partners & Clients' },
