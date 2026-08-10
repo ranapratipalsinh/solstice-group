@@ -1,4 +1,5 @@
 import { getIndustries } from '@/lib/cms/industries';
+import { ScrollReveal } from '@/components/ScrollReveal';
 
 export const dynamic = 'force-dynamic';
 
@@ -14,11 +15,13 @@ export default async function IndustriesPage() {
                     Solstice Group connects trading, wellness, spices, and events with strong operational support and strategic leadership.
                 </p>
                 <div className="mt-10 grid gap-6 md:grid-cols-2">
-                    {industries.map((industry) => (
-                        <div key={industry.title} className="rounded-3xl border border-slate-200 bg-slate-50 p-7">
-                            <h2 className="text-xl font-semibold text-slate-950">{industry.title}</h2>
-                            <p className="mt-3 text-slate-600 leading-7">{industry.description}</p>
-                        </div>
+                    {industries.map((industry, index) => (
+                        <ScrollReveal key={industry.title} delayMs={((index % 3) + 1) * 200}>
+                            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-7">
+                                <h2 className="text-xl font-semibold text-slate-950">{industry.title}</h2>
+                                <p className="mt-3 text-slate-600 leading-7">{industry.description}</p>
+                            </div>
+                        </ScrollReveal>
                     ))}
                 </div>
             </div>

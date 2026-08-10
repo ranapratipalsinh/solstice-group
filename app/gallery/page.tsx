@@ -1,4 +1,5 @@
 import { getGalleryItems } from '@/lib/cms/gallery';
+import { ScrollReveal } from '@/components/ScrollReveal';
 
 export const dynamic = 'force-dynamic';
 
@@ -15,13 +16,15 @@ export default async function GalleryPage() {
                 ) : (
                     <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                         {items.map((item, index) => (
-                            <figure key={`${item.caption}-${index}`} className="overflow-hidden rounded-3xl bg-slate-50 shadow-sm">
-                                {item.mediaUrl && (
-                                    // eslint-disable-next-line @next/next/no-img-element
-                                    <img src={item.mediaUrl} alt={item.caption} className="h-56 w-full object-cover" />
-                                )}
-                                <figcaption className="p-4 text-sm text-slate-600">{item.caption}</figcaption>
-                            </figure>
+                            <ScrollReveal key={`${item.caption}-${index}`} delayMs={((index % 3) + 1) * 200}>
+                                <figure className="overflow-hidden rounded-3xl bg-slate-50 shadow-sm">
+                                    {item.mediaUrl && (
+                                        // eslint-disable-next-line @next/next/no-img-element
+                                        <img src={item.mediaUrl} alt={item.caption} className="h-56 w-full object-cover" />
+                                    )}
+                                    <figcaption className="p-4 text-sm text-slate-600">{item.caption}</figcaption>
+                                </figure>
+                            </ScrollReveal>
                         ))}
                     </div>
                 )}

@@ -1,4 +1,5 @@
 import { getTeamMembers } from '@/lib/cms/team';
+import { ScrollReveal } from '@/components/ScrollReveal';
 
 export const dynamic = 'force-dynamic';
 
@@ -17,12 +18,14 @@ export default async function LeadershipPage() {
                     <p className="mt-10 text-slate-600">Leadership profiles will appear here once added in the CMS.</p>
                 ) : (
                     <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-                        {members.map((member) => (
-                            <div key={member.name} className="rounded-3xl border border-slate-200 bg-solstice-50 p-7 shadow-sm">
-                                <h2 className="text-xl font-semibold text-slate-950">{member.name}</h2>
-                                <p className="mt-1 text-sm uppercase tracking-[0.2em] text-solstice-700">{member.role}</p>
-                                <p className="mt-4 text-slate-600 leading-7">{member.bio}</p>
-                            </div>
+                        {members.map((member, index) => (
+                            <ScrollReveal key={member.name} delayMs={((index % 3) + 1) * 200}>
+                                <div className="rounded-3xl border border-slate-200 bg-solstice-50 p-7 shadow-sm">
+                                    <h2 className="text-xl font-semibold text-slate-950">{member.name}</h2>
+                                    <p className="mt-1 text-sm uppercase tracking-[0.2em] text-solstice-700">{member.role}</p>
+                                    <p className="mt-4 text-slate-600 leading-7">{member.bio}</p>
+                                </div>
+                            </ScrollReveal>
                         ))}
                     </div>
                 )}

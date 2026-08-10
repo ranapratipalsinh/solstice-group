@@ -1,4 +1,5 @@
 import { getEvents } from '@/lib/cms/events';
+import { ScrollReveal } from '@/components/ScrollReveal';
 
 export const dynamic = 'force-dynamic';
 
@@ -26,21 +27,23 @@ export default async function EventsPage() {
                     <p className="mt-4 text-slate-600">No upcoming events scheduled right now — check back soon.</p>
                 ) : (
                     <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                        {upcoming.map((event) => (
-                            <article key={event.slug} className="overflow-hidden rounded-3xl border border-slate-200 bg-solstice-50 shadow-sm">
-                                {event.coverImageUrl && (
-                                    // eslint-disable-next-line @next/next/no-img-element
-                                    <img src={event.coverImageUrl} alt={event.title} className="h-40 w-full object-cover" />
-                                )}
-                                <div className="p-6">
-                                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-solstice-700">
-                                        {new Date(event.date).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })}
-                                    </p>
-                                    <h3 className="mt-2 text-lg font-semibold text-slate-950">{event.title}</h3>
-                                    <p className="mt-1 text-sm text-slate-500">{event.location}</p>
-                                    <p className="mt-3 text-sm leading-6 text-slate-600">{event.description}</p>
-                                </div>
-                            </article>
+                        {upcoming.map((event, index) => (
+                            <ScrollReveal key={event.slug} delayMs={((index % 3) + 1) * 200}>
+                                <article className="overflow-hidden rounded-3xl border border-slate-200 bg-solstice-50 shadow-sm">
+                                    {event.coverImageUrl && (
+                                        // eslint-disable-next-line @next/next/no-img-element
+                                        <img src={event.coverImageUrl} alt={event.title} className="h-40 w-full object-cover" />
+                                    )}
+                                    <div className="p-6">
+                                        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-solstice-700">
+                                            {new Date(event.date).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })}
+                                        </p>
+                                        <h3 className="mt-2 text-lg font-semibold text-slate-950">{event.title}</h3>
+                                        <p className="mt-1 text-sm text-slate-500">{event.location}</p>
+                                        <p className="mt-3 text-sm leading-6 text-slate-600">{event.description}</p>
+                                    </div>
+                                </article>
+                            </ScrollReveal>
                         ))}
                     </div>
                 )}
@@ -50,21 +53,23 @@ export default async function EventsPage() {
                 <div className="mt-14">
                     <h2 className="font-display text-2xl font-semibold text-slate-950">Past Events</h2>
                     <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                        {past.map((event) => (
-                            <article key={event.slug} className="overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-sm">
-                                {event.coverImageUrl && (
-                                    // eslint-disable-next-line @next/next/no-img-element
-                                    <img src={event.coverImageUrl} alt={event.title} className="h-40 w-full object-cover grayscale" />
-                                )}
-                                <div className="p-6">
-                                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-                                        {new Date(event.date).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })}
-                                    </p>
-                                    <h3 className="mt-2 text-lg font-semibold text-slate-800">{event.title}</h3>
-                                    <p className="mt-1 text-sm text-slate-500">{event.location}</p>
-                                    <p className="mt-3 text-sm leading-6 text-slate-500">{event.description}</p>
-                                </div>
-                            </article>
+                        {past.map((event, index) => (
+                            <ScrollReveal key={event.slug} delayMs={((index % 3) + 1) * 200}>
+                                <article className="overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-sm">
+                                    {event.coverImageUrl && (
+                                        // eslint-disable-next-line @next/next/no-img-element
+                                        <img src={event.coverImageUrl} alt={event.title} className="h-40 w-full object-cover grayscale" />
+                                    )}
+                                    <div className="p-6">
+                                        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                                            {new Date(event.date).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })}
+                                        </p>
+                                        <h3 className="mt-2 text-lg font-semibold text-slate-800">{event.title}</h3>
+                                        <p className="mt-1 text-sm text-slate-500">{event.location}</p>
+                                        <p className="mt-3 text-sm leading-6 text-slate-500">{event.description}</p>
+                                    </div>
+                                </article>
+                            </ScrollReveal>
                         ))}
                     </div>
                 </div>
