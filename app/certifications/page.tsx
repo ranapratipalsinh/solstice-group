@@ -19,10 +19,12 @@ export default async function CertificationsPage() {
                             <ScrollReveal key={`${item.title}-${item.year}`} delayMs={((index % 3) + 1) * 200}>
                                 <div className="rounded-3xl border border-slate-200 bg-slate-50 p-7 text-center">
                                     {item.imageUrl && (
-                                        // eslint-disable-next-line @next/next/no-img-element
-                                        <img src={item.imageUrl} alt={item.title} className="mx-auto h-20 w-20 object-contain" />
+                                        <div className="mx-auto flex h-36 w-36 items-center justify-center rounded-2xl bg-white p-4 shadow-sm">
+                                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                                            <img src={item.imageUrl} alt={item.title} className="h-full w-full object-contain" />
+                                        </div>
                                     )}
-                                    <h2 className="mt-4 text-lg font-semibold text-slate-950">{item.title}</h2>
+                                    <h2 className="mt-6 text-lg font-semibold text-slate-950">{item.title}</h2>
                                     <p className="mt-1 text-sm text-slate-600">{item.issuer}</p>
                                     <p className="mt-1 text-xs uppercase tracking-[0.2em] text-solstice-700">{item.year}</p>
                                 </div>
