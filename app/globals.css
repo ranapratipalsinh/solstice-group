@@ -32,3 +32,44 @@ a {
     margin: 0 auto;
     padding: 0 1.25rem;
 }
+
+@keyframes ken-burns {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.12);
+    }
+}
+
+.animate-ken-burns {
+    animation: ken-burns 9s ease-in-out infinite alternate;
+}
+
+@keyframes fade-slide-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-slide-in {
+    animation: fade-slide-in 0.6s ease-out both;
+}
+
+@keyframes fill-bar {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+.animate-fill-bar {
+    animation: fill-bar 3s linear forwards;
+}

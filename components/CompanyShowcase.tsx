@@ -20,16 +20,17 @@ function imageForCompany(slug: string) {
 
 export function CompanyShowcase({ companies }: { companies: Company[] }) {
     const [activeIndex, setActiveIndex] = useState(0);
+    const [isPaused, setIsPaused] = useState(false);
 
     useEffect(() => {
-        if (companies.length <= 1) return;
+        if (companies.length <= 1 || isPaused) return;
 
         const timer = setInterval(() => {
             setActiveIndex((current) => (current + 1) % companies.length);
         }, AUTO_ADVANCE_MS);
 
         return () => clearInterval(timer);
-    }, [activeIndex, companies.length]);
+    }, [activeIndex, companies.length, isPaused]);
 
     const active = companies[activeIndex];
 
@@ -37,13 +38,26 @@ export function CompanyShowcase({ companies }: { companies: Company[] }) {
 
     return (
         <section
-            className="relative flex min-h-[85vh] items-center overflow-hidden bg-cover bg-center text-white transition-[background-image] duration-700"
-            style={{ backgroundImage: `url('${imageForCompany(active.slug)}')` }}
+            className="relative flex min-h-[85vh] items-center overflow-hidden text-white"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
         >
+            {companies.map((company, index) => (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                    key={company.slug}
+                    src={imageForCompany(company.slug)}
+                    alt=""
+                    aria-hidden="true"
+                    className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-in-out ${
+                        index === activeIndex ? 'opacity-100' : 'opacity-0'
+                    } ${index === activeIndex ? 'animate-ken-burns' : ''}`}
+                />
+            ))}
             <div className="absolute inset-0 bg-gradient-to-r from-solstice-950/95 via-solstice-950/85 to-solstice-950/50" />
             <div className="container relative z-10">
                 <div className="grid gap-10 lg:grid-cols-[1.3fr_0.7fr] lg:items-center">
-                    <div>
+                    <div key={active.slug} className="animate-fade-slide-in">
                         <p className="text-sm font-semibold uppercase tracking-[0.3em] text-solstice-300">Our Companies</p>
                         <h2 className="mt-4 font-display text-3xl font-semibold sm:text-4xl md:text-5xl">{active.name}</h2>
                         <p className="mt-6 max-w-xl text-sm leading-7 text-solstice-100 sm:text-base">{active.description}</p>
@@ -60,13 +74,20 @@ export function CompanyShowcase({ companies }: { companies: Company[] }) {
                                 key={company.slug}
                                 type="button"
                                 onClick={() => setActiveIndex(index)}
-                                className={`border-b py-3 text-left text-sm font-semibold uppercase tracking-[0.15em] transition ${
+                                className={`relative border-b py-3 text-left text-sm font-semibold uppercase tracking-[0.15em] transition ${
                                     index === activeIndex
-                                        ? 'border-solstice-400 text-white'
+                                        ? 'border-white/10 text-white'
                                         : 'border-white/10 text-solstice-200 hover:text-white'
                                 }`}
                             >
                                 {company.name}
+                                {index === activeIndex && (
+                                    <span
+                                        key={activeIndex}
+                                        className="animate-fill-bar absolute bottom-0 left-0 h-0.5 bg-solstice-400"
+                                        style={{ animationPlayState: isPaused ? 'paused' : 'running' }}
+                                    />
+                                )}
                             </button>
                         ))}
                     </div>
