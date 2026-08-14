@@ -4,6 +4,7 @@ import { getHomePage } from '@/lib/cms/pages';
 import { getRegions } from '@/lib/cms/regions';
 import { CompanyFanShowcase } from '@/components/CompanyFanShowcase';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { HeroSlider } from '@/components/HeroSlider';
 
 export const dynamic = 'force-dynamic';
 
@@ -41,10 +42,8 @@ export default async function HomePage() {
     return (
         <div>
             {/* 1. Hero */}
-            <section
-                className="relative flex min-h-screen items-center overflow-hidden bg-cover bg-center py-24 text-white"
-                style={{ backgroundImage: "url('/hero/city-skyline-night.jpg')" }}
-            >
+            <section className="relative flex min-h-screen items-center overflow-hidden py-24 text-white">
+                <HeroSlider images={homePage?.heroSlideUrls ?? []} />
                 <div className="absolute inset-0 bg-gradient-to-b from-solstice-950/55 via-solstice-950/45 to-solstice-950/60" />
                 <div className="absolute inset-0 bg-solstice-950/15 mix-blend-multiply" />
                 <div className="container relative z-10 text-center">
