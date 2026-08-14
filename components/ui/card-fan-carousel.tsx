@@ -31,11 +31,11 @@ const FAN_POSITIONS = [
 ];
 
 function getResponsiveMultiplier(width: number) {
-  if (width < 480) return 0.28;
-  if (width < 640) return 0.38;
-  if (width < 768) return 0.5;
-  if (width < 1024) return 0.75;
-  return 1.0;
+  if (width < 480) return 0.2;
+  if (width < 640) return 0.3;
+  if (width < 768) return 0.4;
+  if (width < 1024) return 0.5;
+  return 0.75;
 }
 
 /**
@@ -140,7 +140,7 @@ export default function SocialCards({ cards }: SocialCardsProps) {
         const { x, y, rot, scale, zIndex } = config(slot);
         const target = {
           x: `${x * multiplier}rem`,
-          y: `${y * hMult}rem`,
+          y: `${y * hMult * multiplier}rem`,
           rotation: rot,
           scale,
           opacity: 1,
@@ -148,11 +148,11 @@ export default function SocialCards({ cards }: SocialCardsProps) {
         };
 
         if (isFirstMount) {
-          gsap.set(card, { x: 0, y: `${12 * hMult}rem`, rotation: 0, scale: 0.5, opacity: 0 });
+          gsap.set(card, { x: 0, y: `${12 * hMult * multiplier}rem`, rotation: 0, scale: 0.5, opacity: 0 });
           gsap.to(card, { ...target, duration: 1.2, ease: "elastic.out(1.05,.78)", delay: 0.2 + slot * 0.06, onComplete: onCardDone });
         } else if (!wasVisible) {
           const enterX = direction === "right" ? 40 : -40;
-          gsap.set(card, { x: `${enterX}rem`, y: `${y * hMult}rem`, rotation: direction === "right" ? 30 : -30, scale: 0.5, opacity: 0 });
+          gsap.set(card, { x: `${enterX}rem`, y: `${y * hMult * multiplier}rem`, rotation: direction === "right" ? 30 : -30, scale: 0.5, opacity: 0 });
           gsap.to(card, { ...target, duration: 0.6, ease: "power2.out", onComplete: onCardDone });
         } else {
           gsap.to(card, { ...target, duration: 0.5, ease: "power2.out", onComplete: onCardDone });
@@ -186,7 +186,7 @@ export default function SocialCards({ cards }: SocialCardsProps) {
       visibleEntries.forEach(({ el, slot }) => {
         const base = config(slot);
         let targetX = base.x * mult;
-        let targetY = base.y * hM;
+        let targetY = base.y * hM * mult;
         let targetRot = base.rot;
         let targetScale = base.scale;
         let delay = 0;
@@ -196,7 +196,7 @@ export default function SocialCards({ cards }: SocialCardsProps) {
           delay = distance * 0.02;
 
           if (slot === hoveredSlot) {
-            targetY -= 2.5 * hM;
+            targetY -= 2.5 * hM * mult;
             targetScale *= 1.08;
           } else {
             const normalized = centerSlot > 0 ? (slot - centerSlot) / centerSlot : 0;
@@ -210,8 +210,8 @@ export default function SocialCards({ cards }: SocialCardsProps) {
               targetRot += 3 / (distance + 1);
             }
 
-            if (slot === visibleEntries.length - 1 && hoveredSlot < centerSlot) targetY -= 1 * hM;
-            if (slot === 0 && hoveredSlot > centerSlot) targetY -= 1 * hM;
+            if (slot === visibleEntries.length - 1 && hoveredSlot < centerSlot) targetY -= 1 * hM * mult;
+            if (slot === 0 && hoveredSlot > centerSlot) targetY -= 1 * hM * mult;
           }
         } else {
           delay = Math.abs(slot - centerSlot) * 0.02;
