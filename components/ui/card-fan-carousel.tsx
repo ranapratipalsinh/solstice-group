@@ -7,6 +7,10 @@ export interface CardItem {
   imgUrl: string;
   alt?: string;
   linkUrl?: string;
+  /** How the image fills its card. Defaults to "cover" (good for photos); use "contain" for logos so they aren't cropped. */
+  fit?: "cover" | "contain";
+  /** Extra classes applied behind the image, e.g. "bg-white" so a contained logo has a clean backdrop. */
+  background?: string;
 }
 
 interface SocialCardsProps {
@@ -263,8 +267,13 @@ export default function SocialCards({ cards }: SocialCardsProps) {
         <div ref={containerRef} className="fan-layout flex relative justify-center items-center w-full max-w-[80rem]">
           {cards.map((card, index) => {
             const image = (
-              <div className="relative w-full h-full overflow-hidden">
-                <img src={card.imgUrl} loading="lazy" alt={card.alt || `Card ${index}`} className="absolute inset-0 w-full h-full object-cover z-10" />
+              <div className={`relative w-full h-full overflow-hidden ${card.background ?? ""}`}>
+                <img
+                  src={card.imgUrl}
+                  loading="lazy"
+                  alt={card.alt || `Card ${index}`}
+                  className={`absolute inset-0 w-full h-full z-10 ${card.fit === "contain" ? "object-contain p-4" : "object-cover"}`}
+                />
               </div>
             );
             return card.linkUrl ? (

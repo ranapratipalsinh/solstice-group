@@ -16,11 +16,16 @@ function imageForCompany(slug: string) {
 export function CompanyFanShowcase({ companies }: { companies: Company[] }) {
     if (!companies.length) return null;
 
-    const cards: CardItem[] = companies.map((company) => ({
-        imgUrl: imageForCompany(company.slug),
-        alt: company.name,
-        linkUrl: `/companies/${company.slug}`,
-    }));
+    const cards: CardItem[] = companies.map((company) => {
+        const hasLogo = Boolean(company.logoUrl);
+        return {
+            imgUrl: company.logoUrl ?? imageForCompany(company.slug),
+            alt: company.name,
+            linkUrl: `/companies/${company.slug}`,
+            fit: hasLogo ? 'contain' : 'cover',
+            background: hasLogo ? 'bg-white' : undefined,
+        };
+    });
 
     return (
         <section className="bg-solstice-950 py-16 text-white sm:py-20">
