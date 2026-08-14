@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
-import { Playfair_Display } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import './globals.css';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { ScrollToTopButton } from '@/components/ScrollToTopButton';
 import { PageTransition } from '@/components/PageTransition';
 
-const playfairDisplay = Playfair_Display({
+const inter = Inter({
     subsets: ['latin'],
-    variable: '--font-playfair',
+    variable: '--font-sans',
     display: 'swap',
 });
 
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="en" className={playfairDisplay.variable}>
+        <html lang="en" className={inter.variable}>
             <body>
                 <div className="flex min-h-screen flex-col bg-white text-slate-900">
                     <Navbar />

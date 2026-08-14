@@ -27,10 +27,13 @@ export function PageTransition() {
             if (anchor.hasAttribute('download')) return;
             if (new URL(href, window.location.origin).pathname === pathname) return;
 
-            // Capture-phase intercept: stop Next's <Link> from also handling this
-            // click, since we're taking over navigation to run the transition first.
+            // Capture-phase intercept: preventDefault stops next/link's own
+            // click-to-navigate (it checks defaultPrevented before doing so),
+            // since we're taking over navigation to run the transition first.
+            // Deliberately NOT calling stopPropagation - that would also block
+            // this same click from ever reaching React's synthetic event system,
+            // silently breaking any onClick on the link (e.g. closing a nav menu).
             event.preventDefault();
-            event.stopPropagation();
 
             pendingHref.current = href;
             setIsCovering(true);

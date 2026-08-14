@@ -36,7 +36,7 @@ html {
 
 body {
     margin: 0;
-    font-family: var(--font-playfair), ui-serif, Georgia, serif;
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
     background: #f8fafc;
     color: #0f172a;
 }

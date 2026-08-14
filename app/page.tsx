@@ -48,9 +48,7 @@ export default async function HomePage() {
                 <div className="absolute inset-0 bg-gradient-to-b from-solstice-950/55 via-solstice-950/45 to-solstice-950/60" />
                 <div className="absolute inset-0 bg-solstice-950/15 mix-blend-multiply" />
                 <div className="container relative z-10 text-center">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/logos/solstice-group-logo.png" alt="Solstice Group" className="mx-auto h-16 w-auto rounded-2xl sm:h-20" />
-                    <p className="mt-8 break-words px-2 text-xs font-semibold uppercase tracking-normal text-solstice-300 sm:text-sm sm:tracking-[0.35em]">
+                    <p className="break-words px-2 text-xs font-semibold uppercase tracking-normal text-solstice-300 sm:text-sm sm:tracking-[0.35em]">
                         We Build Businesses That Grow Globally
                     </p>
                     <h1 className="mt-4 font-display text-3xl font-bold leading-tight sm:text-5xl md:text-6xl">
