@@ -44,32 +44,33 @@ export default async function HomePage() {
             {/* 1. Hero */}
             <section className="relative flex min-h-screen items-center overflow-hidden py-24 text-white">
                 <HeroSlider images={homePage?.heroSlideUrls ?? []} />
-                <div className="absolute inset-0 bg-gradient-to-b from-solstice-950/55 via-solstice-950/45 to-solstice-950/60" />
-                <div className="absolute inset-0 bg-solstice-950/15 mix-blend-multiply" />
-                <div className="container relative z-10 text-center">
-                    <p className="break-words px-2 text-xs font-semibold uppercase tracking-normal text-solstice-300 sm:text-sm sm:tracking-[0.35em]">
-                        We Build Businesses That Grow Globally
-                    </p>
-                    <h1 className="mt-4 font-display text-3xl font-bold leading-tight sm:text-5xl md:text-6xl">
-                        <span className="block text-white">Solstice Group</span>
-                        <span className="block text-solstice-400">of Companies</span>
-                    </h1>
-                    <p className="mt-6 text-sm text-solstice-100 sm:text-lg">
-                        Import Export&nbsp;|&nbsp;Ceramic&nbsp;|&nbsp;Food&nbsp;|&nbsp;Events
-                    </p>
-                    <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
-                        <Link
-                            href="/companies"
-                            className="rounded-full border border-solstice-400 px-8 py-3 text-sm font-semibold text-solstice-300 hover:bg-solstice-400 hover:text-solstice-950"
-                        >
-                            Explore Our Companies
-                        </Link>
-                        <Link
-                            href="/contact"
-                            className="rounded-full border border-white/50 px-8 py-3 text-sm font-semibold text-white hover:bg-white/10"
-                        >
-                            Contact Us
-                        </Link>
+                <div className="absolute inset-0 bg-gradient-to-r from-solstice-950/90 via-solstice-950/55 to-transparent" />
+                <div className="container relative z-10">
+                    <div className="max-w-xl text-left">
+                        <p className="break-words text-xs font-semibold uppercase tracking-normal text-solstice-300 sm:text-sm sm:tracking-[0.35em]">
+                            We Build Businesses That Grow Globally
+                        </p>
+                        <h1 className="mt-4 font-display text-3xl font-bold leading-tight sm:text-5xl md:text-6xl">
+                            <span className="block text-white">Solstice Group</span>
+                            <span className="block text-solstice-400">of Companies</span>
+                        </h1>
+                        <p className="mt-6 text-sm text-solstice-100 sm:text-lg">
+                            Import Export&nbsp;|&nbsp;Ceramic&nbsp;|&nbsp;Food&nbsp;|&nbsp;Events
+                        </p>
+                        <div className="mt-10 flex flex-col items-start gap-3 sm:flex-row sm:gap-4">
+                            <Link
+                                href="/companies"
+                                className="rounded-full border border-solstice-400 px-8 py-3 text-sm font-semibold text-solstice-300 hover:bg-solstice-400 hover:text-solstice-950"
+                            >
+                                Explore Our Companies
+                            </Link>
+                            <Link
+                                href="/contact"
+                                className="rounded-full border border-white/50 px-8 py-3 text-sm font-semibold text-white hover:bg-white/10"
+                            >
+                                Contact Us
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </section>
