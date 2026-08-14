@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { getCompanies } from '@/lib/cms/companies';
 import { getHomePage } from '@/lib/cms/pages';
 import { getRegions } from '@/lib/cms/regions';
-import { CompanyFanShowcase } from '@/components/CompanyFanShowcase';
+import { CompanyLinearCards } from '@/components/CompanyLinearCards';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { HeroSlider } from '@/components/HeroSlider';
 
@@ -89,7 +89,22 @@ export default async function HomePage() {
             </section>
 
             {/* 3. Our Companies */}
-            <CompanyFanShowcase companies={companies} />
+            <section className="bg-solstice-50/70 py-16 sm:py-20">
+                <div className="container">
+                    <div className="text-center">
+                        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-solstice-700">Our Companies</p>
+                        <h2 className="mt-3 font-display text-3xl font-semibold text-slate-950 sm:text-4xl md:text-5xl">
+                            A Group Built On Trusted Ventures
+                        </h2>
+                        <p className="mx-auto mt-4 max-w-2xl text-sm text-slate-600 sm:text-base">
+                            Click a card to explore each subsidiary.
+                        </p>
+                    </div>
+                    <div className="mt-10">
+                        <CompanyLinearCards companies={companies} />
+                    </div>
+                </div>
+            </section>
 
             {/* 4. Services (Group Level) */}
             <section className="bg-slate-50 py-14 sm:py-16">

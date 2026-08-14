@@ -53,3 +53,15 @@ export async function getCompanyBySlug(slug: string): Promise<Company | null> {
     );
     return items[0] ? mapCompany(items[0]) : null;
 }
+
+const IMAGE_BY_KEYWORD: { keyword: string; src: string }[] = [
+    { keyword: 'import', src: '/companies/import-export.jpg' },
+    { keyword: 'bath', src: '/companies/bath.jpg' },
+    { keyword: 'spice', src: '/companies/spices.jpg' },
+    { keyword: 'event', src: '/companies/event.jpg' },
+];
+
+export function imageForCompany(slug: string) {
+    const match = IMAGE_BY_KEYWORD.find((item) => slug.includes(item.keyword));
+    return match?.src ?? '/companies/import-export.jpg';
+}

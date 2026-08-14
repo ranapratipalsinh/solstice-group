@@ -1,6 +1,5 @@
 import { getCompanies } from '@/lib/cms/companies';
-import { CompanyCard } from '@/components/CompanyCard';
-import { ScrollReveal } from '@/components/ScrollReveal';
+import { CompanyLinearCards } from '@/components/CompanyLinearCards';
 
 export const dynamic = 'force-dynamic';
 
@@ -27,13 +26,7 @@ export default async function CompaniesPage() {
 
             <section className="bg-solstice-50/70 py-14 sm:py-16">
                 <div className="container">
-                    <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-                        {companies.map((company, index) => (
-                            <ScrollReveal key={company.slug} delayMs={((index % 3) + 1) * 200}>
-                                <CompanyCard company={company} />
-                            </ScrollReveal>
-                        ))}
-                    </div>
+                    <CompanyLinearCards companies={companies} />
                 </div>
             </section>
         </div>
