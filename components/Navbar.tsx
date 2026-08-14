@@ -33,9 +33,9 @@ export function Navbar() {
     return (
         <header className="sticky top-0 z-50 border-b border-slate-200 bg-white">
             <div className="container flex items-center justify-between py-5">
-                <Link href="/" className="flex items-center" onClick={closeAll}>
+                <Link href="/" className="flex items-center overflow-hidden rounded-xl" onClick={closeAll}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/logos/solstice-icon.png" alt="Solstice Group" className="h-12 w-auto" />
+                    <img src="/logos/solstice-group-logo.png" alt="Solstice Group" className="h-14 w-auto" />
                 </Link>
 
                 <nav className="hidden md:flex items-center gap-7 text-sm font-medium tracking-wide text-slate-600">
