@@ -60,20 +60,6 @@ export default async function AboutPage() {
                         <p className="mt-3 text-slate-600 leading-7">Expanding digital presence, building investor trust, and launching new service-led verticals.</p>
                     </div>
                 </div>
-                <div className="mt-10 flex flex-wrap gap-4">
-                    <Link href="/csr" className="rounded-full border border-slate-200 px-6 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50">
-                        CSR & Social Work
-                    </Link>
-                    <Link href="/gallery" className="rounded-full border border-slate-200 px-6 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50">
-                        Gallery
-                    </Link>
-                    <Link href="/certifications" className="rounded-full border border-slate-200 px-6 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50">
-                        Certifications & Awards
-                    </Link>
-                    <Link href="/partners" className="rounded-full border border-slate-200 px-6 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50">
-                        Partners & Clients
-                    </Link>
-                </div>
             </div>
         </div>
     );

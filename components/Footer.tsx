@@ -36,7 +36,12 @@ export async function Footer() {
                         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white">Quick Links</p>
                         <ul className="mt-5 space-y-3 text-sm">
                             <li><Link href="/about" className="hover:text-solstice-300">About the Group</Link></li>
-                            <li><Link href="/careers" className="hover:text-solstice-300">Careers</Link></li>
+                            <li><Link href="/leadership" className="hover:text-solstice-300">Team</Link></li>
+                            <li><Link href="/founder-message" className="hover:text-solstice-300">Founder Message</Link></li>
+                            <li><Link href="/industries" className="hover:text-solstice-300">Industries</Link></li>
+                            <li><Link href="/gallery" className="hover:text-solstice-300">Gallery</Link></li>
+                            <li><Link href="/certifications" className="hover:text-solstice-300">Certifications & Awards</Link></li>
+                            <li><Link href="/partners" className="hover:text-solstice-300">Partners & Clients</Link></li>
                             <li><Link href="/contact" className="hover:text-solstice-300">Contact</Link></li>
                         </ul>
                     </div>

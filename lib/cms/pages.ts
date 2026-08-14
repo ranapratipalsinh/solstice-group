@@ -58,25 +58,3 @@ export async function getAboutPage(): Promise<AboutPage | null> {
         founderPhotoUrl: strapiMediaUrl(raw.founderPhoto?.url),
     };
 }
-
-export type CsrPage = {
-    heading: string;
-    body: string;
-    imageUrls: string[];
-};
-
-type RawCsrPage = {
-    heading: string;
-    body: string;
-    images: StrapiMedia[];
-};
-
-export async function getCsrPage(): Promise<CsrPage | null> {
-    const raw = await strapiFindOne<RawCsrPage>('/csr-page?populate=images');
-    if (!raw) return null;
-    return {
-        heading: raw.heading,
-        body: raw.body,
-        imageUrls: (raw.images || []).map((image) => strapiMediaUrl(image.url)).filter((url): url is string => Boolean(url)),
-    };
-}
