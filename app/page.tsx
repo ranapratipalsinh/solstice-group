@@ -3,7 +3,7 @@ import { getCompanies } from '@/lib/cms/companies';
 import { getHomePage } from '@/lib/cms/pages';
 import { getRegions } from '@/lib/cms/regions';
 import { getUpcomingEvents } from '@/lib/cms/events';
-import { CompanyShowcase } from '@/components/CompanyShowcase';
+import { CompanyFanShowcase } from '@/components/CompanyFanShowcase';
 import { ScrollReveal } from '@/components/ScrollReveal';
 
 export const dynamic = 'force-dynamic';
@@ -93,7 +93,7 @@ export default async function HomePage() {
             </section>
 
             {/* 3. Our Companies */}
-            <CompanyShowcase companies={companies} />
+            <CompanyFanShowcase companies={companies} />
 
             {/* 4. Services (Group Level) */}
             <section className="bg-slate-50 py-14 sm:py-16">
