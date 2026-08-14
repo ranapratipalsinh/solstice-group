@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { ImageWithFallback } from '@/components/ImageWithFallback';
 
 const SQRT_5000 = Math.sqrt(5000);
 
@@ -109,25 +110,20 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
           height: 2
         }}
       />
-      {testimonial.imgSrc ? (
-        <img
-          src={testimonial.imgSrc}
-          alt={`${testimonial.by.split(',')[0]}`}
-          className="mb-4 h-14 w-12 bg-muted object-cover object-top"
-          style={{
-            boxShadow: "3px 3px 0px hsl(var(--background))"
-          }}
-        />
-      ) : (
-        <div
-          className="mb-4 flex h-14 w-12 items-center justify-center bg-muted text-sm font-bold text-muted-foreground"
-          style={{
-            boxShadow: "3px 3px 0px hsl(var(--background))"
-          }}
-        >
-          {initialsFor(testimonial.by)}
-        </div>
-      )}
+      <ImageWithFallback
+        src={testimonial.imgSrc ?? null}
+        alt={testimonial.by.split(',')[0]}
+        className="mb-4 h-14 w-12 bg-muted object-cover object-top"
+        style={{ boxShadow: "3px 3px 0px hsl(var(--background))" }}
+        fallback={
+          <div
+            className="mb-4 flex h-14 w-12 items-center justify-center bg-muted text-sm font-bold text-muted-foreground"
+            style={{ boxShadow: "3px 3px 0px hsl(var(--background))" }}
+          >
+            {initialsFor(testimonial.by)}
+          </div>
+        }
+      />
       <h3 className={cn(
         "text-base sm:text-xl font-medium",
         isCenter ? "text-primary-foreground" : "text-foreground"

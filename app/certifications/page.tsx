@@ -1,5 +1,6 @@
 import { getCertifications } from '@/lib/cms/certifications';
 import { InfiniteSlider } from '@/components/ui/infinite-slider';
+import { ImageWithFallback } from '@/components/ImageWithFallback';
 
 export const dynamic = 'force-dynamic';
 
@@ -24,16 +25,18 @@ export default async function CertificationsPage() {
                                 key={`${item.title}-${item.year}`}
                                 className="flex w-52 shrink-0 flex-col items-center rounded-3xl border border-slate-200 bg-slate-50 p-6 text-center"
                             >
-                                {item.imageUrl ? (
-                                    <div className="flex h-32 w-32 items-center justify-center rounded-2xl bg-white p-4 shadow-sm">
-                                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                                        <img src={item.imageUrl} alt={item.title} className="h-full w-full object-contain" />
-                                    </div>
-                                ) : (
-                                    <div className="flex h-32 w-32 items-center justify-center rounded-2xl bg-white text-2xl font-bold text-solstice-700 shadow-sm">
-                                        {item.title.slice(0, 2).toUpperCase()}
-                                    </div>
-                                )}
+                                <div className="flex h-32 w-32 items-center justify-center overflow-hidden rounded-2xl bg-white p-4 shadow-sm">
+                                    <ImageWithFallback
+                                        src={item.imageUrl}
+                                        alt={item.title}
+                                        className="h-full w-full object-contain"
+                                        fallback={
+                                            <span className="text-2xl font-bold text-solstice-700">
+                                                {item.title.slice(0, 2).toUpperCase()}
+                                            </span>
+                                        }
+                                    />
+                                </div>
                                 <h2 className="mt-5 text-base font-semibold text-slate-950">{item.title}</h2>
                                 <p className="mt-1 text-sm text-slate-600">{item.issuer}</p>
                                 <p className="mt-1 text-xs uppercase tracking-[0.2em] text-solstice-700">{item.year}</p>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import gsap from "gsap";
+import { ImageWithFallback } from "@/components/ImageWithFallback";
 
 export interface CardItem {
   imgUrl: string;
@@ -266,13 +267,20 @@ export default function SocialCards({ cards }: SocialCardsProps) {
       <div className="flex items-center justify-center w-full max-w-[90rem]">
         <div ref={containerRef} className="fan-layout flex relative justify-center items-center w-full max-w-[80rem]">
           {cards.map((card, index) => {
+            const alt = card.alt || `Card ${index}`;
+            const initials = alt.split(" ").map((word) => word[0]).slice(0, 2).join("").toUpperCase();
             const image = (
               <div className={`relative w-full h-full overflow-hidden ${card.background ?? ""}`}>
-                <img
+                <ImageWithFallback
                   src={card.imgUrl}
+                  alt={alt}
                   loading="lazy"
-                  alt={card.alt || `Card ${index}`}
                   className={`absolute inset-0 w-full h-full z-10 ${card.fit === "contain" ? "object-contain p-4" : "object-cover"}`}
+                  fallback={
+                    <div className="absolute inset-0 z-10 flex items-center justify-center bg-white text-lg font-bold text-solstice-700">
+                      {initials}
+                    </div>
+                  }
                 />
               </div>
             );
