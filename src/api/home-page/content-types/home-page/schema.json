@@ -15,6 +15,7 @@
     "heroHeading": { "type": "string" },
     "heroSubheading": { "type": "text" },
     "visionStatement": { "type": "text" },
-    "stats": { "type": "json" }
+    "stats": { "type": "json" },
+    "heroSlides": { "type": "media", "multiple": true, "allowedTypes": ["images"] }
   }
 }
