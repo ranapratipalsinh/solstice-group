@@ -45,8 +45,8 @@ export default async function HomePage() {
                 className="relative flex min-h-screen items-center overflow-hidden bg-cover bg-center py-24 text-white"
                 style={{ backgroundImage: "url('/hero/city-skyline-night.jpg')" }}
             >
-                <div className="absolute inset-0 bg-gradient-to-b from-solstice-950/90 via-solstice-950/80 to-solstice-950/95" />
-                <div className="absolute inset-0 bg-solstice-950/30 mix-blend-multiply" />
+                <div className="absolute inset-0 bg-gradient-to-b from-solstice-950/55 via-solstice-950/45 to-solstice-950/60" />
+                <div className="absolute inset-0 bg-solstice-950/15 mix-blend-multiply" />
                 <div className="container relative z-10 text-center">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src="/logos/solstice-group-logo.png" alt="Solstice Group" className="mx-auto h-16 w-auto rounded-2xl sm:h-20" />
