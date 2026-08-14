@@ -34,9 +34,3 @@ export async function getEvents(): Promise<Event[]> {
     const items = await strapiFind<RawEvent>('/events?populate=coverImage&sort=date:asc');
     return items.map(mapEvent);
 }
-
-export async function getUpcomingEvents(limit = 3): Promise<Event[]> {
-    const events = await getEvents();
-    const today = new Date().toISOString().slice(0, 10);
-    return events.filter((event) => event.date >= today).slice(0, limit);
-}

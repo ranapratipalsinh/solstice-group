@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { getCompanies } from '@/lib/cms/companies';
 import { getHomePage } from '@/lib/cms/pages';
 import { getRegions } from '@/lib/cms/regions';
-import { getUpcomingEvents } from '@/lib/cms/events';
 import { CompanyFanShowcase } from '@/components/CompanyFanShowcase';
 import { ScrollReveal } from '@/components/ScrollReveal';
 
@@ -31,11 +30,10 @@ const DEFAULT_STATS = [
 const WHATSAPP_NUMBER = '919876543210';
 
 export default async function HomePage() {
-    const [companies, homePage, regions, upcomingEvents] = await Promise.all([
+    const [companies, homePage, regions] = await Promise.all([
         getCompanies(),
         getHomePage(),
         getRegions(),
-        getUpcomingEvents(),
     ]);
 
     const stats = homePage?.stats?.length ? homePage.stats : DEFAULT_STATS;
@@ -172,44 +170,6 @@ export default async function HomePage() {
                             </div>
                         </ScrollReveal>
                     ))}
-                </div>
-            </section>
-
-            {/* 9. Events highlight */}
-            <section
-                className="relative flex min-h-[85vh] items-center overflow-hidden bg-cover text-center text-white"
-                style={{ backgroundImage: "url('/companies/event.jpg')", backgroundPosition: 'top' }}
-            >
-                <div className="absolute inset-0 bg-gradient-to-b from-solstice-950/85 via-solstice-950/75 to-solstice-950/90" />
-                <div className="container relative z-10">
-                    <p className="text-sm font-semibold uppercase tracking-[0.3em] text-solstice-300">Events</p>
-                    <h2 className="mt-3 font-display text-3xl font-semibold sm:text-4xl md:text-5xl">Events &amp; Exhibitions by Solstice GTS Events</h2>
-                    <p className="mx-auto mt-6 max-w-2xl text-sm text-solstice-100 sm:text-lg">
-                        Corporate events, brand launches, and exhibitions delivered end-to-end by our events subsidiary.
-                    </p>
-
-                    {upcomingEvents.length > 0 && (
-                        <div className="mx-auto mt-10 grid max-w-3xl gap-4 text-left sm:grid-cols-3">
-                            {upcomingEvents.map((event, index) => (
-                                <ScrollReveal key={event.slug} delayMs={(index + 1) * 200}>
-                                    <div className="rounded-2xl border border-white/20 bg-white/10 p-5 backdrop-blur-sm">
-                                        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-solstice-300">
-                                            {new Date(event.date).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' })}
-                                        </p>
-                                        <p className="mt-2 font-semibold text-white">{event.title}</p>
-                                        <p className="mt-1 text-xs text-solstice-100">{event.location}</p>
-                                    </div>
-                                </ScrollReveal>
-                            ))}
-                        </div>
-                    )}
-
-                    <Link
-                        href="/events"
-                        className="mt-10 inline-block rounded-full bg-solstice-500 px-8 py-3 text-sm font-semibold text-white hover:bg-solstice-400"
-                    >
-                        View Events
-                    </Link>
                 </div>
             </section>
 

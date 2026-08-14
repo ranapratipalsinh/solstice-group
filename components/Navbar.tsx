@@ -7,8 +7,9 @@ const primaryNavItems = [
     { href: '/', label: 'Home' },
     { href: '/companies', label: 'Our Companies' },
     { href: '/industries', label: 'Industries' },
-    { href: '/contact', label: 'Contact' },
 ];
+
+const contactNavItem = { href: '/contact', label: 'Contact' };
 
 const aboutDropdownItems = [
     { href: '/about', label: 'About the Group' },
@@ -38,6 +39,11 @@ export function Navbar() {
                 </Link>
 
                 <nav className="hidden md:flex items-center gap-7 text-sm font-medium tracking-wide text-slate-600">
+                    {primaryNavItems.map((item) => (
+                        <Link key={item.href} href={item.href} className="hover:text-solstice-700" onClick={closeAll}>
+                            {item.label}
+                        </Link>
+                    ))}
                     <div
                         className="relative"
                         onMouseEnter={() => setIsAboutOpen(true)}
@@ -67,11 +73,9 @@ export function Navbar() {
                             </div>
                         )}
                     </div>
-                    {primaryNavItems.map((item) => (
-                        <Link key={item.href} href={item.href} className="hover:text-solstice-700" onClick={closeAll}>
-                            {item.label}
-                        </Link>
-                    ))}
+                    <Link href={contactNavItem.href} className="hover:text-solstice-700" onClick={closeAll}>
+                        {contactNavItem.label}
+                    </Link>
                 </nav>
 
                 <button
@@ -97,6 +101,16 @@ export function Navbar() {
             {isMobileOpen && (
                 <nav className="md:hidden border-t border-slate-200 bg-white px-4 py-4">
                     <div className="flex flex-col gap-1 text-sm font-semibold text-slate-700">
+                        {primaryNavItems.map((item) => (
+                            <Link
+                                key={item.href}
+                                href={item.href}
+                                className="rounded-xl px-3 py-3 hover:bg-solstice-50 hover:text-solstice-700"
+                                onClick={closeAll}
+                            >
+                                {item.label}
+                            </Link>
+                        ))}
                         <button
                             type="button"
                             className="flex items-center justify-between rounded-xl px-3 py-3 text-left hover:bg-solstice-50 hover:text-solstice-700"
@@ -120,16 +134,13 @@ export function Navbar() {
                                 ))}
                             </div>
                         )}
-                        {primaryNavItems.map((item) => (
-                            <Link
-                                key={item.href}
-                                href={item.href}
-                                className="rounded-xl px-3 py-3 hover:bg-solstice-50 hover:text-solstice-700"
-                                onClick={closeAll}
-                            >
-                                {item.label}
-                            </Link>
-                        ))}
+                        <Link
+                            href={contactNavItem.href}
+                            className="rounded-xl px-3 py-3 hover:bg-solstice-50 hover:text-solstice-700"
+                            onClick={closeAll}
+                        >
+                            {contactNavItem.label}
+                        </Link>
                     </div>
                 </nav>
             )}
