@@ -78,20 +78,22 @@ export default async function HomePage() {
             {/* Impact banner */}
             <section className="bg-solstice-50 py-14 text-center sm:py-16">
                 <div className="container">
-                    <h2 className="font-display text-4xl font-bold uppercase tracking-wide text-solstice-700 sm:text-6xl">
-                        We Build Together
-                    </h2>
-                    <p className="mx-auto mt-6 max-w-2xl text-base text-slate-600 sm:text-lg">
-                        Solstice Group is a diversified business group operating across global trade, ceramic products,
-                        food, and event management.
-                    </p>
+                    <ScrollReveal>
+                        <h2 className="font-display text-4xl font-bold uppercase tracking-wide text-solstice-700 sm:text-6xl">
+                            We Build Together
+                        </h2>
+                        <p className="mx-auto mt-6 max-w-2xl text-base text-slate-600 sm:text-lg">
+                            Solstice Group is a diversified business group operating across global trade, ceramic products,
+                            food, and event management.
+                        </p>
+                    </ScrollReveal>
                 </div>
             </section>
 
             {/* 3. Our Companies */}
             <section className="bg-solstice-50/70 py-16 sm:py-20">
                 <div className="container">
-                    <div className="text-center">
+                    <ScrollReveal className="text-center">
                         <p className="text-sm font-semibold uppercase tracking-[0.3em] text-solstice-700">Our Companies</p>
                         <h2 className="mt-3 font-display text-3xl font-semibold text-slate-950 sm:text-4xl md:text-5xl">
                             A Group Built On Trusted Ventures
@@ -99,7 +101,7 @@ export default async function HomePage() {
                         <p className="mx-auto mt-4 max-w-2xl text-sm text-slate-600 sm:text-base">
                             Click a card to explore each subsidiary.
                         </p>
-                    </div>
+                    </ScrollReveal>
                     <div className="mt-10">
                         <CompanyLinearCards companies={companies} />
                     </div>
@@ -109,10 +111,10 @@ export default async function HomePage() {
             {/* 4. Services (Group Level) */}
             <section className="bg-slate-50 py-14 sm:py-16">
                 <div className="container">
-                    <div className="text-center">
+                    <ScrollReveal className="text-center">
                         <p className="text-sm font-semibold uppercase tracking-[0.3em] text-solstice-700">What We Do</p>
                         <h2 className="mt-2 font-display text-2xl font-semibold text-slate-950 sm:text-3xl">Group-level services</h2>
-                    </div>
+                    </ScrollReveal>
                     <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                         {GROUP_SERVICES.map((service, index) => (
                             <ScrollReveal key={service} delayMs={(index + 1) * 200}>
@@ -129,10 +131,10 @@ export default async function HomePage() {
             {/* 6. Global Presence */}
             <section className="bg-solstice-950 py-14 text-white sm:py-16">
                 <div className="container">
-                    <div className="text-center">
+                    <ScrollReveal className="text-center">
                         <p className="text-sm font-semibold uppercase tracking-[0.3em] text-solstice-300">Global Presence</p>
                         <h2 className="mt-2 font-display text-2xl font-semibold sm:text-3xl">Where we operate</h2>
-                    </div>
+                    </ScrollReveal>
                     <div className="mt-10 grid grid-cols-2 gap-4 lg:grid-cols-4">
                         {regions.map((region, index) => (
                             <ScrollReveal key={region.name} delayMs={(index + 1) * 200}>
@@ -156,10 +158,10 @@ export default async function HomePage() {
 
             {/* 7. Why Choose Us */}
             <section className="container py-14 sm:py-16">
-                <div className="text-center">
+                <ScrollReveal className="text-center">
                     <p className="text-sm font-semibold uppercase tracking-[0.3em] text-solstice-700">Why Choose Us</p>
                     <h2 className="mt-2 font-display text-2xl font-semibold text-slate-950 sm:text-3xl">A group built on trust and reach</h2>
-                </div>
+                </ScrollReveal>
                 <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                     {WHY_CHOOSE_US.map((reason, index) => (
                         <ScrollReveal key={reason} delayMs={(index + 1) * 200}>
@@ -188,7 +190,7 @@ export default async function HomePage() {
 
             {/* 10. CTA */}
             <section className="bg-solstice-950 py-16 text-white sm:py-20">
-                <div className="container text-center">
+                <ScrollReveal className="container text-center">
                     <h2 className="font-display text-2xl font-semibold sm:text-3xl">Start Your Business Journey With Us</h2>
                     <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
                         <Link
@@ -209,7 +211,7 @@ export default async function HomePage() {
                             WhatsApp
                         </a>
                     </div>
-                </div>
+                </ScrollReveal>
             </section>
         </div>
     );

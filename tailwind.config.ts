@@ -25,18 +25,6 @@ const config: Config = {
                     900: '#06482b',
                     950: '#032a19'
                 },
-                gold: {
-                    50: '#fbf3dc',
-                    100: '#f5e4b0',
-                    200: '#edd183',
-                    300: '#e4bd5c',
-                    400: '#d9ab42',
-                    500: '#c89730',
-                    600: '#a87a22',
-                    700: '#8a621b',
-                    800: '#6e4e16',
-                    900: '#5a3f12'
-                },
                 border: 'hsl(var(--border))',
                 input: 'hsl(var(--input))',
                 ring: 'hsl(var(--ring))',

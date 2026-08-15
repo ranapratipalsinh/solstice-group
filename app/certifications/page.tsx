@@ -1,6 +1,7 @@
 import { getCertifications } from '@/lib/cms/certifications';
 import { InfiniteSlider } from '@/components/ui/infinite-slider';
 import { ImageWithFallback } from '@/components/ImageWithFallback';
+import { ScrollReveal } from '@/components/ScrollReveal';
 
 export const dynamic = 'force-dynamic';
 
@@ -10,11 +11,13 @@ export default async function CertificationsPage() {
     return (
         <div className="py-16">
             <div className="container">
-                <p className="text-sm uppercase tracking-[0.3em] text-solstice-700">Certifications & Awards</p>
-                <h1 className="mt-4 font-display text-3xl font-semibold text-slate-950 sm:text-4xl">Recognized for quality and trust</h1>
-                {certifications.length === 0 && (
-                    <p className="mt-10 text-slate-600">Certifications and awards will appear here once added in the CMS.</p>
-                )}
+                <ScrollReveal>
+                    <p className="text-sm uppercase tracking-[0.3em] text-solstice-700">Certifications & Awards</p>
+                    <h1 className="mt-4 font-display text-3xl font-semibold text-slate-950 sm:text-4xl">Recognized for quality and trust</h1>
+                    {certifications.length === 0 && (
+                        <p className="mt-10 text-slate-600">Certifications and awards will appear here once added in the CMS.</p>
+                    )}
+                </ScrollReveal>
             </div>
 
             {certifications.length > 0 && (

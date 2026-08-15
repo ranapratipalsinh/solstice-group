@@ -1,5 +1,6 @@
 import { getCompanies } from '@/lib/cms/companies';
 import { CompanyLinearCards } from '@/components/CompanyLinearCards';
+import { ScrollReveal } from '@/components/ScrollReveal';
 
 export const dynamic = 'force-dynamic';
 
@@ -13,7 +14,7 @@ export default async function CompaniesPage() {
                 style={{ backgroundImage: "url('/hero/city-skyline-night.jpg')" }}
             >
                 <div className="absolute inset-0 bg-gradient-to-b from-solstice-950/90 via-solstice-950/80 to-solstice-950/95" />
-                <div className="container relative z-10">
+                <ScrollReveal className="container relative z-10">
                     <p className="text-sm font-semibold uppercase tracking-[0.3em] text-solstice-300">Our Companies</p>
                     <h1 className="mt-4 font-display text-3xl font-semibold sm:text-4xl md:text-5xl">
                         Subsidiaries under Solstice Group
@@ -21,7 +22,7 @@ export default async function CompaniesPage() {
                     <p className="mx-auto mt-6 max-w-2xl text-sm text-solstice-100 sm:text-lg">
                         Explore the businesses that operate under the Solstice Group umbrella, each serving a unique market and customer need.
                     </p>
-                </div>
+                </ScrollReveal>
             </section>
 
             <section className="bg-solstice-50/70 py-14 sm:py-16">
