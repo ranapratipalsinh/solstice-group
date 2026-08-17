@@ -61,7 +61,7 @@ export function PageTransition() {
     return (
         <div
             aria-hidden="true"
-            className={`fixed inset-0 z-[100] flex items-center justify-center bg-solstice-950 transition-opacity duration-500 ease-in-out ${
+            className={`fixed inset-0 z-[100] flex items-center justify-center bg-solstice-800 transition-opacity duration-500 ease-in-out ${
                 isCovering ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
             }`}
         >

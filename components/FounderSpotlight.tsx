@@ -79,27 +79,27 @@ export function FounderSpotlight({
         .join('');
 
     return (
-        <section ref={sectionRef} className="relative overflow-hidden bg-solstice-950 py-24 sm:py-32">
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(44,184,124,0.12),transparent_55%)]" />
+        <section ref={sectionRef} className="relative overflow-hidden bg-white py-24 sm:py-32">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(15,156,99,0.06),transparent_55%)]" />
 
             <div className="container relative z-10">
                 <div className="grid gap-14 lg:grid-cols-[0.9fr_1fr] lg:items-center">
                     <div ref={textRef} className="will-change-transform" style={{ opacity: 0, transform: 'translateY(32px)' }}>
-                        <p className="text-xs font-semibold uppercase tracking-[0.35em] text-solstice-300">Leadership</p>
-                        <div className="mt-5 h-px w-16 bg-solstice-400/60" />
-                        <h2 className="mt-6 font-display text-4xl font-semibold text-white sm:text-5xl">Our Founder</h2>
-                        <p className="mt-6 max-w-lg text-base leading-8 text-white/60 sm:text-lg">{description}</p>
-                        <p className="mt-8 text-lg font-semibold text-white">{name}</p>
-                        <p className="mt-1 text-xs font-semibold uppercase tracking-[0.25em] text-solstice-300">{role}</p>
+                        <p className="text-xs font-semibold uppercase tracking-[0.35em] text-solstice-700">Leadership</p>
+                        <div className="mt-5 h-px w-16 bg-solstice-500/60" />
+                        <h2 className="mt-6 font-display text-4xl font-semibold text-slate-950 sm:text-5xl">Our Founder</h2>
+                        <p className="mt-6 max-w-lg text-base leading-8 text-slate-600 sm:text-lg">{description}</p>
+                        <p className="mt-8 text-lg font-semibold text-slate-950">{name}</p>
+                        <p className="mt-1 text-xs font-semibold uppercase tracking-[0.25em] text-solstice-700">{role}</p>
                     </div>
 
                     <div ref={imageRef} className="will-change-transform" style={{ opacity: 0, transform: 'translateY(56px) scale(0.94)' }}>
-                        <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] shadow-[0_30px_80px_-20px_rgba(44,184,124,0.3)] ring-1 ring-solstice-400/20">
+                        <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] shadow-[0_30px_80px_-20px_rgba(15,156,99,0.25)] ring-1 ring-solstice-200">
                             {photoUrl ? (
                                 // eslint-disable-next-line @next/next/no-img-element
                                 <img src={photoUrl} alt={name} className="h-full w-full object-cover" />
                             ) : (
-                                <div className="flex h-full w-full items-center justify-center bg-solstice-900 text-6xl font-bold text-solstice-300">
+                                <div className="flex h-full w-full items-center justify-center bg-solstice-50 text-6xl font-bold text-solstice-700">
                                     {initials}
                                 </div>
                             )}

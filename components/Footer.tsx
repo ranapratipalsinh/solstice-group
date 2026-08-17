@@ -6,7 +6,7 @@ export async function Footer() {
     const [settings, companies] = await Promise.all([getSiteSettings(), getCompanies()]);
 
     return (
-        <footer className="border-t border-solstice-800 bg-solstice-950 text-solstice-100">
+        <footer className="border-t border-solstice-700 bg-solstice-800 text-solstice-100">
             <div className="container py-16 sm:py-20">
                 <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
                     <div>
@@ -46,7 +46,7 @@ export async function Footer() {
                         </ul>
                     </div>
                 </div>
-                <div className="mt-14 flex flex-col gap-3 border-t border-solstice-800 pt-8 text-xs text-solstice-300 sm:flex-row sm:items-center sm:justify-between">
+                <div className="mt-14 flex flex-col gap-3 border-t border-solstice-700 pt-8 text-xs text-solstice-300 sm:flex-row sm:items-center sm:justify-between">
                     <p>© {new Date().getFullYear()} Solstice Trading International LLP. Built for corporate growth.</p>
                     <a
                         href="https://ivisioncraft.dev/"
