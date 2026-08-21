@@ -19,13 +19,19 @@ Live site: https://solstice-group.onrender.com
   [ui-layouts.com](https://ui-layouts.com) / [motion-primitives.com](https://motion-primitives.com)
   (infinite slider, linear expanding cards, bento gallery, staggered deck)
 
-**CMS** ([`solstice-group-cms`](https://github.com/ranapratipalsinh/solstice-group-cms), separate repo/deploy)
+**CMS** (`cms/` subfolder of this same repo — deployed as its own process/service)
 - [Strapi 5](https://strapi.io) (TypeScript)
 - SQLite locally, Postgres in production
 - Public read access on all content types; contact/job-application submissions
   are write-only from the public role
 
 ## Project structure
+
+This is a monorepo: the Next.js frontend lives at the repo root, and the
+Strapi CMS lives in `cms/` with its own `package.json`/`node_modules` and
+full commit history (merged in via `git subtree`, history preserved). They
+deploy as two independent Node processes — merging the repo didn't merge the
+deploys.
 
 ```
 app/                   Next.js App Router pages (one folder per route)
@@ -34,6 +40,7 @@ components/ui/         Lower-level, mostly-drop-in UI primitives
 lib/cms/               One typed fetcher module per Strapi content type
 lib/strapi.ts          Thin fetch wrapper around the Strapi REST API
 lib/utils.ts           `cn()` class-merging helper used by the ui/ primitives
+cms/                   Strapi 5 CMS backend (own package.json, own README)
 ```
 
 Every CMS-backed page is a Server Component with `export const dynamic =
@@ -47,7 +54,7 @@ Requires Node.js 18+ and npm. Two projects to run side by side:
 ### 1. CMS (Strapi)
 
 ```bash
-cd solstice-group-cms
+cd cms
 npm install
 npm run develop
 ```
@@ -75,7 +82,7 @@ Starts on `http://localhost:3000`.
 | `NEXT_PUBLIC_STRAPI_URL` | Base URL of the Strapi API, e.g. `http://localhost:1337` locally |
 | `STRAPI_API_TOKEN` | Server-side API token (Strapi admin → Settings → API Tokens) used for the contact form and job application submissions. Never exposed to the browser. |
 
-**CMS** (`solstice-group-cms/.env`): standard Strapi env vars
+**CMS** (`cms/.env`): standard Strapi env vars
 (`APP_KEYS`, `API_TOKEN_SALT`, `ADMIN_JWT_SECRET`, `JWT_SECRET`,
 `TRANSFER_TOKEN_SALT`, `ENCRYPTION_KEY`, plus `DATABASE_*` for your database).
 Strapi generates these for you on `strapi new`; in production point
@@ -103,16 +110,23 @@ no deploy required for content changes, only for code changes.
 
 ## Deployment
 
-Both the frontend and the CMS deploy to [Render](https://render.com) as
-separate services, each connected to its own GitHub repo for auto-deploy on
-push to `main`.
+For client demos, the frontend and CMS each deploy to [Render](https://render.com)
+as separate services, both built from this repo with the CMS service's root
+directory set to `cms/`.
+
+Production deployment (client-managed) targets Hostinger instead — typically
+a VPS running both as independent Node processes (e.g. via PM2), each behind
+its own domain/subdomain through a reverse proxy (Nginx). Being one repo
+doesn't change that: each app still gets its own `npm install`/build/start
+and its own process, just from a shared checkout instead of two.
 
 **Known limitation:** Render's free tier uses an ephemeral filesystem, so
 files uploaded through Strapi's Media Library (logos, photos, certificates)
 are lost on every redeploy of the CMS service. Until the CMS is moved to a
-persistent media store (e.g. Cloudinary, S3, or a Render paid persistent
-disk), re-upload any missing media after a CMS redeploy. The database itself
-(Postgres) is unaffected — this only affects uploaded files.
+persistent media store (e.g. Cloudinary, S3, or persistent disk), re-upload
+any missing media after a CMS redeploy. The database itself is unaffected —
+this only affects uploaded files. (This is Render-specific; a Hostinger VPS
+with a normal persistent filesystem does not have this problem.)
 
 ## Design notes
 
