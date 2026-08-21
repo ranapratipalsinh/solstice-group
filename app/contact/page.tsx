@@ -17,11 +17,11 @@ export default function ContactPage() {
                                 <p className="text-sm uppercase tracking-[0.2em] text-solstice-700 dark:text-solstice-400">Office location</p>
                                 <p className="mt-2 text-slate-700 dark:text-slate-400">Ahmedabad, Gujarat, India</p>
                             </div>
-                            <div className="rounded-3xl bg-white p-6 shadow-sm dark:bg-slate-900">
+                            <div className="rounded-3xl bg-white p-6 shadow-sm dark:border dark:border-slate-700/60 dark:bg-slate-800 dark:shadow-none">
                                 <p className="text-sm uppercase tracking-[0.2em] text-slate-700 dark:text-slate-400">Email</p>
                                 <p className="mt-2 text-slate-700 dark:text-slate-400">info@solsticegroup.com</p>
                             </div>
-                            <div className="rounded-3xl bg-white p-6 shadow-sm dark:bg-slate-900">
+                            <div className="rounded-3xl bg-white p-6 shadow-sm dark:border dark:border-slate-700/60 dark:bg-slate-800 dark:shadow-none">
                                 <p className="text-sm uppercase tracking-[0.2em] text-solstice-700 dark:text-solstice-400">Phone</p>
                                 <p className="mt-2 text-slate-700 dark:text-slate-400">+91 98765 43210</p>
                             </div>

@@ -28,7 +28,7 @@ export default async function CertificationsPage() {
                                 key={`${item.title}-${item.year}`}
                                 className="flex w-52 shrink-0 flex-col items-center rounded-3xl border border-slate-200 bg-slate-50 p-6 text-center dark:border-slate-800 dark:bg-slate-900"
                             >
-                                <div className="flex h-32 w-32 items-center justify-center overflow-hidden rounded-2xl bg-white p-4 shadow-sm dark:bg-slate-900">
+                                <div className="flex h-32 w-32 items-center justify-center overflow-hidden rounded-2xl bg-white p-4 shadow-sm dark:border dark:border-slate-700/60 dark:bg-slate-800 dark:shadow-none">
                                     <ImageWithFallback
                                         src={item.imageUrl}
                                         alt={item.title}
