@@ -3,11 +3,15 @@ import { Ship, Factory, CalendarDays, Compass, Layers, Handshake, BadgeCheck, Wo
 import { getCompanies } from '@/lib/cms/companies';
 import { getHomePage } from '@/lib/cms/pages';
 import { getRegions } from '@/lib/cms/regions';
+import { getTeamMembers } from '@/lib/cms/team';
+import { getPartners } from '@/lib/cms/partners';
 import { CompanyLinearCards } from '@/components/CompanyLinearCards';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { HeroSlider } from '@/components/HeroSlider';
 import { FeatureCard } from '@/components/FeatureCard';
 import { CountUpStat } from '@/components/CountUpStat';
+import { InfiniteSlider } from '@/components/ui/infinite-slider';
+import { ImageWithFallback } from '@/components/ImageWithFallback';
 
 export const dynamic = 'force-dynamic';
 
@@ -65,14 +69,21 @@ const DEFAULT_STATS = [
 
 const WHATSAPP_NUMBER = '919876543210';
 
+const DEFAULT_VISION_STATEMENT =
+    'We grow by putting the same operational discipline behind every venture we take on — so a client working with any Solstice Group company gets the reliability of the whole group behind them.';
+
 export default async function HomePage() {
-    const [companies, homePage, regions] = await Promise.all([
+    const [companies, homePage, regions, leaders, partners] = await Promise.all([
         getCompanies(),
         getHomePage(),
         getRegions(),
+        getTeamMembers(),
+        getPartners(),
     ]);
 
     const stats = homePage?.stats?.length ? homePage.stats : DEFAULT_STATS;
+    const visionStatement = homePage?.visionStatement || DEFAULT_VISION_STATEMENT;
+    const leadershipPreview = leaders.slice(0, 4);
 
     return (
         <div>
@@ -81,7 +92,7 @@ export default async function HomePage() {
                 <HeroSlider images={homePage?.heroSlideUrls ?? []} />
                 <div className="absolute inset-0 bg-gradient-to-r from-solstice-800/90 via-solstice-800/50 to-transparent" />
                 <div className="container relative z-10">
-                    <div className="max-w-xl text-left">
+                    <div className="max-w-xl rounded-3xl border border-white/10 bg-black/10 p-8 text-left shadow-2xl backdrop-blur-sm sm:p-12">
                         <p
                             className="animate-fade-in-up break-words text-xs font-semibold uppercase tracking-normal text-solstice-300 sm:text-sm sm:tracking-[0.35em]"
                             style={{ animationDelay: '0ms' }}
@@ -115,7 +126,7 @@ export default async function HomePage() {
                             </Link>
                             <Link
                                 href="/contact"
-                                className="group rounded-full border border-white/50 px-8 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+                                className="group rounded-full border border-white/50 px-8 py-3 text-sm font-semibold text-white transition hover:bg-white/10 backdrop-blur-sm"
                             >
                                 Contact Us
                                 <span className="ml-2 inline-block transition-transform group-hover:translate-x-1">→</span>
@@ -179,36 +190,28 @@ export default async function HomePage() {
             </section>
 
             {/* 6. Global Presence */}
-            <section className="bg-white py-16 dark:bg-slate-950 sm:py-20">
-                <div className="container">
+            <section className="relative overflow-hidden bg-solstice-950 py-16 text-white sm:py-24">
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(15,156,99,0.18),transparent_60%)]" />
+                <div className="container relative">
                     <ScrollReveal className="text-center">
-                        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-solstice-700 dark:text-solstice-400">Global Presence</p>
-                        <h2 className="mt-2 font-display text-2xl font-semibold text-slate-950 dark:text-white sm:text-3xl">Where we operate</h2>
+                        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-solstice-400">Global Presence</p>
+                        <h2 className="mt-2 font-display text-3xl font-semibold sm:text-4xl">Where we operate</h2>
                     </ScrollReveal>
-                    <div className="mt-10 grid grid-cols-2 gap-4 lg:grid-cols-4">
+                    <div className="mt-12 flex flex-wrap justify-center gap-4">
                         {regions.map((region, index) => (
                             <ScrollReveal key={region.name} delayMs={(index + 1) * 150}>
-                                <div
-                                    className={`group flex flex-col items-center gap-2 rounded-3xl p-6 text-center transition-all duration-300 hover:-translate-y-1.5 ${
-                                        region.isHeadquarters
-                                            ? 'bg-solstice-600 text-white hover:shadow-xl hover:shadow-solstice-600/30'
-                                            : 'border border-solstice-100 bg-solstice-50 text-slate-800 hover:border-solstice-300 hover:bg-white hover:shadow-lg dark:border-solstice-800/40 dark:bg-solstice-500/10 dark:text-slate-200 dark:hover:border-solstice-600 dark:hover:bg-slate-900'
-                                    }`}
-                                >
-                                    <div
-                                        className={`flex h-10 w-10 items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-110 ${
-                                            region.isHeadquarters ? 'bg-white/15' : 'bg-solstice-100 text-solstice-600 dark:bg-solstice-500/20 dark:text-solstice-400'
-                                        }`}
-                                    >
-                                        {region.isHeadquarters ? <Building2 className="h-5 w-5" strokeWidth={1.75} /> : <MapPin className="h-5 w-5" strokeWidth={1.75} />}
+                                {region.isHeadquarters ? (
+                                    <div className="flex flex-col items-center gap-2 rounded-2xl bg-solstice-400 px-8 py-4 font-semibold text-solstice-950 shadow-[0_0_25px_rgba(93,210,156,0.35)] transition-transform hover:scale-105">
+                                        <Building2 className="h-6 w-6" strokeWidth={1.75} />
+                                        {region.name}
+                                        <span className="mt-1 text-[10px] uppercase tracking-widest opacity-80">Headquarters</span>
                                     </div>
-                                    <p className="mt-1 text-lg font-semibold">{region.name}</p>
-                                    {region.isHeadquarters && (
-                                        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-solstice-100">
-                                            Headquarters
-                                        </p>
-                                    )}
-                                </div>
+                                ) : (
+                                    <div className="flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-8 py-4 font-semibold text-white transition-colors hover:border-solstice-400/50 hover:bg-white/10">
+                                        <MapPin className="h-6 w-6 text-solstice-400" strokeWidth={1.75} />
+                                        {region.name}
+                                    </div>
+                                )}
                             </ScrollReveal>
                         ))}
                     </div>
@@ -234,20 +237,133 @@ export default async function HomePage() {
             </section>
 
             {/* 8. Group Stats */}
-            <section className="bg-white py-14 dark:bg-slate-950 sm:py-16">
-                <div className="container">
-                    <ScrollReveal className="text-center">
-                        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-solstice-700 dark:text-solstice-400">By The Numbers</p>
-                        <h2 className="mt-2 font-display text-2xl font-semibold text-slate-950 dark:text-white sm:text-3xl">Our impact so far</h2>
-                    </ScrollReveal>
-                    <div className="mt-10 grid gap-4 rounded-[2rem] bg-solstice-50 p-8 dark:bg-slate-900 sm:grid-cols-3 sm:p-10">
+            <section className="border-y border-slate-100 bg-white py-12 dark:border-slate-800 dark:bg-slate-950">
+                <div className="container max-w-5xl">
+                    <div className="grid grid-cols-1 gap-4 divide-y divide-slate-100 text-center sm:grid-cols-3 sm:divide-x sm:divide-y-0 dark:divide-slate-800">
                         {stats.map((stat, index) => (
-                            <ScrollReveal key={stat.label} delayMs={(index + 1) * 200}>
-                                <CountUpStat value={stat.value} label={stat.label} />
+                            <ScrollReveal key={stat.label} delayMs={(index + 1) * 150}>
+                                <CountUpStat value={stat.value} label={stat.label} variant="bar" />
                             </ScrollReveal>
                         ))}
                     </div>
                 </div>
+            </section>
+
+            {/* 9. Vision & Growth */}
+            <section className="relative overflow-hidden bg-white py-16 dark:bg-slate-950 sm:py-24">
+                <div className="container">
+                    <div className="flex flex-col items-center gap-14 lg:flex-row">
+                        <ScrollReveal className="w-full lg:w-1/2">
+                            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-solstice-700 dark:text-solstice-400">Our Vision</p>
+                            <h2 className="mt-3 font-display text-3xl font-semibold leading-tight text-slate-950 dark:text-white sm:text-4xl">
+                                Built for <span className="italic text-solstice-600 dark:text-solstice-400">growth</span> that lasts.
+                            </h2>
+                            <p className="mt-6 max-w-lg text-base leading-8 text-slate-600 dark:text-slate-400 sm:text-lg">
+                                {visionStatement}
+                            </p>
+                            <Link
+                                href="/about"
+                                className="group mt-8 inline-flex items-center rounded-full bg-solstice-700 px-6 py-3 text-sm font-semibold text-white transition hover:bg-solstice-600"
+                            >
+                                Read more
+                                <span className="ml-2 inline-block transition-transform group-hover:translate-x-1">→</span>
+                            </Link>
+                        </ScrollReveal>
+                        <ScrollReveal className="w-full lg:w-1/2" delayMs={200}>
+                            <div className="relative h-[380px] overflow-hidden rounded-3xl shadow-2xl">
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img
+                                    src="/hero/city-skyline-night.jpg"
+                                    alt="Solstice Group growth and expansion"
+                                    className="h-full w-full object-cover"
+                                />
+                                <div className="absolute bottom-6 left-6 right-6 rounded-2xl border border-white/20 bg-white/80 p-6 shadow-lg backdrop-blur-md dark:border-white/10 dark:bg-slate-900/80">
+                                    <h3 className="text-lg font-bold text-slate-950 dark:text-white">Group-Wide Standards</h3>
+                                    <p className="mt-1 text-sm text-slate-700 dark:text-slate-300">
+                                        The same operational discipline and governance across every subsidiary.
+                                    </p>
+                                </div>
+                            </div>
+                        </ScrollReveal>
+                    </div>
+                </div>
+            </section>
+
+            {/* Leadership */}
+            <section className="bg-slate-50 py-16 dark:bg-slate-900 sm:py-24">
+                <div className="container">
+                    <ScrollReveal className="text-center">
+                        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-solstice-700 dark:text-solstice-400">Leadership</p>
+                        <h2 className="mt-2 font-display text-2xl font-semibold text-slate-950 dark:text-white sm:text-3xl">The people behind the group</h2>
+                        <div className="mx-auto mt-5 h-1 w-16 rounded-full bg-solstice-400" />
+                    </ScrollReveal>
+                    {leadershipPreview.length === 0 ? (
+                        <p className="mt-10 text-center text-slate-600 dark:text-slate-400">Leadership profiles will appear here once added in the CMS.</p>
+                    ) : (
+                        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                            {leadershipPreview.map((member, index) => {
+                                const initials = member.name
+                                    .split(' ')
+                                    .map((word) => word[0])
+                                    .slice(0, 2)
+                                    .join('');
+
+                                return (
+                                    <ScrollReveal key={member.name} delayMs={(index + 1) * 150}>
+                                        <div className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-shadow hover:shadow-xl dark:border-slate-800 dark:bg-slate-800">
+                                            <div className="relative h-56 overflow-hidden bg-solstice-50 dark:bg-solstice-500/10">
+                                                <ImageWithFallback
+                                                    src={member.photoUrl}
+                                                    alt={member.name}
+                                                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                                    fallback={
+                                                        <div className="flex h-full w-full items-center justify-center text-4xl font-bold text-solstice-700 dark:text-solstice-400">
+                                                            {initials}
+                                                        </div>
+                                                    }
+                                                />
+                                            </div>
+                                            <div className="p-5">
+                                                <h3 className="font-semibold text-slate-950 dark:text-white">{member.name}</h3>
+                                                <p className="mt-1 text-xs font-medium uppercase tracking-[0.15em] text-solstice-600 dark:text-solstice-400">{member.role}</p>
+                                            </div>
+                                        </div>
+                                    </ScrollReveal>
+                                );
+                            })}
+                        </div>
+                    )}
+                    <div className="mt-10 text-center">
+                        <Link href="/leadership" className="text-sm font-semibold text-solstice-700 hover:text-solstice-900 dark:text-solstice-400 dark:hover:text-solstice-300">
+                            Meet the full team →
+                        </Link>
+                    </div>
+                </div>
+            </section>
+
+            {/* Partner Brands */}
+            <section className="overflow-hidden border-t border-slate-100 bg-white py-16 dark:border-slate-800 dark:bg-slate-950">
+                <div className="container mb-8">
+                    <h3 className="font-display text-2xl font-semibold text-slate-950 dark:text-white">Partner Brands</h3>
+                </div>
+                {partners.length === 0 ? (
+                    <p className="container text-slate-600 dark:text-slate-400">Partner logos will appear here once added in the CMS.</p>
+                ) : (
+                    <InfiniteSlider gap={64} speed={30} speedOnHover={10} className="py-2">
+                        {partners.map((partner) => (
+                            <div key={partner.name} className="flex h-16 w-40 shrink-0 items-center justify-center">
+                                <ImageWithFallback
+                                    src={partner.logoUrl}
+                                    alt={partner.name}
+                                    className="h-10 w-auto object-contain opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0 dark:brightness-0 dark:invert dark:opacity-50 dark:hover:opacity-90"
+                                    fallback={
+                                        <span className="text-lg font-bold text-slate-400 dark:text-slate-600">{partner.name}</span>
+                                    }
+                                />
+                            </div>
+                        ))}
+                    </InfiniteSlider>
+                )}
             </section>
 
             {/* 10. CTA */}

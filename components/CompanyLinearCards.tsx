@@ -13,7 +13,18 @@ import {
     DialogDescription,
     DialogImage,
 } from '@/components/ui/linear-card';
-import { Plus } from 'lucide-react';
+import { Plus, Bath, Wheat, Globe, PartyPopper, LucideIcon } from 'lucide-react';
+
+const ICON_BY_KEYWORD: { keyword: string; icon: LucideIcon }[] = [
+    { keyword: 'import', icon: Globe },
+    { keyword: 'bath', icon: Bath },
+    { keyword: 'spice', icon: Wheat },
+    { keyword: 'event', icon: PartyPopper },
+];
+
+function iconForCompany(slug: string): LucideIcon {
+    return ICON_BY_KEYWORD.find((item) => slug.includes(item.keyword))?.icon ?? Globe;
+}
 
 export function CompanyLinearCards({ companies }: { companies: Company[] }) {
     if (!companies.length) return null;
@@ -22,20 +33,32 @@ export function CompanyLinearCards({ companies }: { companies: Company[] }) {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {companies.map((company) => {
                 const imageUrl = imageForCompany(company.slug);
+                const Icon = iconForCompany(company.slug);
 
                 return (
                     <Dialog key={company.slug} transition={{ type: 'spring', bounce: 0.05, duration: 0.5 }}>
                         <DialogTrigger
-                            style={{ borderRadius: '20px' }}
-                            className="flex w-full flex-col overflow-hidden border border-slate-200 bg-white shadow-sm hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
+                            style={{ borderRadius: '24px' }}
+                            className="group relative h-72 w-full overflow-hidden shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
                         >
-                            <DialogImage src={imageUrl} alt={company.name} className="h-48 w-full object-cover" />
-                            <div className="flex flex-grow flex-row items-end justify-between p-4 pr-14">
-                                <DialogTitle className="text-lg font-semibold text-slate-950 dark:text-white">{company.name}</DialogTitle>
-                                <span className="absolute bottom-3 right-3 shrink-0 rounded-full bg-solstice-100 p-2 text-solstice-700 dark:bg-solstice-500/15 dark:text-solstice-400">
-                                    <Plus className="h-5 w-5" />
-                                </span>
+                            <DialogImage
+                                src={imageUrl}
+                                alt={company.name}
+                                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-b from-solstice-950/10 via-solstice-900/60 to-solstice-950/95" />
+                            <div className="relative z-10 flex h-full flex-col p-6">
+                                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-sm">
+                                    <Icon className="h-5 w-5" strokeWidth={1.75} />
+                                </div>
+                                <div className="mt-auto pr-8">
+                                    <DialogTitle className="text-xl font-bold text-white">{company.name}</DialogTitle>
+                                    <p className="mt-1 text-xs leading-relaxed text-white/80">{company.tagline}</p>
+                                </div>
                             </div>
+                            <span className="absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-sm transition-colors group-hover:bg-white/25">
+                                <Plus className="h-4 w-4" />
+                            </span>
                         </DialogTrigger>
 
                         <DialogContainer className="pt-20">
