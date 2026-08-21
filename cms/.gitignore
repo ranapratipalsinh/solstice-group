@@ -1,0 +1,26 @@
+############################
+# Node.js
+############################
+node_modules/
+build/
+dist/
+.cache/
+.temp/
+*.log
+
+############################
+# Misc
+############################
+.DS_Store
+.tmp/
+.env
+license.txt
+exports/
+
+############################
+# Uploaded media (runtime data, not code)
+# Keep the folder itself (via .gitkeep) so it exists on a fresh deploy;
+# ignore everything actually uploaded into it.
+############################
+public/uploads/*
+!public/uploads/.gitkeep

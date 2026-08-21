@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "certifications",
+  "info": {
+    "singularName": "certification",
+    "pluralName": "certifications",
+    "displayName": "Certification",
+    "description": "Certifications and awards"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "issuer": { "type": "string" },
+    "year": { "type": "integer" },
+    "image": { "type": "media", "multiple": false, "allowedTypes": ["images"] }
+  }
+}

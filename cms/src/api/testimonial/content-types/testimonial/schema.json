@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "testimonials",
+  "info": {
+    "singularName": "testimonial",
+    "pluralName": "testimonials",
+    "displayName": "Testimonial",
+    "description": "Client and partner testimonials"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "clientName": { "type": "string", "required": true },
+    "clientCompany": { "type": "string" },
+    "quote": { "type": "text" },
+    "photo": { "type": "media", "multiple": false, "allowedTypes": ["images"] }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "companies",
+  "info": {
+    "singularName": "company",
+    "pluralName": "companies",
+    "displayName": "Company",
+    "description": "Solstice Group subsidiary companies"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": { "type": "string", "required": true },
+    "slug": { "type": "uid", "targetField": "name", "required": true },
+    "tagline": { "type": "string" },
+    "description": { "type": "text" },
+    "services": { "type": "json" },
+    "headquarters": { "type": "string" },
+    "contactEmail": { "type": "email" },
+    "contactPhone": { "type": "string" },
+    "website": { "type": "string" },
+    "logo": { "type": "media", "multiple": false, "allowedTypes": ["images"] },
+    "order": { "type": "integer", "default": 0 }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "job_applications",
+  "info": {
+    "singularName": "job-application",
+    "pluralName": "job-applications",
+    "displayName": "Job Application",
+    "description": "Careers page applications"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": { "type": "string", "required": true },
+    "email": { "type": "email", "required": true },
+    "phone": { "type": "string" },
+    "message": { "type": "text" },
+    "resume": { "type": "media", "multiple": false, "allowedTypes": ["files"] },
+    "jobOpening": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::job-opening.job-opening"
+    }
+  }
+}

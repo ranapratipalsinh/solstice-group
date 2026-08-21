@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "home_page",
+  "info": {
+    "singularName": "home-page",
+    "pluralName": "home-pages",
+    "displayName": "Home Page",
+    "description": "Editable content for the homepage hero and stats"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heroHeading": { "type": "string" },
+    "heroSubheading": { "type": "text" },
+    "visionStatement": { "type": "text" },
+    "stats": { "type": "json" },
+    "heroSlides": { "type": "media", "multiple": true, "allowedTypes": ["images"] }
+  }
+}

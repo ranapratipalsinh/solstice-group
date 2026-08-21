@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "site_setting",
+  "info": {
+    "singularName": "site-setting",
+    "pluralName": "site-settings",
+    "displayName": "Site Setting",
+    "description": "Global site settings: contact info, logo, social links"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "officeAddress": { "type": "string" },
+    "groupEmail": { "type": "email" },
+    "groupPhone": { "type": "string" },
+    "socialLinks": { "type": "json" },
+    "logo": { "type": "media", "multiple": false, "allowedTypes": ["images"] }
+  }
+}
