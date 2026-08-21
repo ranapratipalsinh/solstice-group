@@ -42,12 +42,12 @@ export function CountUpStat({ value, label }: { value: string; label: string }) 
     }, [target]);
 
     return (
-        <div className="rounded-3xl bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-            <p ref={ref} className="font-display text-3xl font-semibold text-solstice-700 sm:text-4xl">
+        <div className="rounded-3xl bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:bg-slate-900 dark:shadow-none">
+            <p ref={ref} className="font-display text-3xl font-semibold text-solstice-700 dark:text-solstice-400 sm:text-4xl">
                 {display}
                 {suffix}
             </p>
-            <p className="mt-2 text-sm uppercase tracking-[0.2em] text-slate-500">{label}</p>
+            <p className="mt-2 text-sm uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">{label}</p>
         </div>
     );
 }

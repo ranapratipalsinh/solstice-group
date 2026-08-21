@@ -37,44 +37,44 @@ export function JobApplicationForm({ jobs }: { jobs: { documentId: string; title
     return (
         <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
             <div>
-                <label htmlFor="applicantName" className="mb-2 block text-sm font-semibold text-slate-700">Name</label>
+                <label htmlFor="applicantName" className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-400">Name</label>
                 <input
                     id="applicantName"
                     name="name"
                     type="text"
                     required
-                    className="w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-solstice-500"
+                    className="w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-solstice-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:placeholder-slate-500"
                     placeholder="Your name"
                 />
             </div>
             <div>
-                <label htmlFor="applicantEmail" className="mb-2 block text-sm font-semibold text-slate-700">Email</label>
+                <label htmlFor="applicantEmail" className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-400">Email</label>
                 <input
                     id="applicantEmail"
                     name="email"
                     type="email"
                     required
-                    className="w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-solstice-500"
+                    className="w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-solstice-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:placeholder-slate-500"
                     placeholder="Your email"
                 />
             </div>
             <div>
-                <label htmlFor="applicantPhone" className="mb-2 block text-sm font-semibold text-slate-700">Phone</label>
+                <label htmlFor="applicantPhone" className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-400">Phone</label>
                 <input
                     id="applicantPhone"
                     name="phone"
                     type="tel"
-                    className="w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-solstice-500"
+                    className="w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-solstice-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:placeholder-slate-500"
                     placeholder="Your phone number"
                 />
             </div>
             {jobs.length > 0 && (
                 <div>
-                    <label htmlFor="jobOpening" className="mb-2 block text-sm font-semibold text-slate-700">Role</label>
+                    <label htmlFor="jobOpening" className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-400">Role</label>
                     <select
                         id="jobOpening"
                         name="jobOpeningId"
-                        className="w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-solstice-500"
+                        className="w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-solstice-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
                     >
                         <option value="">General application</option>
                         {jobs.map((job) => (
@@ -84,23 +84,23 @@ export function JobApplicationForm({ jobs }: { jobs: { documentId: string; title
                 </div>
             )}
             <div>
-                <label htmlFor="resume" className="mb-2 block text-sm font-semibold text-slate-700">Resume (PDF)</label>
+                <label htmlFor="resume" className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-400">Resume (PDF)</label>
                 <input
                     id="resume"
                     name="resume"
                     type="file"
                     accept="application/pdf"
                     required
-                    className="w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-solstice-500"
+                    className="w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-solstice-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
                 />
             </div>
             <div>
-                <label htmlFor="applicantMessage" className="mb-2 block text-sm font-semibold text-slate-700">Message</label>
+                <label htmlFor="applicantMessage" className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-400">Message</label>
                 <textarea
                     id="applicantMessage"
                     name="message"
                     rows={3}
-                    className="w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-solstice-500"
+                    className="w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-solstice-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:placeholder-slate-500"
                     placeholder="A brief note about why you're a good fit"
                 />
             </div>
@@ -112,7 +112,7 @@ export function JobApplicationForm({ jobs }: { jobs: { documentId: string; title
                 {status === 'submitting' ? 'Submitting…' : 'Submit application'}
             </button>
             {status === 'success' && (
-                <p className="text-sm font-semibold text-solstice-700">Application received — our HR team will be in touch.</p>
+                <p className="text-sm font-semibold text-solstice-700 dark:text-solstice-400">Application received — our HR team will be in touch.</p>
             )}
             {status === 'error' && (
                 <p className="text-sm font-semibold text-red-600">{errorMessage}</p>

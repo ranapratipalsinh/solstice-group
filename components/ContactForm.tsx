@@ -42,35 +42,35 @@ export function ContactForm() {
     return (
         <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
             <div>
-                <label htmlFor="name" className="mb-2 block text-sm font-semibold text-slate-700">Name</label>
+                <label htmlFor="name" className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-400">Name</label>
                 <input
                     id="name"
                     name="name"
                     type="text"
                     required
-                    className="w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-solstice-500"
+                    className="w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-solstice-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:placeholder-slate-500"
                     placeholder="Your name"
                 />
             </div>
             <div>
-                <label htmlFor="email" className="mb-2 block text-sm font-semibold text-slate-700">Email</label>
+                <label htmlFor="email" className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-400">Email</label>
                 <input
                     id="email"
                     name="email"
                     type="email"
                     required
-                    className="w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-solstice-500"
+                    className="w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-solstice-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:placeholder-slate-500"
                     placeholder="Your email"
                 />
             </div>
             <div>
-                <label htmlFor="message" className="mb-2 block text-sm font-semibold text-slate-700">Message</label>
+                <label htmlFor="message" className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-400">Message</label>
                 <textarea
                     id="message"
                     name="message"
                     required
                     rows={5}
-                    className="w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-solstice-500"
+                    className="w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-solstice-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:placeholder-slate-500"
                     placeholder="How can we help?"
                 />
             </div>
@@ -82,7 +82,7 @@ export function ContactForm() {
                 {status === 'submitting' ? 'Sending…' : 'Submit inquiry'}
             </button>
             {status === 'success' && (
-                <p className="text-sm font-semibold text-solstice-700">Thanks — we will reply within 2 business days.</p>
+                <p className="text-sm font-semibold text-solstice-700 dark:text-solstice-400">Thanks — we will reply within 2 business days.</p>
             )}
             {status === 'error' && (
                 <p className="text-sm font-semibold text-red-600">{errorMessage}</p>

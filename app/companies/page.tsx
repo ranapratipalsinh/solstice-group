@@ -25,7 +25,7 @@ export default async function CompaniesPage() {
                 </ScrollReveal>
             </section>
 
-            <section className="bg-solstice-50/70 py-14 sm:py-16">
+            <section className="bg-solstice-50/70 py-14 sm:py-16 dark:bg-slate-900">
                 <div className="container">
                     <CompanyLinearCards companies={companies} />
                 </div>

@@ -126,15 +126,15 @@ export default async function HomePage() {
             </section>
 
             {/* Impact banner */}
-            <section className="relative overflow-hidden bg-solstice-50 py-16 text-center sm:py-20">
+            <section className="relative overflow-hidden bg-solstice-50 py-16 text-center dark:bg-slate-900 sm:py-20">
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(15,156,99,0.08),transparent_60%)]" />
                 <div className="container relative">
                     <ScrollReveal>
                         <div className="mx-auto h-px w-16 bg-solstice-400/60" />
-                        <h2 className="mt-6 font-display text-4xl font-bold uppercase tracking-wide text-solstice-700 sm:text-6xl">
+                        <h2 className="mt-6 font-display text-4xl font-bold uppercase tracking-wide text-solstice-700 dark:text-solstice-400 sm:text-6xl">
                             We Build Together
                         </h2>
-                        <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg">
+                        <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-400 sm:text-lg">
                             Solstice Group is a diversified business group operating across global trade, ceramic products,
                             food, and event management.
                         </p>
@@ -143,14 +143,14 @@ export default async function HomePage() {
             </section>
 
             {/* 3. Our Companies */}
-            <section className="bg-solstice-50/70 py-16 sm:py-20">
+            <section className="bg-solstice-50/70 py-16 dark:bg-slate-900/60 sm:py-20">
                 <div className="container">
                     <ScrollReveal className="text-center">
-                        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-solstice-700">Our Companies</p>
-                        <h2 className="mt-3 font-display text-3xl font-semibold text-slate-950 sm:text-4xl md:text-5xl">
+                        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-solstice-700 dark:text-solstice-400">Our Companies</p>
+                        <h2 className="mt-3 font-display text-3xl font-semibold text-slate-950 dark:text-white sm:text-4xl md:text-5xl">
                             A Group Built On Trusted Ventures
                         </h2>
-                        <p className="mx-auto mt-4 max-w-2xl text-sm text-slate-600 sm:text-base">
+                        <p className="mx-auto mt-4 max-w-2xl text-sm text-slate-600 dark:text-slate-400 sm:text-base">
                             Click a card to explore each subsidiary.
                         </p>
                     </ScrollReveal>
@@ -161,12 +161,12 @@ export default async function HomePage() {
             </section>
 
             {/* 4. Services (Group Level) */}
-            <section className="bg-slate-50 py-16 sm:py-20">
+            <section className="bg-slate-50 py-16 dark:bg-slate-900 sm:py-20">
                 <div className="container">
                     <ScrollReveal className="text-center">
-                        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-solstice-700">What We Do</p>
-                        <h2 className="mt-2 font-display text-2xl font-semibold text-slate-950 sm:text-3xl">Group-level services</h2>
-                        <p className="mx-auto mt-3 max-w-xl text-sm text-slate-500">Hover a card for more.</p>
+                        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-solstice-700 dark:text-solstice-400">What We Do</p>
+                        <h2 className="mt-2 font-display text-2xl font-semibold text-slate-950 dark:text-white sm:text-3xl">Group-level services</h2>
+                        <p className="mx-auto mt-3 max-w-xl text-sm text-slate-500 dark:text-slate-400">Hover a card for more.</p>
                     </ScrollReveal>
                     <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
                         {GROUP_SERVICES.map((service, index) => (
@@ -179,11 +179,11 @@ export default async function HomePage() {
             </section>
 
             {/* 6. Global Presence */}
-            <section className="bg-white py-16 sm:py-20">
+            <section className="bg-white py-16 dark:bg-slate-950 sm:py-20">
                 <div className="container">
                     <ScrollReveal className="text-center">
-                        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-solstice-700">Global Presence</p>
-                        <h2 className="mt-2 font-display text-2xl font-semibold text-slate-950 sm:text-3xl">Where we operate</h2>
+                        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-solstice-700 dark:text-solstice-400">Global Presence</p>
+                        <h2 className="mt-2 font-display text-2xl font-semibold text-slate-950 dark:text-white sm:text-3xl">Where we operate</h2>
                     </ScrollReveal>
                     <div className="mt-10 grid grid-cols-2 gap-4 lg:grid-cols-4">
                         {regions.map((region, index) => (
@@ -192,12 +192,12 @@ export default async function HomePage() {
                                     className={`group flex flex-col items-center gap-2 rounded-3xl p-6 text-center transition-all duration-300 hover:-translate-y-1.5 ${
                                         region.isHeadquarters
                                             ? 'bg-solstice-600 text-white hover:shadow-xl hover:shadow-solstice-600/30'
-                                            : 'border border-solstice-100 bg-solstice-50 text-slate-800 hover:border-solstice-300 hover:bg-white hover:shadow-lg'
+                                            : 'border border-solstice-100 bg-solstice-50 text-slate-800 hover:border-solstice-300 hover:bg-white hover:shadow-lg dark:border-solstice-800/40 dark:bg-solstice-500/10 dark:text-slate-200 dark:hover:border-solstice-600 dark:hover:bg-slate-900'
                                     }`}
                                 >
                                     <div
                                         className={`flex h-10 w-10 items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-110 ${
-                                            region.isHeadquarters ? 'bg-white/15' : 'bg-solstice-100 text-solstice-600'
+                                            region.isHeadquarters ? 'bg-white/15' : 'bg-solstice-100 text-solstice-600 dark:bg-solstice-500/20 dark:text-solstice-400'
                                         }`}
                                     >
                                         {region.isHeadquarters ? <Building2 className="h-5 w-5" strokeWidth={1.75} /> : <MapPin className="h-5 w-5" strokeWidth={1.75} />}
@@ -216,12 +216,12 @@ export default async function HomePage() {
             </section>
 
             {/* 7. Why Choose Us */}
-            <section className="bg-slate-50 py-16 sm:py-20">
+            <section className="bg-slate-50 py-16 dark:bg-slate-900 sm:py-20">
                 <div className="container">
                     <ScrollReveal className="text-center">
-                        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-solstice-700">Why Choose Us</p>
-                        <h2 className="mt-2 font-display text-2xl font-semibold text-slate-950 sm:text-3xl">A group built on trust and reach</h2>
-                        <p className="mx-auto mt-3 max-w-xl text-sm text-slate-500">Hover a card for more.</p>
+                        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-solstice-700 dark:text-solstice-400">Why Choose Us</p>
+                        <h2 className="mt-2 font-display text-2xl font-semibold text-slate-950 dark:text-white sm:text-3xl">A group built on trust and reach</h2>
+                        <p className="mx-auto mt-3 max-w-xl text-sm text-slate-500 dark:text-slate-400">Hover a card for more.</p>
                     </ScrollReveal>
                     <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
                         {WHY_CHOOSE_US.map((reason, index) => (
@@ -234,13 +234,13 @@ export default async function HomePage() {
             </section>
 
             {/* 8. Group Stats */}
-            <section className="bg-white py-14 sm:py-16">
+            <section className="bg-white py-14 dark:bg-slate-950 sm:py-16">
                 <div className="container">
                     <ScrollReveal className="text-center">
-                        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-solstice-700">By The Numbers</p>
-                        <h2 className="mt-2 font-display text-2xl font-semibold text-slate-950 sm:text-3xl">Our impact so far</h2>
+                        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-solstice-700 dark:text-solstice-400">By The Numbers</p>
+                        <h2 className="mt-2 font-display text-2xl font-semibold text-slate-950 dark:text-white sm:text-3xl">Our impact so far</h2>
                     </ScrollReveal>
-                    <div className="mt-10 grid gap-4 rounded-[2rem] bg-solstice-50 p-8 sm:grid-cols-3 sm:p-10">
+                    <div className="mt-10 grid gap-4 rounded-[2rem] bg-solstice-50 p-8 dark:bg-slate-900 sm:grid-cols-3 sm:p-10">
                         {stats.map((stat, index) => (
                             <ScrollReveal key={stat.label} delayMs={(index + 1) * 200}>
                                 <CountUpStat value={stat.value} label={stat.label} />
@@ -251,7 +251,7 @@ export default async function HomePage() {
             </section>
 
             {/* 10. CTA */}
-            <section className="bg-white py-14 sm:py-16">
+            <section className="bg-white py-14 dark:bg-slate-950 sm:py-16">
                 <div className="container">
                     <ScrollReveal>
                         <div className="relative overflow-hidden rounded-[2rem] bg-solstice-600 px-8 py-14 text-center text-white sm:px-16 sm:py-16">

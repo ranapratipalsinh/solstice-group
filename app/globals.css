@@ -30,6 +30,30 @@
     --radius: 0.5rem;
 }
 
+.dark {
+    color-scheme: dark;
+
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+    --card: 222 44% 9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 44% 9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 154 65% 45%;
+    --primary-foreground: 222 47% 6%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 33% 20%;
+    --input: 217 33% 20%;
+    --ring: 154 65% 45%;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -39,6 +63,12 @@ body {
     font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
     background: #f8fafc;
     color: #0f172a;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dark body {
+    background: #060b16;
+    color: #f1f5f9;
 }
 
 ::selection {

@@ -183,7 +183,7 @@ const InteractiveImageBentoGallery: React.FC<
                   alt={item.title}
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   fallback={
-                    <div className="absolute inset-0 flex items-center justify-center bg-slate-100 text-sm text-slate-400">
+                    <div className="absolute inset-0 flex items-center justify-center bg-slate-100 text-sm text-slate-400 dark:bg-slate-800">
                       Image unavailable
                     </div>
                   }
