@@ -21,7 +21,7 @@ const themeInitScript = `(function(){try{var stored=localStorage.getItem('theme'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="en" className={inter.variable}>
+        <html lang="en" className={inter.variable} suppressHydrationWarning>
             <head>
                 <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
             </head>
