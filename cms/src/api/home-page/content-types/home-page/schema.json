@@ -16,6 +16,7 @@
     "heroSubheading": { "type": "text" },
     "visionStatement": { "type": "text" },
     "stats": { "type": "json" },
-    "heroSlides": { "type": "media", "multiple": true, "allowedTypes": ["images"] }
+    "heroSlides": { "type": "media", "multiple": true, "allowedTypes": ["images"] },
+    "heroVideo": { "type": "media", "multiple": false, "allowedTypes": ["videos"] }
   }
 }

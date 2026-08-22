@@ -15,7 +15,7 @@
     "officeAddress": { "type": "string" },
     "groupEmail": { "type": "email" },
     "groupPhone": { "type": "string" },
-    "socialLinks": { "type": "json" },
+    "socialLinks": { "type": "component", "repeatable": true, "component": "shared.social-link" },
     "logo": { "type": "media", "multiple": false, "allowedTypes": ["images"] }
   }
 }

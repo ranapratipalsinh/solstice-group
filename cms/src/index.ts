@@ -1,7 +1,6 @@
 const READ_ONLY_APIS = [
   'company',
   'team-member',
-  'job-opening',
   'blog-post',
   'gallery-item',
   'testimonial',

@@ -726,6 +726,7 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     heroHeading: Schema.Attribute.String;
     heroSlides: Schema.Attribute.Media<'images', true>;
     heroSubheading: Schema.Attribute.Text;
+    heroVideo: Schema.Attribute.Media<'videos'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -763,78 +764,6 @@ export interface ApiIndustryIndustry extends Struct.CollectionTypeSchema {
       'api::industry.industry'
     > &
       Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiJobApplicationJobApplication
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'job_applications';
-  info: {
-    description: 'Careers page applications';
-    displayName: 'Job Application';
-    pluralName: 'job-applications';
-    singularName: 'job-application';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    email: Schema.Attribute.Email & Schema.Attribute.Required;
-    jobOpening: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::job-opening.job-opening'
-    >;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::job-application.job-application'
-    > &
-      Schema.Attribute.Private;
-    message: Schema.Attribute.Text;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
-    phone: Schema.Attribute.String;
-    publishedAt: Schema.Attribute.DateTime;
-    resume: Schema.Attribute.Media<'files'>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiJobOpeningJobOpening extends Struct.CollectionTypeSchema {
-  collectionName: 'job_openings';
-  info: {
-    description: 'Open career roles';
-    displayName: 'Job Opening';
-    pluralName: 'job-openings';
-    singularName: 'job-opening';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    department: Schema.Attribute.String;
-    description: Schema.Attribute.Text;
-    employmentType: Schema.Attribute.String;
-    isActive: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::job-opening.job-opening'
-    > &
-      Schema.Attribute.Private;
-    location: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
@@ -932,7 +861,7 @@ export interface ApiSiteSettingSiteSetting extends Struct.SingleTypeSchema {
     logo: Schema.Attribute.Media<'images'>;
     officeAddress: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    socialLinks: Schema.Attribute.JSON;
+    socialLinks: Schema.Attribute.Component<'shared.social-link', true>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1529,8 +1458,6 @@ declare module '@strapi/strapi' {
       'api::gallery-item.gallery-item': ApiGalleryItemGalleryItem;
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::industry.industry': ApiIndustryIndustry;
-      'api::job-application.job-application': ApiJobApplicationJobApplication;
-      'api::job-opening.job-opening': ApiJobOpeningJobOpening;
       'api::partner.partner': ApiPartnerPartner;
       'api::region.region': ApiRegionRegion;
       'api::site-setting.site-setting': ApiSiteSettingSiteSetting;
