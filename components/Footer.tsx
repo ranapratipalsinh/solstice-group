@@ -19,7 +19,7 @@ export async function Footer() {
     return (
         <footer className="border-t border-solstice-700 bg-solstice-800 text-solstice-100 dark:border-solstice-900 dark:bg-solstice-950">
             <div className="container py-16 sm:py-20">
-                <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
                     <div>
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img src="/logos/solstice-group-logo.png" alt="Solstice Trading International LLP" className="h-12 w-auto rounded-lg" />
@@ -55,6 +55,15 @@ export async function Footer() {
                         </ul>
                     </div>
                     <div>
+                        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white">Business</p>
+                        <ul className="mt-5 space-y-3 text-sm">
+                            <li><Link href="/industries" className="hover:text-solstice-300">Industries</Link></li>
+                            <li><Link href="/projects" className="hover:text-solstice-300">Projects</Link></li>
+                            <li><Link href="/global-presence" className="hover:text-solstice-300">Global Presence</Link></li>
+                            <li><Link href="/certifications" className="hover:text-solstice-300">Certifications</Link></li>
+                        </ul>
+                    </div>
+                    <div>
                         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white">Our Companies</p>
                         <ul className="mt-5 space-y-3 text-sm">
                             {COMPANY_NAV_ITEMS.map((company) => (
@@ -62,13 +71,6 @@ export async function Footer() {
                                     <Link href={company.href} className="hover:text-solstice-300">{company.label}</Link>
                                 </li>
                             ))}
-                        </ul>
-                        <p className="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-white">Business</p>
-                        <ul className="mt-5 space-y-3 text-sm">
-                            <li><Link href="/industries" className="hover:text-solstice-300">Industries</Link></li>
-                            <li><Link href="/projects" className="hover:text-solstice-300">Projects</Link></li>
-                            <li><Link href="/global-presence" className="hover:text-solstice-300">Global Presence</Link></li>
-                            <li><Link href="/certifications" className="hover:text-solstice-300">Certifications</Link></li>
                         </ul>
                     </div>
                     <div>

@@ -3,6 +3,8 @@ import { strapiFind } from '@/lib/strapi';
 export type Region = {
     name: string;
     isHeadquarters: boolean;
+    mapX: number | null;
+    mapY: number | null;
 };
 
 export async function getRegions(): Promise<Region[]> {

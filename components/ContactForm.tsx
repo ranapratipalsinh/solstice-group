@@ -124,7 +124,7 @@ export function ContactForm() {
                 {status === 'submitting' ? 'Sending…' : 'Submit inquiry'}
             </button>
             {status === 'success' && (
-                <p className="text-sm font-semibold text-solstice-700 dark:text-solstice-400">Thanks — we will reply within 2 business days.</p>
+                <p className="text-sm font-semibold text-solstice-700 dark:text-solstice-400">Thanks, we will reply within 2 business days.</p>
             )}
             {status === 'error' && (
                 <p className="text-sm font-semibold text-red-600">{errorMessage}</p>

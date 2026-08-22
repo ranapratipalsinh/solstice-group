@@ -8,13 +8,13 @@ import { getTeamMembers } from '@/lib/cms/team';
 import { getPartners } from '@/lib/cms/partners';
 import { getCertifications } from '@/lib/cms/certifications';
 import { getIndustries } from '@/lib/cms/industries';
-import { CompanyLinearCards } from '@/components/CompanyLinearCards';
 import { COMPANY_NAV_ITEMS } from '@/lib/nav';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { HeroSlider } from '@/components/HeroSlider';
 import { CountUpStat } from '@/components/CountUpStat';
 import { InfiniteSlider } from '@/components/ui/infinite-slider';
 import { ImageWithFallback } from '@/components/ImageWithFallback';
+import { WorldMapPresence } from '@/components/WorldMapPresence';
 
 export const dynamic = 'force-dynamic';
 
@@ -32,9 +32,9 @@ const DEFAULT_STATS = [
 
 const DEFAULT_HERO_HEADING = 'Building Businesses. Creating Global Impact.';
 const DEFAULT_HERO_SUBHEADING =
-    'Solstice Group operates across multiple business verticals and markets — international trade, manufacturing, sourcing, and supply chain management — through a family of specialized companies.';
+    'Solstice Group operates across multiple business verticals and markets, including international trade, manufacturing, sourcing, and supply chain management, through a family of specialized companies.';
 const DEFAULT_VISION_STATEMENT =
-    'We grow by putting the same operational discipline behind every venture we take on — so a client working with any Solstice Group company gets the reliability of the whole group behind them.';
+    'We grow by putting the same operational discipline behind every venture we take on, so a client working with any Solstice Group company gets the reliability of the whole group behind them.';
 
 export default async function HomePage() {
     const [companies, homePage, regions, leaders, partners, certifications, industries] = await Promise.all([
@@ -113,7 +113,7 @@ export default async function HomePage() {
                             <p className="mt-6 max-w-xl leading-8 text-slate-600 dark:text-slate-400">
                                 Solstice Group is a diversified business group operating through specialized companies across distinct business
                                 verticals. Each company operates with its own focus and expertise, while sharing the group&apos;s commitment to
-                                quality, innovation, trusted partnerships, and sustainable growth — with ambitions that reach international
+                                quality, innovation, trusted partnerships, and sustainable growth, with ambitions that reach international
                                 markets.
                             </p>
                             <Link
@@ -140,19 +140,6 @@ export default async function HomePage() {
                                 </div>
                             </ScrollReveal>
                         )}
-                    </div>
-                </div>
-            </section>
-
-            {/* Our Businesses */}
-            <section className="bg-solstice-50 py-24 dark:bg-solstice-900" id="businesses">
-                <div className="container">
-                    <ScrollReveal className="mb-12 text-center md:text-left">
-                        <p className="mb-2 text-sm font-bold uppercase tracking-wider text-solstice-600 dark:text-solstice-400">Our Companies</p>
-                        <h2 className="font-display text-3xl font-bold text-solstice-800 dark:text-white md:text-4xl">Our Businesses</h2>
-                    </ScrollReveal>
-                    <div className="mt-10">
-                        <CompanyLinearCards companies={companies} />
                     </div>
                 </div>
             </section>
@@ -189,21 +176,15 @@ export default async function HomePage() {
 
             {/* Global Presence */}
             <section className="relative overflow-hidden bg-solstice-950 py-16 text-white sm:py-24">
-                <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden opacity-[0.18]">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                        src="/global/world-map.svg"
-                        alt=""
-                        aria-hidden="true"
-                        className="w-full max-w-none object-contain md:w-3/4"
-                    />
-                </div>
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(15,156,99,0.25),transparent_60%)]" />
                 <div className="container relative">
                     <ScrollReveal className="text-center">
                         <p className="text-sm font-semibold uppercase tracking-[0.3em] text-solstice-400">Global Presence</p>
                         <h2 className="mt-2 font-display text-3xl font-semibold sm:text-4xl md:text-5xl">Where we operate</h2>
                     </ScrollReveal>
+                    <div className="mt-12">
+                        <WorldMapPresence regions={regions} />
+                    </div>
                     <div className="mt-12 flex flex-wrap justify-center gap-4">
                         {regions.map((region, index) => (
                             <ScrollReveal key={region.name} delayMs={(index + 1) * 150}>
@@ -341,9 +322,9 @@ export default async function HomePage() {
                 {partners.length === 0 ? (
                     <p className="container text-slate-600 dark:text-slate-400">Partner logos will appear here once added in the CMS.</p>
                 ) : (
-                    <InfiniteSlider gap={64} speed={30} speedOnHover={10} className="py-2">
+                    <InfiniteSlider gap={32} speed={30} speedOnHover={10} className="py-2">
                         {partners.map((partner) => (
-                            <div key={partner.name} className="flex h-16 w-40 shrink-0 items-center justify-center">
+                            <div key={partner.name} className="flex h-16 w-28 shrink-0 items-center justify-center">
                                 <ImageWithFallback
                                     src={partner.logoUrl}
                                     alt={partner.name}
@@ -366,9 +347,9 @@ export default async function HomePage() {
                 {certifications.length === 0 ? (
                     <p className="container text-slate-600 dark:text-slate-400">Certifications and awards will appear here once added in the CMS.</p>
                 ) : (
-                    <InfiniteSlider gap={64} speed={30} speedOnHover={10} reverse className="py-2">
+                    <InfiniteSlider gap={32} speed={30} speedOnHover={10} reverse className="py-2">
                         {certifications.map((item) => (
-                            <div key={`${item.title}-${item.year}`} className="flex h-16 w-40 shrink-0 items-center justify-center">
+                            <div key={`${item.title}-${item.year}`} className="flex h-16 w-28 shrink-0 items-center justify-center">
                                 <ImageWithFallback
                                     src={item.imageUrl}
                                     alt={item.title}
