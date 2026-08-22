@@ -1,8 +1,14 @@
+import type { Metadata } from 'next';
 import { getCompanies } from '@/lib/cms/companies';
 import { CompanyLinearCards } from '@/components/CompanyLinearCards';
 import { ScrollReveal } from '@/components/ScrollReveal';
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
+    title: 'Our Companies | Solstice Group',
+    description: 'Meet the specialized companies operating under Solstice Group: Solstice Import Export, Solbath, GTS Events, and Solstice Spices.',
+};
 
 export default async function CompaniesPage() {
     const companies = await getCompanies();

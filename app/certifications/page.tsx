@@ -1,9 +1,15 @@
+import type { Metadata } from 'next';
 import { getCertifications } from '@/lib/cms/certifications';
 import { InfiniteSlider } from '@/components/ui/infinite-slider';
 import { ImageWithFallback } from '@/components/ImageWithFallback';
 import { PageHeader } from '@/components/PageHeader';
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
+    title: 'Certifications & Awards | Solstice Group',
+    description: 'The certifications and registrations held by Solstice Group and its subsidiary companies.',
+};
 
 export default async function CertificationsPage() {
     const certifications = await getCertifications();

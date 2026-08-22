@@ -1,12 +1,15 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import { MapPin, Building2 } from 'lucide-react';
+import { MapPin, Building2, ArrowDown } from 'lucide-react';
 import { getCompanies } from '@/lib/cms/companies';
 import { getHomePage } from '@/lib/cms/pages';
 import { getRegions } from '@/lib/cms/regions';
 import { getTeamMembers } from '@/lib/cms/team';
 import { getPartners } from '@/lib/cms/partners';
 import { getCertifications } from '@/lib/cms/certifications';
+import { getIndustries } from '@/lib/cms/industries';
 import { CompanyLinearCards } from '@/components/CompanyLinearCards';
+import { COMPANY_NAV_ITEMS } from '@/lib/nav';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { HeroSlider } from '@/components/HeroSlider';
 import { CountUpStat } from '@/components/CountUpStat';
@@ -15,26 +18,33 @@ import { ImageWithFallback } from '@/components/ImageWithFallback';
 
 export const dynamic = 'force-dynamic';
 
+export const metadata: Metadata = {
+    title: 'Solstice Group | Building Businesses. Creating Global Impact.',
+    description:
+        'Solstice Group is a diversified business group operating across international trade, spices manufacturing, bathware, and events through specialized companies.',
+};
+
 const DEFAULT_STATS = [
     { value: '5+', label: 'Companies' },
     { value: '100+', label: 'Clients' },
     { value: '10+', label: 'Countries' },
 ];
 
-const DEFAULT_HERO_HEADING = 'Innovating for a Brighter Future';
+const DEFAULT_HERO_HEADING = 'Building Businesses. Creating Global Impact.';
 const DEFAULT_HERO_SUBHEADING =
-    'Solstice Group is committed to a sustainable future through innovative trade, wellness, food, and event businesses built on responsible global operations.';
+    'Solstice Group operates across multiple business verticals and markets — international trade, manufacturing, sourcing, and supply chain management — through a family of specialized companies.';
 const DEFAULT_VISION_STATEMENT =
     'We grow by putting the same operational discipline behind every venture we take on — so a client working with any Solstice Group company gets the reliability of the whole group behind them.';
 
 export default async function HomePage() {
-    const [companies, homePage, regions, leaders, partners, certifications] = await Promise.all([
+    const [companies, homePage, regions, leaders, partners, certifications, industries] = await Promise.all([
         getCompanies(),
         getHomePage(),
         getRegions(),
         getTeamMembers(),
         getPartners(),
         getCertifications(),
+        getIndustries(),
     ]);
 
     const stats = homePage?.stats?.length ? homePage.stats : DEFAULT_STATS;
@@ -45,6 +55,12 @@ export default async function HomePage() {
     const heroHeadingLead = heroHeadingWords.slice(0, -1).join(' ');
     const heroHeadingAccent = heroHeadingWords.slice(-1)[0] ?? '';
     const leadershipPreview = leaders.slice(0, 4);
+
+    const groupSnapshot = [
+        { value: String(companies.length), label: 'Companies' },
+        { value: String(industries.length), label: 'Business Verticals' },
+        { value: String(regions.length), label: 'Markets Served' },
+    ].filter((item) => Number(item.value) > 0);
 
     return (
         <div>
@@ -72,28 +88,101 @@ export default async function HomePage() {
                                 href="/companies"
                                 className="inline-flex items-center justify-center rounded-full border border-transparent bg-solstice-700 px-8 py-3 text-base font-medium text-white shadow-lg transition-colors hover:bg-solstice-500"
                             >
-                                Explore Our Vision
+                                Explore Our Companies
                             </Link>
                             <Link
                                 href="/about"
                                 className="inline-flex items-center justify-center rounded-full border border-white/50 bg-white/10 px-8 py-3 text-base font-medium text-white shadow-lg backdrop-blur-sm transition-colors hover:bg-white/20"
                             >
-                                Our Journey
+                                About Solstice Group
                             </Link>
                         </div>
                     </div>
                 </div>
             </section>
 
+            {/* Who We Are */}
+            <section className="bg-white py-24 dark:bg-solstice-950">
+                <div className="container">
+                    <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+                        <ScrollReveal>
+                            <p className="text-sm font-bold uppercase tracking-wider text-solstice-600 dark:text-solstice-400">Who We Are</p>
+                            <h2 className="mt-3 font-display text-3xl font-bold text-solstice-800 dark:text-white md:text-4xl">
+                                A diversified group, built for long-term growth.
+                            </h2>
+                            <p className="mt-6 max-w-xl leading-8 text-slate-600 dark:text-slate-400">
+                                Solstice Group is a diversified business group operating through specialized companies across distinct business
+                                verticals. Each company operates with its own focus and expertise, while sharing the group&apos;s commitment to
+                                quality, innovation, trusted partnerships, and sustainable growth — with ambitions that reach international
+                                markets.
+                            </p>
+                            <Link
+                                href="/about"
+                                className="mt-8 inline-flex items-center rounded-full bg-solstice-700 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-solstice-500"
+                            >
+                                Learn more about the group →
+                            </Link>
+                        </ScrollReveal>
+                        {groupSnapshot.length > 0 && (
+                            <ScrollReveal delayMs={150}>
+                                <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                                    {groupSnapshot.map((item) => (
+                                        <div
+                                            key={item.label}
+                                            className="rounded-3xl border border-solstice-100 bg-solstice-50 p-6 text-center dark:border-slate-700/60 dark:bg-solstice-900"
+                                        >
+                                            <p className="font-display text-4xl font-bold text-solstice-600 dark:text-solstice-400">{item.value}</p>
+                                            <p className="mt-2 text-xs font-semibold uppercase tracking-[0.15em] text-slate-600 dark:text-slate-400">
+                                                {item.label}
+                                            </p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </ScrollReveal>
+                        )}
+                    </div>
+                </div>
+            </section>
+
             {/* Our Businesses */}
-            <section className="bg-white py-24 dark:bg-solstice-950" id="businesses">
+            <section className="bg-solstice-50 py-24 dark:bg-solstice-900" id="businesses">
                 <div className="container">
                     <ScrollReveal className="mb-12 text-center md:text-left">
-                        <p className="mb-2 text-sm font-bold uppercase tracking-wider text-solstice-600 dark:text-solstice-400">Portfolio</p>
+                        <p className="mb-2 text-sm font-bold uppercase tracking-wider text-solstice-600 dark:text-solstice-400">Our Companies</p>
                         <h2 className="font-display text-3xl font-bold text-solstice-800 dark:text-white md:text-4xl">Our Businesses</h2>
                     </ScrollReveal>
                     <div className="mt-10">
                         <CompanyLinearCards companies={companies} />
+                    </div>
+                </div>
+            </section>
+
+            {/* Our Business Ecosystem */}
+            <section className="bg-white py-24 dark:bg-solstice-950">
+                <div className="container">
+                    <ScrollReveal className="text-center">
+                        <p className="text-sm font-bold uppercase tracking-wider text-solstice-600 dark:text-solstice-400">Group Structure</p>
+                        <h2 className="mt-3 font-display text-3xl font-bold text-solstice-800 dark:text-white md:text-4xl">Our Business Ecosystem</h2>
+                    </ScrollReveal>
+                    <div className="mt-14 flex flex-col items-center">
+                        <ScrollReveal>
+                            <div className="rounded-2xl bg-solstice-700 px-8 py-4 text-center font-display text-lg font-bold text-white shadow-lg">
+                                Solstice Group
+                            </div>
+                        </ScrollReveal>
+                        <ArrowDown className="my-4 h-6 w-6 text-solstice-400" strokeWidth={1.75} aria-hidden="true" />
+                        <div className="grid w-full max-w-3xl grid-cols-2 gap-4 sm:grid-cols-4">
+                            {COMPANY_NAV_ITEMS.map((company, index) => (
+                                <ScrollReveal key={company.href} delayMs={(index + 1) * 120}>
+                                    <Link
+                                        href={company.href}
+                                        className="flex h-full items-center justify-center rounded-2xl border border-solstice-200 bg-solstice-50 px-4 py-5 text-center text-sm font-semibold text-solstice-800 shadow-sm transition-all hover:-translate-y-1 hover:border-solstice-400 hover:shadow-md dark:border-slate-700/60 dark:bg-solstice-900 dark:text-white"
+                                    >
+                                        {company.label}
+                                    </Link>
+                                </ScrollReveal>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </section>
@@ -133,6 +222,11 @@ export default async function HomePage() {
                             </ScrollReveal>
                         ))}
                     </div>
+                    <div className="mt-10 text-center">
+                        <Link href="/global-presence" className="text-sm font-semibold text-solstice-400 hover:text-solstice-300">
+                            View full global presence →
+                        </Link>
+                    </div>
                 </div>
             </section>
 
@@ -161,7 +255,7 @@ export default async function HomePage() {
                             </h2>
                             <p className="mt-6 max-w-lg text-lg leading-8 text-slate-600 dark:text-slate-400">{visionStatement}</p>
                             <Link
-                                href="/about"
+                                href="/about#sustainability"
                                 className="group mt-8 inline-flex items-center rounded-full bg-solstice-700 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-solstice-500"
                             >
                                 Read more
@@ -242,7 +336,7 @@ export default async function HomePage() {
             {/* Partner Brands */}
             <section className="overflow-hidden border-t border-slate-100 bg-white py-12 dark:border-slate-800 dark:bg-solstice-950">
                 <div className="container mb-6">
-                    <h3 className="font-display text-2xl font-bold text-solstice-800 dark:text-white">Partner Brands</h3>
+                    <h3 className="font-display text-2xl font-bold text-solstice-800 dark:text-white">Partners &amp; Clients</h3>
                 </div>
                 {partners.length === 0 ? (
                     <p className="container text-slate-600 dark:text-slate-400">Partner logos will appear here once added in the CMS.</p>

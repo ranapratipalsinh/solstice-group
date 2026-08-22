@@ -22,6 +22,24 @@
     "contactPhone": { "type": "string" },
     "website": { "type": "string" },
     "logo": { "type": "media", "multiple": false, "allowedTypes": ["images"] },
-    "order": { "type": "integer", "default": 0 }
+    "order": { "type": "integer", "default": 0 },
+    "events": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::event.event",
+      "mappedBy": "company"
+    },
+    "certifications": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::certification.certification",
+      "mappedBy": "company"
+    },
+    "industries": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::industry.industry",
+      "mappedBy": "company"
+    }
   }
 }

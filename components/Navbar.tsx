@@ -3,32 +3,39 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { COMPANY_NAV_ITEMS } from '@/lib/nav';
 
-const primaryNavItems = [
-    { href: '/', label: 'Home' },
-    { href: '/companies', label: 'Our Companies' },
-    { href: '/industries', label: 'Industries' },
-];
-
-const contactNavItem = { href: '/contact', label: 'Contact' };
+const primaryNavItems = [{ href: '/', label: 'Home' }];
 
 const aboutDropdownItems = [
-    { href: '/about', label: 'About the Group' },
-    { href: '/founder-message', label: 'Founder Message' },
-    { href: '/gallery', label: 'Gallery' },
-    { href: '/certifications', label: 'Certifications & Awards' },
-    { href: '/partners', label: 'Partners & Clients' },
+    { href: '/about#our-story', label: 'Our Story' },
+    { href: '/about#vision-mission', label: 'Vision & Mission' },
+    { href: '/founder-message', label: 'Founder' },
+    { href: '/leadership', label: 'Leadership' },
+    { href: '/about#sustainability', label: 'Sustainability' },
 ];
+
+const trailingNavItems = [
+    { href: '/industries', label: 'Industries' },
+    { href: '/projects', label: 'Projects' },
+    { href: '/global-presence', label: 'Global Presence' },
+];
+
+const contactNavItem = { href: '/contact', label: "Let's Talk" };
 
 export function Navbar() {
     const [isMobileOpen, setIsMobileOpen] = useState(false);
     const [isAboutOpen, setIsAboutOpen] = useState(false);
+    const [isCompaniesOpen, setIsCompaniesOpen] = useState(false);
     const [isMobileAboutOpen, setIsMobileAboutOpen] = useState(false);
+    const [isMobileCompaniesOpen, setIsMobileCompaniesOpen] = useState(false);
 
     const closeAll = () => {
         setIsMobileOpen(false);
         setIsAboutOpen(false);
+        setIsCompaniesOpen(false);
         setIsMobileAboutOpen(false);
+        setIsMobileCompaniesOpen(false);
     };
 
     return (
@@ -45,41 +52,25 @@ export function Navbar() {
                             {item.label}
                         </Link>
                     ))}
-                    <div
-                        className="relative"
-                        onMouseEnter={() => setIsAboutOpen(true)}
-                        onMouseLeave={() => setIsAboutOpen(false)}
-                    >
-                        <button
-                            type="button"
-                            className="flex items-center gap-1 hover:text-solstice-700 dark:hover:text-solstice-400"
-                            aria-expanded={isAboutOpen}
-                            onClick={() => setIsAboutOpen((open) => !open)}
-                        >
-                            About
-                            <span className="text-[10px]">▾</span>
-                        </button>
-                        {isAboutOpen && (
-                            <div className="absolute left-0 top-full w-64 rounded-2xl border border-slate-200 bg-white py-2 shadow-lg normal-case tracking-normal dark:border-slate-800 dark:bg-solstice-900">
-                                {aboutDropdownItems.map((item) => (
-                                    <Link
-                                        key={item.href}
-                                        href={item.href}
-                                        className="block px-4 py-2 text-sm text-slate-700 hover:bg-solstice-50 hover:text-solstice-700 dark:text-slate-300 dark:hover:bg-solstice-500/10 dark:hover:text-solstice-400"
-                                        onClick={closeAll}
-                                    >
-                                        {item.label}
-                                    </Link>
-                                ))}
-                            </div>
-                        )}
-                    </div>
-                    <Link href={contactNavItem.href} className="hover:text-solstice-700 dark:hover:text-solstice-400" onClick={closeAll}>
-                        {contactNavItem.label}
-                    </Link>
+
+                    <NavDropdown label="About" isOpen={isAboutOpen} setIsOpen={setIsAboutOpen} items={aboutDropdownItems} onNavigate={closeAll} />
+                    <NavDropdown label="Our Companies" isOpen={isCompaniesOpen} setIsOpen={setIsCompaniesOpen} items={COMPANY_NAV_ITEMS} onNavigate={closeAll} />
+
+                    {trailingNavItems.map((item) => (
+                        <Link key={item.href} href={item.href} className="hover:text-solstice-700 dark:hover:text-solstice-400" onClick={closeAll}>
+                            {item.label}
+                        </Link>
+                    ))}
                 </nav>
 
                 <div className="flex items-center gap-3">
+                    <Link
+                        href={contactNavItem.href}
+                        className="hidden rounded-full bg-solstice-700 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-solstice-500 md:inline-flex"
+                        onClick={closeAll}
+                    >
+                        {contactNavItem.label}
+                    </Link>
                     <ThemeToggle />
 
                     <button
@@ -116,32 +107,24 @@ export function Navbar() {
                                 {item.label}
                             </Link>
                         ))}
-                        <button
-                            type="button"
-                            className="flex items-center justify-between rounded-xl px-3 py-3 text-left hover:bg-solstice-50 hover:text-solstice-700 dark:hover:bg-solstice-500/10 dark:hover:text-solstice-400"
-                            aria-expanded={isMobileAboutOpen}
-                            onClick={() => setIsMobileAboutOpen((open) => !open)}
-                        >
-                            About
-                            <span className="text-xs">{isMobileAboutOpen ? '▴' : '▾'}</span>
-                        </button>
-                        {isMobileAboutOpen && (
-                            <div className="ml-3 flex flex-col gap-1 border-l border-slate-200 pl-3 dark:border-slate-800">
-                                {aboutDropdownItems.map((item) => (
-                                    <Link
-                                        key={item.href}
-                                        href={item.href}
-                                        className="rounded-xl px-3 py-2 font-medium text-slate-600 hover:bg-solstice-50 hover:text-solstice-700 dark:text-slate-400 dark:hover:bg-solstice-500/10 dark:hover:text-solstice-400"
-                                        onClick={closeAll}
-                                    >
-                                        {item.label}
-                                    </Link>
-                                ))}
-                            </div>
-                        )}
+
+                        <MobileNavGroup label="About" isOpen={isMobileAboutOpen} setIsOpen={setIsMobileAboutOpen} items={aboutDropdownItems} onNavigate={closeAll} />
+                        <MobileNavGroup label="Our Companies" isOpen={isMobileCompaniesOpen} setIsOpen={setIsMobileCompaniesOpen} items={COMPANY_NAV_ITEMS} onNavigate={closeAll} />
+
+                        {trailingNavItems.map((item) => (
+                            <Link
+                                key={item.href}
+                                href={item.href}
+                                className="rounded-xl px-3 py-3 hover:bg-solstice-50 hover:text-solstice-700 dark:hover:bg-solstice-500/10 dark:hover:text-solstice-400"
+                                onClick={closeAll}
+                            >
+                                {item.label}
+                            </Link>
+                        ))}
+
                         <Link
                             href={contactNavItem.href}
-                            className="rounded-xl px-3 py-3 hover:bg-solstice-50 hover:text-solstice-700 dark:hover:bg-solstice-500/10 dark:hover:text-solstice-400"
+                            className="mt-2 rounded-xl bg-solstice-700 px-3 py-3 text-center text-white hover:bg-solstice-500"
                             onClick={closeAll}
                         >
                             {contactNavItem.label}
@@ -150,5 +133,89 @@ export function Navbar() {
                 </nav>
             )}
         </header>
+    );
+}
+
+function NavDropdown({
+    label,
+    isOpen,
+    setIsOpen,
+    items,
+    onNavigate,
+}: {
+    label: string;
+    isOpen: boolean;
+    setIsOpen: (open: boolean) => void;
+    items: { href: string; label: string }[];
+    onNavigate: () => void;
+}) {
+    return (
+        <div className="relative" onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>
+            <button
+                type="button"
+                className="flex items-center gap-1 hover:text-solstice-700 dark:hover:text-solstice-400"
+                aria-expanded={isOpen}
+                onClick={() => setIsOpen(!isOpen)}
+            >
+                {label}
+                <span className="text-[10px]">▾</span>
+            </button>
+            {isOpen && (
+                <div className="absolute left-0 top-full w-64 rounded-2xl border border-slate-200 bg-white py-2 shadow-lg normal-case tracking-normal dark:border-slate-800 dark:bg-solstice-900">
+                    {items.map((item) => (
+                        <Link
+                            key={item.href}
+                            href={item.href}
+                            className="block px-4 py-2 text-sm text-slate-700 hover:bg-solstice-50 hover:text-solstice-700 dark:text-slate-300 dark:hover:bg-solstice-500/10 dark:hover:text-solstice-400"
+                            onClick={onNavigate}
+                        >
+                            {item.label}
+                        </Link>
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+}
+
+function MobileNavGroup({
+    label,
+    isOpen,
+    setIsOpen,
+    items,
+    onNavigate,
+}: {
+    label: string;
+    isOpen: boolean;
+    setIsOpen: (open: boolean) => void;
+    items: { href: string; label: string }[];
+    onNavigate: () => void;
+}) {
+    return (
+        <>
+            <button
+                type="button"
+                className="flex items-center justify-between rounded-xl px-3 py-3 text-left hover:bg-solstice-50 hover:text-solstice-700 dark:hover:bg-solstice-500/10 dark:hover:text-solstice-400"
+                aria-expanded={isOpen}
+                onClick={() => setIsOpen(!isOpen)}
+            >
+                {label}
+                <span className="text-xs">{isOpen ? '▴' : '▾'}</span>
+            </button>
+            {isOpen && (
+                <div className="ml-3 flex flex-col gap-1 border-l border-slate-200 pl-3 dark:border-slate-800">
+                    {items.map((item) => (
+                        <Link
+                            key={item.href}
+                            href={item.href}
+                            className="rounded-xl px-3 py-2 font-medium text-slate-600 hover:bg-solstice-50 hover:text-solstice-700 dark:text-slate-400 dark:hover:bg-solstice-500/10 dark:hover:text-solstice-400"
+                            onClick={onNavigate}
+                        >
+                            {item.label}
+                        </Link>
+                    ))}
+                </div>
+            )}
+        </>
     );
 }

@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_shared_values",
+  "info": {
+    "displayName": "Value",
+    "icon": "star"
+  },
+  "options": {},
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "description": { "type": "text", "required": true },
+    "icon": {
+      "type": "enumeration",
+      "enum": ["handshake", "award", "lightbulb", "users", "leaf", "sparkles"],
+      "default": "sparkles"
+    }
+  }
+}

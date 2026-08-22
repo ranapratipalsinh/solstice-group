@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Globe } from 'lucide-react';
 import { FacebookIcon, InstagramIcon, XIcon, LinkedInIcon, YoutubeIcon, WhatsAppIcon } from '@/components/icons/SocialIcons';
 import { getSiteSettings } from '@/lib/cms/settings';
-import { getCompanies } from '@/lib/cms/companies';
+import { COMPANY_NAV_ITEMS } from '@/lib/nav';
 
 const SOCIAL_ICON: Record<string, (props: { className?: string }) => JSX.Element> = {
     facebook: FacebookIcon,
@@ -14,7 +14,7 @@ const SOCIAL_ICON: Record<string, (props: { className?: string }) => JSX.Element
 };
 
 export async function Footer() {
-    const [settings, companies] = await Promise.all([getSiteSettings(), getCompanies()]);
+    const settings = await getSiteSettings();
 
     return (
         <footer className="border-t border-solstice-700 bg-solstice-800 text-solstice-100 dark:border-solstice-900 dark:bg-solstice-950">
@@ -45,13 +45,30 @@ export async function Footer() {
                         )}
                     </div>
                     <div>
-                        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white">Companies</p>
+                        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white">Solstice Group</p>
                         <ul className="mt-5 space-y-3 text-sm">
-                            {companies.map((company) => (
-                                <li key={company.slug}>
-                                    <Link href={`/companies/${company.slug}`} className="hover:text-solstice-300">{company.name}</Link>
+                            <li><Link href="/about" className="hover:text-solstice-300">About</Link></li>
+                            <li><Link href="/about#our-story" className="hover:text-solstice-300">Our Story</Link></li>
+                            <li><Link href="/founder-message" className="hover:text-solstice-300">Founder</Link></li>
+                            <li><Link href="/leadership" className="hover:text-solstice-300">Leadership</Link></li>
+                            <li><Link href="/about#sustainability" className="hover:text-solstice-300">Sustainability</Link></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white">Our Companies</p>
+                        <ul className="mt-5 space-y-3 text-sm">
+                            {COMPANY_NAV_ITEMS.map((company) => (
+                                <li key={company.href}>
+                                    <Link href={company.href} className="hover:text-solstice-300">{company.label}</Link>
                                 </li>
                             ))}
+                        </ul>
+                        <p className="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-white">Business</p>
+                        <ul className="mt-5 space-y-3 text-sm">
+                            <li><Link href="/industries" className="hover:text-solstice-300">Industries</Link></li>
+                            <li><Link href="/projects" className="hover:text-solstice-300">Projects</Link></li>
+                            <li><Link href="/global-presence" className="hover:text-solstice-300">Global Presence</Link></li>
+                            <li><Link href="/certifications" className="hover:text-solstice-300">Certifications</Link></li>
                         </ul>
                     </div>
                     <div>
@@ -61,31 +78,24 @@ export async function Footer() {
                             <li>{settings.groupEmail}</li>
                             <li>{settings.groupPhone}</li>
                         </ul>
-                    </div>
-                    <div>
-                        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white">Quick Links</p>
-                        <ul className="mt-5 space-y-3 text-sm">
-                            <li><Link href="/about" className="hover:text-solstice-300">About the Group</Link></li>
-                            <li><Link href="/leadership" className="hover:text-solstice-300">Team</Link></li>
-                            <li><Link href="/founder-message" className="hover:text-solstice-300">Founder Message</Link></li>
-                            <li><Link href="/industries" className="hover:text-solstice-300">Industries</Link></li>
-                            <li><Link href="/gallery" className="hover:text-solstice-300">Gallery</Link></li>
-                            <li><Link href="/certifications" className="hover:text-solstice-300">Certifications & Awards</Link></li>
-                            <li><Link href="/partners" className="hover:text-solstice-300">Partners & Clients</Link></li>
-                            <li><Link href="/contact" className="hover:text-solstice-300">Contact</Link></li>
-                        </ul>
+                        <Link
+                            href="/contact"
+                            className="mt-6 inline-flex items-center justify-center rounded-full bg-white/10 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white/20"
+                        >
+                            Contact Solstice Group
+                        </Link>
                     </div>
                 </div>
                 <div className="mt-14 flex flex-col gap-3 border-t border-solstice-700 pt-8 text-xs text-solstice-300 sm:flex-row sm:items-center sm:justify-between">
-                    <p>© {new Date().getFullYear()} Solstice Trading International LLP. Built for corporate growth.</p>
-                    <a
-                        href="https://ivisioncraft.dev/"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="hover:text-solstice-100"
-                    >
-                        Design by iVisionCraft
-                    </a>
+                    <p>© {new Date().getFullYear()} Solstice Group. All Rights Reserved.</p>
+                    <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+                        <Link href="/privacy-policy" className="hover:text-solstice-100">Privacy Policy</Link>
+                        <Link href="/terms-and-conditions" className="hover:text-solstice-100">Terms & Conditions</Link>
+                        <Link href="/cookie-policy" className="hover:text-solstice-100">Cookie Policy</Link>
+                        <a href="https://ivisioncraft.dev/" target="_blank" rel="noreferrer" className="hover:text-solstice-100">
+                            Design by iVisionCraft
+                        </a>
+                    </div>
                 </div>
             </div>
         </footer>

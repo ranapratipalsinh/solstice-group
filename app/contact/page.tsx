@@ -1,8 +1,17 @@
+import type { Metadata } from 'next';
 import { ContactForm } from '@/components/ContactForm';
 import { PageHeader } from '@/components/PageHeader';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { getSiteSettings } from '@/lib/cms/settings';
 
-export default function ContactPage() {
+export const metadata: Metadata = {
+    title: 'Contact | Solstice Group',
+    description: 'Get in touch with Solstice Group for business partnerships, product enquiries, or general information.',
+};
+
+export default async function ContactPage() {
+    const settings = await getSiteSettings();
+
     return (
         <div>
             <PageHeader
@@ -17,15 +26,15 @@ export default function ContactPage() {
                         <div className="space-y-6">
                             <div className="rounded-3xl bg-solstice-50 p-6 dark:bg-solstice-900">
                                 <p className="text-sm uppercase tracking-[0.2em] text-solstice-700 dark:text-solstice-400">Office location</p>
-                                <p className="mt-2 text-slate-700 dark:text-slate-400">Ahmedabad, Gujarat, India</p>
+                                <p className="mt-2 text-slate-700 dark:text-slate-400">{settings.officeAddress}</p>
                             </div>
                             <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700/60 dark:bg-solstice-900 dark:shadow-none">
                                 <p className="text-sm uppercase tracking-[0.2em] text-solstice-700 dark:text-solstice-400">Email</p>
-                                <p className="mt-2 text-slate-700 dark:text-slate-400">info@solsticegroup.com</p>
+                                <p className="mt-2 text-slate-700 dark:text-slate-400">{settings.groupEmail}</p>
                             </div>
                             <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700/60 dark:bg-solstice-900 dark:shadow-none">
                                 <p className="text-sm uppercase tracking-[0.2em] text-solstice-700 dark:text-solstice-400">Phone</p>
-                                <p className="mt-2 text-slate-700 dark:text-slate-400">+91 98765 43210</p>
+                                <p className="mt-2 text-slate-700 dark:text-slate-400">{settings.groupPhone}</p>
                             </div>
                         </div>
                     </ScrollReveal>

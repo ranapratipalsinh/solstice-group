@@ -1,9 +1,15 @@
+import type { Metadata } from 'next';
 import { getTeamMembers } from '@/lib/cms/team';
 import { PageHeader } from '@/components/PageHeader';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { ImageWithFallback } from '@/components/ImageWithFallback';
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
+    title: 'Leadership | Solstice Group',
+    description: 'The directors and executives leading Solstice Group and its subsidiary companies.',
+};
 
 export default async function LeadershipPage() {
     const members = await getTeamMembers();

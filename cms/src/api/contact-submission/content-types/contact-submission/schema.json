@@ -13,8 +13,14 @@
   "pluginOptions": {},
   "attributes": {
     "name": { "type": "string", "required": true },
+    "company": { "type": "string" },
     "email": { "type": "email", "required": true },
     "phone": { "type": "string" },
+    "enquiryType": {
+      "type": "enumeration",
+      "enum": ["business-partnership", "product-enquiry", "import-export", "events", "general"],
+      "default": "general"
+    },
     "message": { "type": "text", "required": true }
   }
 }

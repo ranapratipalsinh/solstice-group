@@ -1,8 +1,14 @@
+import type { Metadata } from 'next';
 import { getAboutPage } from '@/lib/cms/pages';
 import { getFounder } from '@/lib/cms/team';
 import { FounderSpotlight } from '@/components/FounderSpotlight';
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
+    title: 'Founder Message | Solstice Group',
+    description: "A message from Solstice Group's founder on the vision and philosophy behind the group.",
+};
 
 export default async function FounderMessagePage() {
     const [about, founder] = await Promise.all([getAboutPage(), getFounder()]);

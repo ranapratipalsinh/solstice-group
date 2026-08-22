@@ -1,6 +1,12 @@
+import type { Metadata } from 'next';
 import { PageHeader } from '@/components/PageHeader';
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL ?? 'http://localhost:1337';
+
+export const metadata: Metadata = {
+    title: 'Admin | Solstice Group',
+    robots: { index: false, follow: false },
+};
 
 export default function AdminPage() {
     return (
@@ -11,7 +17,8 @@ export default function AdminPage() {
                 <div className="container">
                     <div className="rounded-3xl bg-solstice-50 p-8 shadow-sm dark:bg-solstice-900 sm:p-10">
                         <p className="text-lg leading-8 text-slate-600 dark:text-slate-400">
-                            Companies, team members, jobs, blog posts, gallery items, testimonials, and contact/application submissions are all managed in the Strapi admin panel.
+                            Companies, team members, regions, industries, certifications, gallery items, partners, and contact submissions are all
+                            managed in the Strapi admin panel.
                         </p>
                         <a
                             href={`${STRAPI_URL}/admin`}

@@ -17,6 +17,12 @@
     "date": { "type": "date", "required": true },
     "location": { "type": "string" },
     "description": { "type": "text" },
-    "coverImage": { "type": "media", "multiple": false, "allowedTypes": ["images"] }
+    "coverImage": { "type": "media", "multiple": false, "allowedTypes": ["images"] },
+    "company": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::company.company",
+      "inversedBy": "events"
+    }
   }
 }

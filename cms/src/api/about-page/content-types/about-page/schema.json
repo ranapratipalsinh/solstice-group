@@ -16,6 +16,10 @@
     "vision": { "type": "text" },
     "groupHistory": { "type": "text" },
     "founderStory": { "type": "text" },
-    "founderPhoto": { "type": "media", "multiple": false, "allowedTypes": ["images"] }
+    "founderPhoto": { "type": "media", "multiple": false, "allowedTypes": ["images"] },
+    "values": { "type": "component", "repeatable": true, "component": "shared.value" },
+    "sustainabilityEnvironment": { "type": "text" },
+    "sustainabilitySocial": { "type": "text" },
+    "sustainabilityGovernance": { "type": "text" }
   }
 }

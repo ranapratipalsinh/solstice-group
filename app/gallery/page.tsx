@@ -1,7 +1,13 @@
+import type { Metadata } from 'next';
 import { getGalleryItems, GalleryItem } from '@/lib/cms/gallery';
 import InteractiveImageBentoGallery from '@/components/ui/bento-gallery';
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
+    title: 'Gallery | Solstice Group',
+    description: 'Photos and videos from across Solstice Group and its subsidiary companies.',
+};
 
 const SPAN_PATTERN = [
     'md:col-span-2 md:row-span-2',

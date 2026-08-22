@@ -1,8 +1,14 @@
+import type { Metadata } from 'next';
 import { getPartners } from '@/lib/cms/partners';
 import { PartnersStagger } from '@/components/PartnersStagger';
 import { PageHeader } from '@/components/PageHeader';
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
+    title: 'Partners & Clients | Solstice Group',
+    description: 'The partners and clients Solstice Group and its subsidiary companies work with.',
+};
 
 export default async function PartnersPage() {
     const partners = await getPartners();

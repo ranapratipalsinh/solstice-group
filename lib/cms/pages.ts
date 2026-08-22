@@ -34,12 +34,19 @@ export async function getHomePage(): Promise<HomePage | null> {
     };
 }
 
+export type ValueIcon = 'handshake' | 'award' | 'lightbulb' | 'users' | 'leaf' | 'sparkles';
+export type GroupValue = { title: string; description: string; icon: ValueIcon };
+
 export type AboutPage = {
     mission: string;
     vision: string;
     groupHistory: string;
     founderStory: string;
     founderPhotoUrl: string | null;
+    values: GroupValue[];
+    sustainabilityEnvironment: string;
+    sustainabilitySocial: string;
+    sustainabilityGovernance: string;
 };
 
 type RawAboutPage = {
@@ -48,10 +55,14 @@ type RawAboutPage = {
     groupHistory: string;
     founderStory: string;
     founderPhoto: StrapiMedia | null;
+    values: GroupValue[] | null;
+    sustainabilityEnvironment: string | null;
+    sustainabilitySocial: string | null;
+    sustainabilityGovernance: string | null;
 };
 
 export async function getAboutPage(): Promise<AboutPage | null> {
-    const raw = await strapiFindOne<RawAboutPage>('/about-page?populate=founderPhoto');
+    const raw = await strapiFindOne<RawAboutPage>('/about-page?populate=founderPhoto,values');
     if (!raw) return null;
     return {
         mission: raw.mission,
@@ -59,5 +70,9 @@ export async function getAboutPage(): Promise<AboutPage | null> {
         groupHistory: raw.groupHistory,
         founderStory: raw.founderStory,
         founderPhotoUrl: strapiMediaUrl(raw.founderPhoto?.url),
+        values: raw.values ?? [],
+        sustainabilityEnvironment: raw.sustainabilityEnvironment ?? '',
+        sustainabilitySocial: raw.sustainabilitySocial ?? '',
+        sustainabilityGovernance: raw.sustainabilityGovernance ?? '',
     };
 }
