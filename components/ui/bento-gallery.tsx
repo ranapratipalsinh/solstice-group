@@ -131,16 +131,16 @@ const InteractiveImageBentoGallery: React.FC<
   return (
     <section
       ref={targetRef}
-      className="relative w-full overflow-hidden bg-background py-16 sm:py-24"
+      className="relative w-full overflow-hidden bg-white py-16 dark:bg-solstice-950 sm:py-24"
     >
       <motion.div
         style={{ opacity, y }}
         className="container mx-auto px-4 text-center"
       >
-        <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+        <h2 className="font-display text-3xl font-bold tracking-tight text-slate-950 dark:text-white sm:text-4xl">
           {title}
         </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+        <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600 dark:text-slate-400">
           {description}
         </p>
       </motion.div>
@@ -168,7 +168,7 @@ const InteractiveImageBentoGallery: React.FC<
                 key={item.id}
                 variants={itemVariants}
                 className={cn(
-                  "group relative flex h-full min-h-[15rem] w-full min-w-[15rem] cursor-pointer items-end overflow-hidden rounded-xl border bg-card p-4 shadow-sm transition-shadow duration-300 ease-in-out hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                  "group relative flex h-full min-h-[15rem] w-full min-w-[15rem] cursor-pointer items-end overflow-hidden rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition-shadow duration-300 ease-in-out hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-solstice-500 focus-visible:ring-offset-2 dark:border-slate-700/60 dark:bg-solstice-900",
                   item.span,
                 )}
                 whileHover={{ scale: 1.02 }}
@@ -183,7 +183,7 @@ const InteractiveImageBentoGallery: React.FC<
                   alt={item.title}
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   fallback={
-                    <div className="absolute inset-0 flex items-center justify-center bg-slate-100 text-sm text-slate-400 dark:bg-slate-800">
+                    <div className="absolute inset-0 flex items-center justify-center bg-slate-100 text-sm text-slate-400 dark:bg-solstice-800">
                       Image unavailable
                     </div>
                   }

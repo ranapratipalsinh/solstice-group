@@ -62,7 +62,7 @@ export function CountUpStat({
     }
 
     return (
-        <div className="rounded-3xl bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:border dark:border-slate-700/60 dark:bg-slate-800 dark:shadow-none dark:hover:border-solstice-700/60">
+        <div className="rounded-3xl bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:border dark:border-slate-700/60 dark:bg-solstice-800 dark:shadow-none dark:hover:border-solstice-700/60">
             <p ref={ref} className="font-display text-3xl font-semibold text-solstice-700 dark:text-solstice-400 sm:text-4xl">
                 {display}
                 {suffix}

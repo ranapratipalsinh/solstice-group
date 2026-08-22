@@ -1,6 +1,6 @@
 import { getPartners } from '@/lib/cms/partners';
 import { PartnersStagger } from '@/components/PartnersStagger';
-import { ScrollReveal } from '@/components/ScrollReveal';
+import { PageHeader } from '@/components/PageHeader';
 
 export const dynamic = 'force-dynamic';
 
@@ -8,20 +8,22 @@ export default async function PartnersPage() {
     const partners = await getPartners();
 
     return (
-        <div className="py-16">
-            <div className="container">
-                <ScrollReveal>
-                    <p className="text-sm uppercase tracking-[0.3em] text-solstice-700 dark:text-solstice-400">Partners & Clients</p>
-                    <h1 className="mt-4 font-display text-3xl font-semibold text-slate-950 dark:text-white sm:text-4xl">Businesses we work with</h1>
-                    {partners.length === 0 && (
-                        <p className="mt-10 text-slate-600 dark:text-slate-400">Partner and client logos will appear here once added in the CMS.</p>
-                    )}
-                    <p className="mt-4 max-w-xl text-sm text-slate-500 dark:text-slate-400">
-                        Click through a card to cycle, or select the centered one to visit their website.
-                    </p>
-                </ScrollReveal>
-            </div>
-            <PartnersStagger partners={partners} />
+        <div>
+            <PageHeader
+                eyebrow="Partners & Clients"
+                title="Businesses we work with"
+                description="Click through a card to cycle, or select the centered one to visit their website."
+            />
+
+            <section className="bg-white py-16 dark:bg-solstice-950 sm:py-20">
+                {partners.length === 0 ? (
+                    <div className="container">
+                        <p className="text-center text-slate-600 dark:text-slate-400">Partner and client logos will appear here once added in the CMS.</p>
+                    </div>
+                ) : (
+                    <PartnersStagger partners={partners} />
+                )}
+            </section>
         </div>
     );
 }

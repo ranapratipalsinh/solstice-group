@@ -12,8 +12,38 @@ const DEFAULT_IMAGES = [
 
 const SLIDE_INTERVAL_MS = 3000;
 
-export function HeroSlider({ images }: { images: string[] }) {
-    const slides = images.length > 0 ? images : DEFAULT_IMAGES;
+export function HeroSlider({ images, videoUrl }: { images: string[]; videoUrl?: string | null }) {
+    const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+    useEffect(() => {
+        const query = window.matchMedia('(prefers-reduced-motion: reduce)');
+        setPrefersReducedMotion(query.matches);
+        const handleChange = (event: MediaQueryListEvent) => setPrefersReducedMotion(event.matches);
+        query.addEventListener('change', handleChange);
+        return () => query.removeEventListener('change', handleChange);
+    }, []);
+
+    if (videoUrl) {
+        return (
+            <div className="absolute inset-0">
+                <video
+                    className="h-full w-full object-cover"
+                    src={videoUrl}
+                    autoPlay={!prefersReducedMotion}
+                    loop
+                    muted
+                    playsInline
+                    preload="metadata"
+                    aria-hidden="true"
+                />
+            </div>
+        );
+    }
+
+    return <HeroImageSlider images={images.length > 0 ? images : DEFAULT_IMAGES} />;
+}
+
+function HeroImageSlider({ images: slides }: { images: string[] }) {
     const [activeIndex, setActiveIndex] = useState(0);
 
     useEffect(() => {

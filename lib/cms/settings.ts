@@ -29,7 +29,7 @@ const fallback: SiteSettings = {
 
 export async function getSiteSettings(): Promise<SiteSettings> {
     try {
-        const raw = await strapiFindOne<RawSiteSettings>('/site-setting?populate=logo');
+        const raw = await strapiFindOne<RawSiteSettings>('/site-setting?populate=logo,socialLinks');
         if (!raw) return fallback;
         return {
             officeAddress: raw.officeAddress,

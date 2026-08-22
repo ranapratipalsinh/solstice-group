@@ -21,12 +21,12 @@ const themeInitScript = `(function(){try{var stored=localStorage.getItem('theme'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="en" className={inter.variable} suppressHydrationWarning>
+        <html lang="en" className={inter.variable} data-scroll-behavior="smooth" suppressHydrationWarning>
             <head>
                 <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
             </head>
             <body>
-                <div className="flex min-h-screen flex-col bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+                <div className="flex min-h-screen flex-col bg-white text-slate-900 dark:bg-solstice-950 dark:text-slate-100">
                     <Navbar />
                     <main className="flex-1">{children}</main>
                     <Footer />

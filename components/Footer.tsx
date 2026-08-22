@@ -1,18 +1,48 @@
 import Link from 'next/link';
+import { Globe } from 'lucide-react';
+import { FacebookIcon, InstagramIcon, XIcon, LinkedInIcon, YoutubeIcon, WhatsAppIcon } from '@/components/icons/SocialIcons';
 import { getSiteSettings } from '@/lib/cms/settings';
 import { getCompanies } from '@/lib/cms/companies';
+
+const SOCIAL_ICON: Record<string, (props: { className?: string }) => JSX.Element> = {
+    facebook: FacebookIcon,
+    instagram: InstagramIcon,
+    twitter: XIcon,
+    linkedin: LinkedInIcon,
+    youtube: YoutubeIcon,
+    whatsapp: WhatsAppIcon,
+};
 
 export async function Footer() {
     const [settings, companies] = await Promise.all([getSiteSettings(), getCompanies()]);
 
     return (
-        <footer className="border-t border-solstice-700 bg-solstice-800 text-solstice-100">
+        <footer className="border-t border-solstice-700 bg-solstice-800 text-solstice-100 dark:border-solstice-900 dark:bg-solstice-950">
             <div className="container py-16 sm:py-20">
                 <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
                     <div>
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img src="/logos/solstice-group-logo.png" alt="Solstice Trading International LLP" className="h-12 w-auto rounded-lg" />
                         <p className="mt-4 text-sm text-solstice-200">Solstice Trading International LLP</p>
+                        {settings.socialLinks.length > 0 && (
+                            <div className="mt-5 flex items-center gap-3">
+                                {settings.socialLinks.map((link) => {
+                                    const Icon = SOCIAL_ICON[link.platform] ?? Globe;
+                                    return (
+                                        <a
+                                            key={link.url}
+                                            href={link.url}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            aria-label={link.platform}
+                                            className="flex h-10 w-10 items-center justify-center rounded-full border border-solstice-600 text-solstice-200 transition-colors hover:border-solstice-400 hover:bg-solstice-700 hover:text-white"
+                                        >
+                                            <Icon className="h-4 w-4" />
+                                        </a>
+                                    );
+                                })}
+                            </div>
+                        )}
                     </div>
                     <div>
                         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white">Companies</p>

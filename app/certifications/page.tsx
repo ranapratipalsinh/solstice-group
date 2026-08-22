@@ -1,7 +1,7 @@
 import { getCertifications } from '@/lib/cms/certifications';
 import { InfiniteSlider } from '@/components/ui/infinite-slider';
 import { ImageWithFallback } from '@/components/ImageWithFallback';
-import { ScrollReveal } from '@/components/ScrollReveal';
+import { PageHeader } from '@/components/PageHeader';
 
 export const dynamic = 'force-dynamic';
 
@@ -9,45 +9,42 @@ export default async function CertificationsPage() {
     const certifications = await getCertifications();
 
     return (
-        <div className="py-16">
-            <div className="container">
-                <ScrollReveal>
-                    <p className="text-sm uppercase tracking-[0.3em] text-solstice-700 dark:text-solstice-400">Certifications & Awards</p>
-                    <h1 className="mt-4 font-display text-3xl font-semibold text-slate-950 dark:text-white sm:text-4xl">Recognized for quality and trust</h1>
-                    {certifications.length === 0 && (
-                        <p className="mt-10 text-slate-600 dark:text-slate-400">Certifications and awards will appear here once added in the CMS.</p>
-                    )}
-                </ScrollReveal>
-            </div>
+        <div>
+            <PageHeader eyebrow="Certifications & Awards" title="Recognized for quality and trust" />
 
-            {certifications.length > 0 && (
-                <div className="mt-12">
-                    <InfiniteSlider gap={32} speed={35} speedOnHover={10} className="py-4">
+            <section className="bg-white py-16 dark:bg-solstice-950 sm:py-20">
+                {certifications.length === 0 ? (
+                    <div className="container">
+                        <p className="text-center text-slate-600 dark:text-slate-400">Certifications and awards will appear here once added in the CMS.</p>
+                    </div>
+                ) : (
+                    <InfiniteSlider gap={64} speed={30} speedOnHover={10} className="py-2">
                         {certifications.map((item) => (
                             <div
                                 key={`${item.title}-${item.year}`}
-                                className="flex w-52 shrink-0 flex-col items-center rounded-3xl border border-slate-200 bg-slate-50 p-6 text-center dark:border-slate-800 dark:bg-slate-900"
+                                className="flex w-40 shrink-0 flex-col items-center gap-3 text-center"
                             >
-                                <div className="flex h-32 w-32 items-center justify-center overflow-hidden rounded-2xl bg-white p-4 shadow-sm dark:border dark:border-slate-700/60 dark:bg-slate-800 dark:shadow-none">
-                                    <ImageWithFallback
-                                        src={item.imageUrl}
-                                        alt={item.title}
-                                        className="h-full w-full object-contain"
-                                        fallback={
-                                            <span className="text-2xl font-bold text-solstice-700 dark:text-solstice-400">
-                                                {item.title.slice(0, 2).toUpperCase()}
-                                            </span>
-                                        }
-                                    />
-                                </div>
-                                <h2 className="mt-5 text-base font-semibold text-slate-950 dark:text-white">{item.title}</h2>
-                                <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">{item.issuer}</p>
-                                <p className="mt-1 text-xs uppercase tracking-[0.2em] text-solstice-700 dark:text-solstice-400">{item.year}</p>
+                                <ImageWithFallback
+                                    src={item.imageUrl}
+                                    alt={item.title}
+                                    className="h-14 w-auto object-contain opacity-70 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0 dark:brightness-0 dark:invert dark:opacity-60 dark:hover:opacity-90"
+                                    fallback={
+                                        <span className="text-lg font-bold text-slate-400 dark:text-slate-600">{item.title}</span>
+                                    }
+                                />
+                                <p className="text-xs font-semibold uppercase tracking-[0.15em] text-slate-500 dark:text-slate-400">
+                                    {item.title}
+                                    {(item.issuer || item.year) && (
+                                        <span className="mt-0.5 block font-normal tracking-normal text-slate-400 dark:text-slate-500">
+                                            {[item.issuer, item.year].filter(Boolean).join(' · ')}
+                                        </span>
+                                    )}
+                                </p>
                             </div>
                         ))}
                     </InfiniteSlider>
-                </div>
-            )}
+                )}
+            </section>
         </div>
     );
 }

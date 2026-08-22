@@ -9,6 +9,7 @@ export type HomePage = {
     visionStatement: string;
     stats: Stat[];
     heroSlideUrls: string[];
+    heroVideoUrl: string | null;
 };
 
 type RawHomePage = {
@@ -17,10 +18,11 @@ type RawHomePage = {
     visionStatement: string;
     stats: Stat[];
     heroSlides: StrapiMedia[];
+    heroVideo: StrapiMedia | null;
 };
 
 export async function getHomePage(): Promise<HomePage | null> {
-    const raw = await strapiFindOne<RawHomePage>('/home-page?populate=heroSlides');
+    const raw = await strapiFindOne<RawHomePage>('/home-page?populate=heroSlides,heroVideo');
     if (!raw) return null;
     return {
         heroHeading: raw.heroHeading,
@@ -28,6 +30,7 @@ export async function getHomePage(): Promise<HomePage | null> {
         visionStatement: raw.visionStatement,
         stats: raw.stats ?? [],
         heroSlideUrls: (raw.heroSlides || []).map((slide) => strapiMediaUrl(slide.url)).filter((url): url is string => Boolean(url)),
+        heroVideoUrl: strapiMediaUrl(raw.heroVideo?.url),
     };
 }
 

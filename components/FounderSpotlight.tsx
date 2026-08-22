@@ -79,7 +79,7 @@ export function FounderSpotlight({
         .join('');
 
     return (
-        <section ref={sectionRef} className="relative overflow-hidden bg-white py-24 dark:bg-slate-950 sm:py-32">
+        <section ref={sectionRef} className="relative overflow-hidden bg-white py-24 dark:bg-solstice-950 sm:py-32">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(15,156,99,0.06),transparent_55%)]" />
 
             <div className="container relative z-10">

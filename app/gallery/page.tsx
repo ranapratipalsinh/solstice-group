@@ -18,12 +18,12 @@ export default async function GalleryPage() {
 
     return (
         <div className="w-full antialiased">
-            <div className="container pt-16">
-                <p className="text-sm uppercase tracking-[0.3em] text-solstice-700 dark:text-solstice-400">Gallery</p>
-            </div>
             {withMedia.length === 0 ? (
-                <div className="container pb-16">
-                    <p className="mt-4 text-slate-600 dark:text-slate-400">Gallery items will appear here once added in the CMS.</p>
+                <div className="bg-white py-16 dark:bg-solstice-950 sm:py-24">
+                    <div className="container text-center">
+                        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-solstice-700 dark:text-solstice-400">Gallery</p>
+                        <p className="mt-4 text-slate-600 dark:text-slate-400">Gallery items will appear here once added in the CMS.</p>
+                    </div>
                 </div>
             ) : (
                 <InteractiveImageBentoGallery
