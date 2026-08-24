@@ -17,6 +17,9 @@
     "visionStatement": { "type": "text" },
     "stats": { "type": "json" },
     "heroSlides": { "type": "media", "multiple": true, "allowedTypes": ["images"] },
-    "heroVideo": { "type": "media", "multiple": false, "allowedTypes": ["videos"] }
+    "heroVideo": { "type": "media", "multiple": false, "allowedTypes": ["videos"] },
+    "whoWeAreHeading": { "type": "string" },
+    "whoWeAreBody": { "type": "text" },
+    "impactCardHeading": { "type": "string" }
   }
 }

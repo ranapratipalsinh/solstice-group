@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { getGalleryItems, GalleryItem } from '@/lib/cms/gallery';
+import { getSiteCopy } from '@/lib/cms/siteCopy';
 import InteractiveImageBentoGallery from '@/components/ui/bento-gallery';
 
 export const dynamic = 'force-dynamic';
@@ -19,7 +20,7 @@ const SPAN_PATTERN = [
 ];
 
 export default async function GalleryPage() {
-    const items = await getGalleryItems();
+    const [items, siteCopy] = await Promise.all([getGalleryItems(), getSiteCopy()]);
     const withMedia = items.filter((item): item is GalleryItem & { mediaUrl: string } => Boolean(item.mediaUrl));
 
     return (
@@ -40,8 +41,8 @@ export default async function GalleryPage() {
                         url: item.mediaUrl,
                         span: SPAN_PATTERN[index % SPAN_PATTERN.length],
                     }))}
-                    title="Photos & Videos from Solstice Group"
-                    description="Drag to explore, click to expand."
+                    title={siteCopy.galleryTitle}
+                    description={siteCopy.galleryDescription}
                 />
             )}
         </div>

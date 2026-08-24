@@ -51,8 +51,14 @@ export default async function AboutPage() {
     const sustainabilityGovernance =
         about?.sustainabilityGovernance ||
         'Group-wide standards for quality, compliance, and ethical business practice apply across every company we operate.';
+    const founderTeaser =
+        about?.founderTeaser ||
+        'A strategic entrepreneur with experience in trade, hospitality, and event management launched the group to scale complementary ventures.';
+    const leadershipTeaser =
+        about?.leadershipTeaser ||
+        'A lean executive team that focuses on governance, business development, and brand growth across subsidiaries.';
 
-    const timeline = [
+    const fallbackTimeline = [
         { title: 'Founded', description: groupHistory },
         {
             title: 'Business Expansion',
@@ -68,6 +74,7 @@ export default async function AboutPage() {
         },
         { title: 'Future Vision', description: vision },
     ];
+    const timeline = about?.timeline?.length ? about.timeline : fallbackTimeline;
 
     return (
         <div>
@@ -163,10 +170,7 @@ export default async function AboutPage() {
                     <ScrollReveal delayMs={200}>
                         <div className="h-full rounded-3xl border border-slate-200 bg-solstice-50 p-7 shadow-sm dark:border-slate-700/60 dark:bg-solstice-900">
                             <h3 className="text-lg font-semibold text-slate-950 dark:text-white">Founder Message</h3>
-                            <p className="mt-3 leading-7 text-slate-600 dark:text-slate-400">
-                                A strategic entrepreneur with experience in trade, hospitality, and event management launched the group to scale
-                                complementary ventures.
-                            </p>
+                            <p className="mt-3 leading-7 text-slate-600 dark:text-slate-400">{founderTeaser}</p>
                             <Link href="/founder-message" className="mt-4 inline-block text-sm font-semibold text-solstice-700 hover:text-solstice-900 dark:text-solstice-400 dark:hover:text-solstice-300">
                                 Read the founder message →
                             </Link>
@@ -175,7 +179,7 @@ export default async function AboutPage() {
                     <ScrollReveal delayMs={400}>
                         <div className="h-full rounded-3xl border border-slate-200 bg-solstice-50 p-7 shadow-sm dark:border-slate-700/60 dark:bg-solstice-900">
                             <h3 className="text-lg font-semibold text-slate-950 dark:text-white">Leadership Team</h3>
-                            <p className="mt-3 leading-7 text-slate-600 dark:text-slate-400">A lean executive team that focuses on governance, business development, and brand growth across subsidiaries.</p>
+                            <p className="mt-3 leading-7 text-slate-600 dark:text-slate-400">{leadershipTeaser}</p>
                             <Link href="/leadership" className="mt-4 inline-block text-sm font-semibold text-solstice-700 hover:text-solstice-900 dark:text-solstice-400 dark:hover:text-solstice-300">
                                 Meet the team →
                             </Link>

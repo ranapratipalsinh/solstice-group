@@ -11,7 +11,7 @@ const READ_ONLY_APIS = [
   'event',
 ];
 
-const SINGLE_TYPE_APIS = ['home-page', 'about-page', 'csr-page', 'site-setting'];
+const SINGLE_TYPE_APIS = ['home-page', 'about-page', 'csr-page', 'site-setting', 'site-copy'];
 
 const SEED_COMPANIES = [
   {

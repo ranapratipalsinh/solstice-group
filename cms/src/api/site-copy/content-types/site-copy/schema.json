@@ -1,0 +1,26 @@
+{
+  "kind": "singleType",
+  "collectionName": "site_copy",
+  "info": {
+    "singularName": "site-copy",
+    "pluralName": "site-copies",
+    "displayName": "Site Copy",
+    "description": "Miscellaneous editable marketing copy used across secondary pages"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "companiesHeroEyebrow": { "type": "string" },
+    "companiesHeroTitle": { "type": "string" },
+    "companiesHeroDescription": { "type": "text" },
+    "companyCtaHeading": { "type": "string" },
+    "companyCtaDescription": { "type": "text" },
+    "galleryTitle": { "type": "string" },
+    "galleryDescription": { "type": "text" },
+    "contactFormHeading": { "type": "string" },
+    "contactFormDescription": { "type": "text" },
+    "enquiryTypes": { "type": "component", "repeatable": true, "component": "shared.enquiry-type" }
+  }
+}

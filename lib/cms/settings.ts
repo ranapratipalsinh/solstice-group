@@ -9,6 +9,7 @@ export type SiteSettings = {
     groupPhone: string;
     socialLinks: SocialLink[];
     logoUrl: string | null;
+    legalEntityName: string;
 };
 
 type RawSiteSettings = {
@@ -17,6 +18,7 @@ type RawSiteSettings = {
     groupPhone: string;
     socialLinks: SocialLink[];
     logo: StrapiMedia | null;
+    legalEntityName: string | null;
 };
 
 const fallback: SiteSettings = {
@@ -25,6 +27,7 @@ const fallback: SiteSettings = {
     groupPhone: '+91 98765 43210',
     socialLinks: [],
     logoUrl: null,
+    legalEntityName: 'Solstice Trading International LLP',
 };
 
 export async function getSiteSettings(): Promise<SiteSettings> {
@@ -37,6 +40,7 @@ export async function getSiteSettings(): Promise<SiteSettings> {
             groupPhone: raw.groupPhone,
             socialLinks: raw.socialLinks ?? [],
             logoUrl: strapiMediaUrl(raw.logo?.url),
+            legalEntityName: raw.legalEntityName || fallback.legalEntityName,
         };
     } catch {
         return fallback;

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { MapPin, Building2, ArrowDown } from 'lucide-react';
 import { getCompanies } from '@/lib/cms/companies';
-import { getHomePage } from '@/lib/cms/pages';
+import { getHomePage, getAboutPage } from '@/lib/cms/pages';
 import { getRegions } from '@/lib/cms/regions';
 import { getTeamMembers } from '@/lib/cms/team';
 import { getPartners } from '@/lib/cms/partners';
@@ -35,11 +35,16 @@ const DEFAULT_HERO_SUBHEADING =
     'Solstice Group operates across multiple business verticals and markets, including international trade, manufacturing, sourcing, and supply chain management, through a family of specialized companies.';
 const DEFAULT_VISION_STATEMENT =
     'We grow by putting the same operational discipline behind every venture we take on, so a client working with any Solstice Group company gets the reliability of the whole group behind them.';
+const DEFAULT_WHO_WE_ARE_HEADING = 'A diversified group, built for long-term growth.';
+const DEFAULT_WHO_WE_ARE_BODY =
+    "Solstice Group is a diversified business group operating through specialized companies across distinct business verticals. Each company operates with its own focus and expertise, while sharing the group's commitment to quality, innovation, trusted partnerships, and sustainable growth, with ambitions that reach international markets.";
+const DEFAULT_IMPACT_CARD_HEADING = 'Responsible Growth';
 
 export default async function HomePage() {
-    const [companies, homePage, regions, leaders, partners, certifications, industries] = await Promise.all([
+    const [companies, homePage, aboutPage, regions, leaders, partners, certifications, industries] = await Promise.all([
         getCompanies(),
         getHomePage(),
+        getAboutPage(),
         getRegions(),
         getTeamMembers(),
         getPartners(),
@@ -55,6 +60,10 @@ export default async function HomePage() {
     const heroHeadingLead = heroHeadingWords.slice(0, -1).join(' ');
     const heroHeadingAccent = heroHeadingWords.slice(-1)[0] ?? '';
     const leadershipPreview = leaders.slice(0, 4);
+    const whoWeAreHeading = homePage?.whoWeAreHeading || DEFAULT_WHO_WE_ARE_HEADING;
+    const whoWeAreBody = homePage?.whoWeAreBody || DEFAULT_WHO_WE_ARE_BODY;
+    const impactCardHeading = homePage?.impactCardHeading || DEFAULT_IMPACT_CARD_HEADING;
+    const impactCardBody = aboutPage?.sustainabilityEnvironment || '';
 
     const groupSnapshot = [
         { value: String(companies.length), label: 'Companies' },
@@ -108,14 +117,9 @@ export default async function HomePage() {
                         <ScrollReveal>
                             <p className="text-sm font-bold uppercase tracking-wider text-solstice-600 dark:text-solstice-400">Who We Are</p>
                             <h2 className="mt-3 font-display text-3xl font-bold text-solstice-800 dark:text-white md:text-4xl">
-                                A diversified group, built for long-term growth.
+                                {whoWeAreHeading}
                             </h2>
-                            <p className="mt-6 max-w-xl leading-8 text-slate-600 dark:text-slate-400">
-                                Solstice Group is a diversified business group operating through specialized companies across distinct business
-                                verticals. Each company operates with its own focus and expertise, while sharing the group&apos;s commitment to
-                                quality, innovation, trusted partnerships, and sustainable growth, with ambitions that reach international
-                                markets.
-                            </p>
+                            <p className="mt-6 max-w-xl leading-8 text-slate-600 dark:text-slate-400">{whoWeAreBody}</p>
                             <Link
                                 href="/about"
                                 className="mt-8 inline-flex items-center rounded-full bg-solstice-700 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-solstice-500"
@@ -248,15 +252,15 @@ export default async function HomePage() {
                                 {/* eslint-disable-next-line @next/next/no-img-element */}
                                 <img
                                     src="/hero/city-skyline-night.jpg"
-                                    alt="Solstice Group renewable and infrastructure initiatives"
+                                    alt="Solstice Group operations"
                                     className="h-full w-full object-cover"
                                 />
-                                <div className="glass-card absolute bottom-6 left-6 right-6 rounded-2xl p-6">
-                                    <h3 className="text-xl font-bold text-solstice-800 dark:text-white">Renewable Initiatives</h3>
-                                    <p className="mt-1 text-sm text-slate-700 dark:text-slate-300">
-                                        Driving the transition to clean energy across all operational sectors.
-                                    </p>
-                                </div>
+                                {impactCardBody && (
+                                    <div className="glass-card absolute bottom-6 left-6 right-6 rounded-2xl p-6">
+                                        <h3 className="text-xl font-bold text-solstice-800 dark:text-white">{impactCardHeading}</h3>
+                                        <p className="mt-1 text-sm text-slate-700 dark:text-slate-300">{impactCardBody}</p>
+                                    </div>
+                                )}
                             </div>
                         </ScrollReveal>
                     </div>

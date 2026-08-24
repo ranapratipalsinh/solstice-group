@@ -3,8 +3,9 @@
 import { FormEvent, useState } from 'react';
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
+type EnquiryType = { label: string; value: string };
 
-export function ContactForm() {
+export function ContactForm({ enquiryTypes }: { enquiryTypes: EnquiryType[] }) {
     const [status, setStatus] = useState<Status>('idle');
     const [errorMessage, setErrorMessage] = useState('');
 
@@ -95,14 +96,14 @@ export function ContactForm() {
                 <select
                     id="enquiryType"
                     name="enquiryType"
-                    defaultValue="general"
+                    defaultValue={enquiryTypes.find((type) => type.value === 'general')?.value ?? enquiryTypes[0]?.value}
                     className="w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-solstice-500 dark:border-slate-700 dark:bg-solstice-950 dark:text-white"
                 >
-                    <option value="business-partnership">Business Partnership</option>
-                    <option value="product-enquiry">Product Enquiry</option>
-                    <option value="import-export">Import / Export</option>
-                    <option value="events">Events</option>
-                    <option value="general">General Enquiry</option>
+                    {enquiryTypes.map((type) => (
+                        <option key={type.value} value={type.value}>
+                            {type.label}
+                        </option>
+                    ))}
                 </select>
             </div>
             <div>

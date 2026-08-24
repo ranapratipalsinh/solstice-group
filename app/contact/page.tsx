@@ -3,6 +3,7 @@ import { ContactForm } from '@/components/ContactForm';
 import { PageHeader } from '@/components/PageHeader';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { getSiteSettings } from '@/lib/cms/settings';
+import { getSiteCopy } from '@/lib/cms/siteCopy';
 
 export const metadata: Metadata = {
     title: 'Contact | Solstice Group',
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default async function ContactPage() {
-    const settings = await getSiteSettings();
+    const [settings, siteCopy] = await Promise.all([getSiteSettings(), getSiteCopy()]);
 
     return (
         <div>
@@ -40,9 +41,9 @@ export default async function ContactPage() {
                     </ScrollReveal>
                     <ScrollReveal delayMs={200}>
                         <div className="h-full rounded-[2rem] border border-slate-200 bg-solstice-50 p-6 shadow-sm dark:border-slate-700/60 dark:bg-solstice-900 sm:p-10">
-                            <h2 className="font-display text-2xl font-semibold text-slate-950 dark:text-white">Inquiry form</h2>
-                            <p className="mt-4 leading-7 text-slate-600 dark:text-slate-400">Send us a message and we will reply within 2 business days.</p>
-                            <ContactForm />
+                            <h2 className="font-display text-2xl font-semibold text-slate-950 dark:text-white">{siteCopy.contactFormHeading}</h2>
+                            <p className="mt-4 leading-7 text-slate-600 dark:text-slate-400">{siteCopy.contactFormDescription}</p>
+                            <ContactForm enquiryTypes={siteCopy.enquiryTypes} />
                         </div>
                     </ScrollReveal>
                 </div>

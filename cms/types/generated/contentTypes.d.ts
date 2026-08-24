@@ -460,7 +460,9 @@ export interface ApiAboutPageAboutPage extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     founderPhoto: Schema.Attribute.Media<'images'>;
     founderStory: Schema.Attribute.Text;
+    founderTeaser: Schema.Attribute.Text;
     groupHistory: Schema.Attribute.Text;
+    leadershipTeaser: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -472,6 +474,7 @@ export interface ApiAboutPageAboutPage extends Struct.SingleTypeSchema {
     sustainabilityEnvironment: Schema.Attribute.Text;
     sustainabilityGovernance: Schema.Attribute.Text;
     sustainabilitySocial: Schema.Attribute.Text;
+    timeline: Schema.Attribute.Component<'shared.milestone', true>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -753,6 +756,7 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     heroSlides: Schema.Attribute.Media<'images', true>;
     heroSubheading: Schema.Attribute.Text;
     heroVideo: Schema.Attribute.Media<'videos'>;
+    impactCardHeading: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -765,6 +769,8 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     visionStatement: Schema.Attribute.Text;
+    whoWeAreBody: Schema.Attribute.Text;
+    whoWeAreHeading: Schema.Attribute.String;
   };
 }
 
@@ -878,6 +884,44 @@ export interface ApiRegionRegion extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiSiteCopySiteCopy extends Struct.SingleTypeSchema {
+  collectionName: 'site_copy';
+  info: {
+    description: 'Miscellaneous editable marketing copy used across secondary pages';
+    displayName: 'Site Copy';
+    pluralName: 'site-copies';
+    singularName: 'site-copy';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    companiesHeroDescription: Schema.Attribute.Text;
+    companiesHeroEyebrow: Schema.Attribute.String;
+    companiesHeroTitle: Schema.Attribute.String;
+    companyCtaDescription: Schema.Attribute.Text;
+    companyCtaHeading: Schema.Attribute.String;
+    contactFormDescription: Schema.Attribute.Text;
+    contactFormHeading: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    enquiryTypes: Schema.Attribute.Component<'shared.enquiry-type', true>;
+    galleryDescription: Schema.Attribute.Text;
+    galleryTitle: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::site-copy.site-copy'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiSiteSettingSiteSetting extends Struct.SingleTypeSchema {
   collectionName: 'site_setting';
   info: {
@@ -895,6 +939,7 @@ export interface ApiSiteSettingSiteSetting extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     groupEmail: Schema.Attribute.Email;
     groupPhone: Schema.Attribute.String;
+    legalEntityName: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1503,6 +1548,7 @@ declare module '@strapi/strapi' {
       'api::industry.industry': ApiIndustryIndustry;
       'api::partner.partner': ApiPartnerPartner;
       'api::region.region': ApiRegionRegion;
+      'api::site-copy.site-copy': ApiSiteCopySiteCopy;
       'api::site-setting.site-setting': ApiSiteSettingSiteSetting;
       'api::team-member.team-member': ApiTeamMemberTeamMember;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;

@@ -6,6 +6,7 @@ import { getEventsByCompanySlug } from '@/lib/cms/events';
 import { getCertificationsByCompanySlug } from '@/lib/cms/certifications';
 import { getRegions } from '@/lib/cms/regions';
 import { getIndustries } from '@/lib/cms/industries';
+import { getSiteCopy } from '@/lib/cms/siteCopy';
 import { PageHeader } from '@/components/PageHeader';
 import { RelatedCompanies } from '@/components/RelatedCompanies';
 import { ImageWithFallback } from '@/components/ImageWithFallback';
@@ -35,11 +36,12 @@ export default async function CompanyDetailPage({ params }: Props) {
         notFound();
     }
 
-    const [projects, certifications, regions, industries] = await Promise.all([
+    const [projects, certifications, regions, industries, siteCopy] = await Promise.all([
         getEventsByCompanySlug(slug),
         getCertificationsByCompanySlug(slug),
         getRegions(),
         getIndustries(),
+        getSiteCopy(),
     ]);
     const industry = industries.find((item) => item.companySlug === slug)?.title ?? null;
 
@@ -182,7 +184,8 @@ export default async function CompanyDetailPage({ params }: Props) {
             {/* CTA */}
             <section className="bg-solstice-950 py-16 text-center text-white sm:py-20">
                 <div className="container">
-                    <h2 className="font-display text-2xl font-semibold sm:text-3xl">Let&apos;s Build Something Together</h2>
+                    <h2 className="font-display text-2xl font-semibold sm:text-3xl">{siteCopy.companyCtaHeading}</h2>
+                    <p className="mx-auto mt-3 max-w-xl text-sm text-solstice-100">{siteCopy.companyCtaDescription}</p>
                     <Link
                         href="/contact"
                         className="mt-6 inline-flex items-center justify-center rounded-full bg-solstice-500 px-8 py-3 text-sm font-semibold text-solstice-950 transition-colors hover:bg-white"

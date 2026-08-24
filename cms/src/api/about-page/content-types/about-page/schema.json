@@ -20,6 +20,9 @@
     "values": { "type": "component", "repeatable": true, "component": "shared.value" },
     "sustainabilityEnvironment": { "type": "text" },
     "sustainabilitySocial": { "type": "text" },
-    "sustainabilityGovernance": { "type": "text" }
+    "sustainabilityGovernance": { "type": "text" },
+    "timeline": { "type": "component", "repeatable": true, "component": "shared.milestone" },
+    "founderTeaser": { "type": "text" },
+    "leadershipTeaser": { "type": "text" }
   }
 }

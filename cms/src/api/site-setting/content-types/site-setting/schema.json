@@ -16,6 +16,7 @@
     "groupEmail": { "type": "email" },
     "groupPhone": { "type": "string" },
     "socialLinks": { "type": "component", "repeatable": true, "component": "shared.social-link" },
-    "logo": { "type": "media", "multiple": false, "allowedTypes": ["images"] }
+    "logo": { "type": "media", "multiple": false, "allowedTypes": ["images"] },
+    "legalEntityName": { "type": "string" }
   }
 }

@@ -10,6 +10,9 @@ export type HomePage = {
     stats: Stat[];
     heroSlideUrls: string[];
     heroVideoUrl: string | null;
+    whoWeAreHeading: string;
+    whoWeAreBody: string;
+    impactCardHeading: string;
 };
 
 type RawHomePage = {
@@ -19,6 +22,9 @@ type RawHomePage = {
     stats: Stat[];
     heroSlides: StrapiMedia[];
     heroVideo: StrapiMedia | null;
+    whoWeAreHeading: string | null;
+    whoWeAreBody: string | null;
+    impactCardHeading: string | null;
 };
 
 export async function getHomePage(): Promise<HomePage | null> {
@@ -31,11 +37,16 @@ export async function getHomePage(): Promise<HomePage | null> {
         stats: raw.stats ?? [],
         heroSlideUrls: (raw.heroSlides || []).map((slide) => strapiMediaUrl(slide.url)).filter((url): url is string => Boolean(url)),
         heroVideoUrl: strapiMediaUrl(raw.heroVideo?.url),
+        whoWeAreHeading: raw.whoWeAreHeading ?? '',
+        whoWeAreBody: raw.whoWeAreBody ?? '',
+        impactCardHeading: raw.impactCardHeading ?? '',
     };
 }
 
 export type ValueIcon = 'handshake' | 'award' | 'lightbulb' | 'users' | 'leaf' | 'sparkles';
 export type GroupValue = { title: string; description: string; icon: ValueIcon };
+
+export type Milestone = { title: string; description: string };
 
 export type AboutPage = {
     mission: string;
@@ -47,6 +58,9 @@ export type AboutPage = {
     sustainabilityEnvironment: string;
     sustainabilitySocial: string;
     sustainabilityGovernance: string;
+    timeline: Milestone[];
+    founderTeaser: string;
+    leadershipTeaser: string;
 };
 
 type RawAboutPage = {
@@ -59,10 +73,13 @@ type RawAboutPage = {
     sustainabilityEnvironment: string | null;
     sustainabilitySocial: string | null;
     sustainabilityGovernance: string | null;
+    timeline: Milestone[] | null;
+    founderTeaser: string | null;
+    leadershipTeaser: string | null;
 };
 
 export async function getAboutPage(): Promise<AboutPage | null> {
-    const raw = await strapiFindOne<RawAboutPage>('/about-page?populate=founderPhoto,values');
+    const raw = await strapiFindOne<RawAboutPage>('/about-page?populate=founderPhoto,values,timeline');
     if (!raw) return null;
     return {
         mission: raw.mission,
@@ -74,5 +91,8 @@ export async function getAboutPage(): Promise<AboutPage | null> {
         sustainabilityEnvironment: raw.sustainabilityEnvironment ?? '',
         sustainabilitySocial: raw.sustainabilitySocial ?? '',
         sustainabilityGovernance: raw.sustainabilityGovernance ?? '',
+        timeline: raw.timeline ?? [],
+        founderTeaser: raw.founderTeaser ?? '',
+        leadershipTeaser: raw.leadershipTeaser ?? '',
     };
 }

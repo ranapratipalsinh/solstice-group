@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { getCompanies } from '@/lib/cms/companies';
+import { getSiteCopy } from '@/lib/cms/siteCopy';
 import { CompanyLinearCards } from '@/components/CompanyLinearCards';
 import { ScrollReveal } from '@/components/ScrollReveal';
 
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default async function CompaniesPage() {
-    const companies = await getCompanies();
+    const [companies, siteCopy] = await Promise.all([getCompanies(), getSiteCopy()]);
 
     return (
         <div>
@@ -21,12 +22,12 @@ export default async function CompaniesPage() {
             >
                 <div className="absolute inset-0 bg-gradient-to-b from-solstice-800/60 via-solstice-800/45 to-solstice-800/70" />
                 <ScrollReveal className="container relative z-10">
-                    <p className="text-sm font-semibold uppercase tracking-[0.3em] text-solstice-300">Our Companies</p>
+                    <p className="text-sm font-semibold uppercase tracking-[0.3em] text-solstice-300">{siteCopy.companiesHeroEyebrow}</p>
                     <h1 className="mt-4 font-display text-3xl font-semibold sm:text-4xl md:text-5xl">
-                        Subsidiaries under Solstice Group
+                        {siteCopy.companiesHeroTitle}
                     </h1>
                     <p className="mx-auto mt-6 max-w-2xl text-sm text-solstice-100 sm:text-lg">
-                        Explore the businesses that operate under the Solstice Group umbrella, each serving a unique market and customer need.
+                        {siteCopy.companiesHeroDescription}
                     </p>
                 </ScrollReveal>
             </section>

@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_shared_enquiry_types",
+  "info": {
+    "displayName": "Enquiry Type",
+    "icon": "envelope"
+  },
+  "options": {},
+  "attributes": {
+    "label": { "type": "string", "required": true },
+    "value": { "type": "string", "required": true }
+  }
+}
