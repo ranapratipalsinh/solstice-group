@@ -10,6 +10,8 @@ export type SiteSettings = {
     socialLinks: SocialLink[];
     logoUrl: string | null;
     legalEntityName: string;
+    whatsappNumber: string;
+    whatsappDefaultMessage: string;
 };
 
 type RawSiteSettings = {
@@ -19,6 +21,8 @@ type RawSiteSettings = {
     socialLinks: SocialLink[];
     logo: StrapiMedia | null;
     legalEntityName: string | null;
+    whatsappNumber: string | null;
+    whatsappDefaultMessage: string | null;
 };
 
 const fallback: SiteSettings = {
@@ -28,6 +32,8 @@ const fallback: SiteSettings = {
     socialLinks: [],
     logoUrl: null,
     legalEntityName: 'Solstice Trading International LLP',
+    whatsappNumber: '',
+    whatsappDefaultMessage: "Hi, I'm interested in Solstice Group's products/services.",
 };
 
 export async function getSiteSettings(): Promise<SiteSettings> {
@@ -41,6 +47,8 @@ export async function getSiteSettings(): Promise<SiteSettings> {
             socialLinks: raw.socialLinks ?? [],
             logoUrl: strapiMediaUrl(raw.logo?.url),
             legalEntityName: raw.legalEntityName || fallback.legalEntityName,
+            whatsappNumber: raw.whatsappNumber || fallback.whatsappNumber,
+            whatsappDefaultMessage: raw.whatsappDefaultMessage || fallback.whatsappDefaultMessage,
         };
     } catch {
         return fallback;

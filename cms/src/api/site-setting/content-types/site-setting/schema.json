@@ -17,6 +17,8 @@
     "groupPhone": { "type": "string" },
     "socialLinks": { "type": "component", "repeatable": true, "component": "shared.social-link" },
     "logo": { "type": "media", "multiple": false, "allowedTypes": ["images"] },
-    "legalEntityName": { "type": "string" }
+    "legalEntityName": { "type": "string" },
+    "whatsappNumber": { "type": "string" },
+    "whatsappDefaultMessage": { "type": "text" }
   }
 }

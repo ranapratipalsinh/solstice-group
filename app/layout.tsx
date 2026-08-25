@@ -4,7 +4,9 @@ import './globals.css';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { ScrollToTopButton } from '@/components/ScrollToTopButton';
+import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { PageTransition } from '@/components/PageTransition';
+import { getSiteSettings } from '@/lib/cms/settings';
 
 const inter = Inter({
     subsets: ['latin'],
@@ -46,7 +48,9 @@ const organizationJsonLd = {
 
 const themeInitScript = `(function(){try{var stored=localStorage.getItem('theme');var prefersDark=window.matchMedia('(prefers-color-scheme: dark)').matches;var isDark=stored?stored==='dark':prefersDark;document.documentElement.classList.toggle('dark',isDark);if(!stored){window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(e){document.documentElement.classList.toggle('dark',e.matches);});}}catch(e){}})();`;
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+    const settings = await getSiteSettings();
+
     return (
         <html lang="en" className={inter.variable} data-scroll-behavior="smooth" suppressHydrationWarning>
             <head>
@@ -58,6 +62,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <Navbar />
                     <main className="flex-1">{children}</main>
                     <Footer />
+                    <WhatsAppButton phoneNumber={settings.whatsappNumber} message={settings.whatsappDefaultMessage} />
                     <ScrollToTopButton />
                 </div>
                 <PageTransition />
