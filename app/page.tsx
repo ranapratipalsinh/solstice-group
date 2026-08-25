@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { MapPin, Building2, ArrowDown } from 'lucide-react';
+import { ArrowDown } from 'lucide-react';
 import { getCompanies } from '@/lib/cms/companies';
 import { getHomePage, getAboutPage } from '@/lib/cms/pages';
 import { getRegions } from '@/lib/cms/regions';
@@ -15,6 +15,7 @@ import { CountUpStat } from '@/components/CountUpStat';
 import { InfiniteSlider } from '@/components/ui/infinite-slider';
 import { ImageWithFallback } from '@/components/ImageWithFallback';
 import { WorldMapPresence } from '@/components/WorldMapPresence';
+import { RegionChips } from '@/components/RegionChips';
 
 export const dynamic = 'force-dynamic';
 
@@ -189,23 +190,8 @@ export default async function HomePage() {
                     <div className="mt-12">
                         <WorldMapPresence regions={regions} />
                     </div>
-                    <div className="mt-12 flex flex-wrap justify-center gap-4">
-                        {regions.map((region, index) => (
-                            <ScrollReveal key={region.name} delayMs={(index + 1) * 150}>
-                                {region.isHeadquarters ? (
-                                    <div className="flex flex-col items-center gap-2 rounded-2xl bg-solstice-400 px-8 py-4 font-semibold text-solstice-950 shadow-[0_0_25px_rgba(93,210,156,0.35)] transition-transform hover:scale-105">
-                                        <Building2 className="h-6 w-6" strokeWidth={1.75} />
-                                        {region.name}
-                                        <span className="mt-1 text-[10px] uppercase tracking-widest opacity-80">Headquarters</span>
-                                    </div>
-                                ) : (
-                                    <div className="flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-8 py-4 font-semibold text-white transition-colors hover:border-solstice-400/50 hover:bg-white/10">
-                                        <MapPin className="h-6 w-6 text-solstice-400" strokeWidth={1.75} />
-                                        {region.name}
-                                    </div>
-                                )}
-                            </ScrollReveal>
-                        ))}
+                    <div className="mt-12">
+                        <RegionChips regions={regions} />
                     </div>
                     <div className="mt-10 text-center">
                         <Link href="/global-presence" className="text-sm font-semibold text-solstice-400 hover:text-solstice-300">

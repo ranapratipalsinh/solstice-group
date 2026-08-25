@@ -16,6 +16,7 @@
     "isHeadquarters": { "type": "boolean", "default": false },
     "order": { "type": "integer", "default": 0 },
     "mapX": { "type": "decimal", "min": 0, "max": 100 },
-    "mapY": { "type": "decimal", "min": 0, "max": 100 }
+    "mapY": { "type": "decimal", "min": 0, "max": 100 },
+    "isoCode": { "type": "string", "regex": "^[a-z]{2}$" }
   }
 }

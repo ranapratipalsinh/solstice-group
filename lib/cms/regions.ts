@@ -5,6 +5,7 @@ export type Region = {
     isHeadquarters: boolean;
     mapX: number | null;
     mapY: number | null;
+    isoCode: string | null;
 };
 
 export async function getRegions(): Promise<Region[]> {

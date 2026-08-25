@@ -853,6 +853,7 @@ export interface ApiRegionRegion extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     isHeadquarters: Schema.Attribute.Boolean &
       Schema.Attribute.DefaultTo<false>;
+    isoCode: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
