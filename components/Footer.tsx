@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Globe } from 'lucide-react';
 import { FacebookIcon, InstagramIcon, XIcon, LinkedInIcon, YoutubeIcon, WhatsAppIcon } from '@/components/icons/SocialIcons';
 import { getSiteSettings } from '@/lib/cms/settings';
-import { COMPANY_NAV_ITEMS } from '@/lib/nav';
+import { getCompanies } from '@/lib/cms/companies';
 
 const SOCIAL_ICON: Record<string, (props: { className?: string }) => JSX.Element> = {
     facebook: FacebookIcon,
@@ -14,7 +14,7 @@ const SOCIAL_ICON: Record<string, (props: { className?: string }) => JSX.Element
 };
 
 export async function Footer() {
-    const settings = await getSiteSettings();
+    const [settings, companies] = await Promise.all([getSiteSettings(), getCompanies()]);
 
     return (
         <footer className="border-t border-solstice-700 bg-solstice-800 text-solstice-100 dark:border-solstice-900 dark:bg-solstice-950">
@@ -66,9 +66,9 @@ export async function Footer() {
                     <div>
                         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white">Our Companies</p>
                         <ul className="mt-5 space-y-3 text-sm">
-                            {COMPANY_NAV_ITEMS.map((company) => (
-                                <li key={company.href}>
-                                    <Link href={company.href} className="hover:text-solstice-300">{company.label}</Link>
+                            {companies.map((company) => (
+                                <li key={company.slug}>
+                                    <Link href={`/companies/${company.slug}`} className="hover:text-solstice-300">{company.name}</Link>
                                 </li>
                             ))}
                         </ul>

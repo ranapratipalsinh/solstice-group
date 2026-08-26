@@ -8,7 +8,6 @@ import { getTeamMembers } from '@/lib/cms/team';
 import { getPartners } from '@/lib/cms/partners';
 import { getCertifications } from '@/lib/cms/certifications';
 import { getIndustries } from '@/lib/cms/industries';
-import { COMPANY_NAV_ITEMS } from '@/lib/nav';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { HeroSlider } from '@/components/HeroSlider';
 import { CountUpStat } from '@/components/CountUpStat';
@@ -164,13 +163,13 @@ export default async function HomePage() {
                         </ScrollReveal>
                         <ArrowDown className="my-4 h-6 w-6 text-solstice-400" strokeWidth={1.75} aria-hidden="true" />
                         <div className="grid w-full max-w-3xl grid-cols-2 gap-4 sm:grid-cols-4">
-                            {COMPANY_NAV_ITEMS.map((company, index) => (
-                                <ScrollReveal key={company.href} delayMs={(index + 1) * 120}>
+                            {companies.map((company, index) => (
+                                <ScrollReveal key={company.slug} delayMs={(index + 1) * 120}>
                                     <Link
-                                        href={company.href}
+                                        href={`/companies/${company.slug}`}
                                         className="flex h-full items-center justify-center rounded-2xl border border-solstice-200 bg-solstice-50 px-4 py-5 text-center text-sm font-semibold text-solstice-800 shadow-sm transition-all hover:-translate-y-1 hover:border-solstice-400 hover:shadow-md dark:border-slate-700/60 dark:bg-solstice-900 dark:text-white"
                                     >
-                                        {company.label}
+                                        {company.name}
                                     </Link>
                                 </ScrollReveal>
                             ))}

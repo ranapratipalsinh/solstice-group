@@ -87,6 +87,10 @@ a {
     padding: 0 1.25rem;
 }
 
+html.mobile-nav-open .floating-action {
+    display: none;
+}
+
 @keyframes fade-in-up {
     from {
         opacity: 0;

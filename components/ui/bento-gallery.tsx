@@ -74,13 +74,19 @@ const ImageModal = ({
         <ImageWithFallback
           src={item.url}
           alt={item.title}
-          className="h-auto max-h-[90vh] w-full rounded-lg object-contain"
+          className="h-auto max-h-[80vh] w-full rounded-lg object-contain"
           fallback={
             <div className="flex h-[50vh] w-full items-center justify-center rounded-lg bg-white/10 text-white/60">
               Image unavailable
             </div>
           }
         />
+        {(item.title || item.desc) && (
+          <div className="mt-3 text-center">
+            {item.title && <h3 className="text-lg font-bold text-white">{item.title}</h3>}
+            {item.desc && <p className="mt-1 text-sm text-white/70">{item.desc}</p>}
+          </div>
+        )}
       </motion.div>
       <button
         onClick={onClose}
@@ -188,8 +194,8 @@ const InteractiveImageBentoGallery: React.FC<
                     </div>
                   }
                 />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                <div className="relative z-10 translate-y-4 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-100 transition-opacity duration-500 md:opacity-0 md:group-hover:opacity-100" />
+                <div className="relative z-10 translate-y-0 opacity-100 transition-all duration-500 md:translate-y-4 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
                   <h3 className="text-lg font-bold text-white">{item.title}</h3>
                   <p className="mt-1 text-sm text-white/80">{item.desc}</p>
                 </div>

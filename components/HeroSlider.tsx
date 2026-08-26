@@ -23,24 +23,34 @@ export function HeroSlider({ images, videoUrl }: { images: string[]; videoUrl?: 
         return () => query.removeEventListener('change', handleChange);
     }, []);
 
+    const fallbackImages = images.length > 0 ? images : DEFAULT_IMAGES;
+
     if (videoUrl) {
         return (
-            <div className="absolute inset-0">
+            <div className="absolute inset-0 bg-solstice-950">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                    src={fallbackImages[0]}
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute inset-0 h-full w-full object-cover"
+                />
                 <video
-                    className="h-full w-full object-cover"
+                    className="absolute inset-0 h-full w-full object-cover"
                     src={videoUrl}
+                    poster={fallbackImages[0]}
                     autoPlay={!prefersReducedMotion}
                     loop
                     muted
                     playsInline
-                    preload="metadata"
+                    preload="auto"
                     aria-hidden="true"
                 />
             </div>
         );
     }
 
-    return <HeroImageSlider images={images.length > 0 ? images : DEFAULT_IMAGES} />;
+    return <HeroImageSlider images={fallbackImages} />;
 }
 
 function HeroImageSlider({ images: slides }: { images: string[] }) {

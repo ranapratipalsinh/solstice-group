@@ -12,7 +12,7 @@ export function WhatsAppButton({ phoneNumber, message }: { phoneNumber: string; 
             target="_blank"
             rel="noreferrer"
             aria-label="Chat with us on WhatsApp"
-            className="fixed bottom-24 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition hover:bg-[#1ebe57]"
+            className="floating-action fixed bottom-24 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition hover:bg-[#1ebe57]"
         >
             <WhatsAppIcon className="h-6 w-6" />
         </a>

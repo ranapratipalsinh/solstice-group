@@ -25,7 +25,7 @@ export function ProjectsGrid({ projects }: { projects: Event[] }) {
                     <button
                         type="button"
                         onClick={() => setActiveFilter('all')}
-                        className={`rounded-full px-5 py-2 text-sm font-semibold transition-colors ${
+                        className={`rounded-full px-5 py-3 text-sm font-semibold transition-colors ${
                             activeFilter === 'all'
                                 ? 'bg-solstice-700 text-white'
                                 : 'bg-solstice-50 text-solstice-700 hover:bg-solstice-100 dark:bg-solstice-900 dark:text-solstice-400'
@@ -38,7 +38,7 @@ export function ProjectsGrid({ projects }: { projects: Event[] }) {
                             key={company.slug}
                             type="button"
                             onClick={() => setActiveFilter(company.slug)}
-                            className={`rounded-full px-5 py-2 text-sm font-semibold transition-colors ${
+                            className={`rounded-full px-5 py-3 text-sm font-semibold transition-colors ${
                                 activeFilter === company.slug
                                     ? 'bg-solstice-700 text-white'
                                     : 'bg-solstice-50 text-solstice-700 hover:bg-solstice-100 dark:bg-solstice-900 dark:text-solstice-400'

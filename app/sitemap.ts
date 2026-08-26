@@ -1,6 +1,5 @@
 import type { MetadataRoute } from 'next';
 import { getCompanies } from '@/lib/cms/companies';
-import { COMPANY_NAV_ITEMS } from '@/lib/nav';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://solstice-group.onrender.com';
 
@@ -24,7 +23,7 @@ const STATIC_ROUTES = [
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const companies = await getCompanies().catch(() => []);
-    const companySlugs = companies.length > 0 ? companies.map((c) => c.slug) : COMPANY_NAV_ITEMS.map((c) => c.href.split('/').pop()!);
+    const companySlugs = companies.map((c) => c.slug);
 
     const routes = [...STATIC_ROUTES, ...companySlugs.map((slug) => `/companies/${slug}`)];
 

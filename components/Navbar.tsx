@@ -1,9 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ThemeToggle } from '@/components/ThemeToggle';
-import { COMPANY_NAV_ITEMS } from '@/lib/nav';
 
 const primaryNavItems = [{ href: '/', label: 'Home' }];
 
@@ -23,7 +22,7 @@ const trailingNavItems = [
 
 const contactNavItem = { href: '/contact', label: "Let's Talk" };
 
-export function Navbar() {
+export function Navbar({ companies }: { companies: { href: string; label: string }[] }) {
     const [isMobileOpen, setIsMobileOpen] = useState(false);
     const [isAboutOpen, setIsAboutOpen] = useState(false);
     const [isCompaniesOpen, setIsCompaniesOpen] = useState(false);
@@ -37,6 +36,11 @@ export function Navbar() {
         setIsMobileAboutOpen(false);
         setIsMobileCompaniesOpen(false);
     };
+
+    useEffect(() => {
+        document.documentElement.classList.toggle('mobile-nav-open', isMobileOpen);
+        return () => document.documentElement.classList.remove('mobile-nav-open');
+    }, [isMobileOpen]);
 
     return (
         <header className="sticky top-0 z-50 border-b border-slate-200 bg-white dark:border-slate-800 dark:bg-solstice-950">
@@ -54,7 +58,7 @@ export function Navbar() {
                     ))}
 
                     <NavDropdown label="About" isOpen={isAboutOpen} setIsOpen={setIsAboutOpen} items={aboutDropdownItems} onNavigate={closeAll} />
-                    <NavDropdown label="Our Companies" isOpen={isCompaniesOpen} setIsOpen={setIsCompaniesOpen} items={COMPANY_NAV_ITEMS} onNavigate={closeAll} />
+                    <NavDropdown label="Our Companies" isOpen={isCompaniesOpen} setIsOpen={setIsCompaniesOpen} items={companies} onNavigate={closeAll} />
 
                     {trailingNavItems.map((item) => (
                         <Link key={item.href} href={item.href} className="hover:text-solstice-700 dark:hover:text-solstice-400" onClick={closeAll}>
@@ -109,7 +113,7 @@ export function Navbar() {
                         ))}
 
                         <MobileNavGroup label="About" isOpen={isMobileAboutOpen} setIsOpen={setIsMobileAboutOpen} items={aboutDropdownItems} onNavigate={closeAll} />
-                        <MobileNavGroup label="Our Companies" isOpen={isMobileCompaniesOpen} setIsOpen={setIsMobileCompaniesOpen} items={COMPANY_NAV_ITEMS} onNavigate={closeAll} />
+                        <MobileNavGroup label="Our Companies" isOpen={isMobileCompaniesOpen} setIsOpen={setIsMobileCompaniesOpen} items={companies} onNavigate={closeAll} />
 
                         {trailingNavItems.map((item) => (
                             <Link
