@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://solstice-group.onrender.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://group.solsticellp.com';
 
 export default function robots(): MetadataRoute.Robots {
     return {

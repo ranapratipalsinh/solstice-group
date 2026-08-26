@@ -68,7 +68,7 @@ export function CompanyLinearCards({ companies }: { companies: Company[] }) {
                                 <DialogImage
                                     src={imageUrl}
                                     alt={company.name}
-                                    className="mx-auto h-full w-[60%] object-contain"
+                                    className={`mx-auto h-full w-[60%] object-contain ${hasLogo ? 'bg-white p-6 dark:bg-slate-100' : ''}`}
                                 />
                                 <div className="p-6 sm:p-10">
                                     <DialogTitle className="font-display text-3xl font-semibold text-slate-950 dark:text-white sm:text-4xl">

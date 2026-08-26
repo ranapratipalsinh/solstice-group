@@ -14,6 +14,7 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Middlewar
       origin: [
         'http://localhost:3000',
         'https://solstice-group.onrender.com',
+        'https://group.solsticellp.com',
         env('FRONTEND_URL'),
       ].filter(Boolean),
     },

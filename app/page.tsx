@@ -313,13 +313,13 @@ export default async function HomePage() {
                 ) : (
                     <InfiniteSlider gap={32} speed={30} speedOnHover={10} className="py-2">
                         {partners.map((partner) => (
-                            <div key={partner.name} className="flex h-16 w-28 shrink-0 items-center justify-center">
+                            <div key={partner.name} className="flex h-16 w-28 shrink-0 items-center justify-center rounded-xl bg-white p-2 shadow-sm ring-1 ring-slate-100 transition-shadow hover:shadow-md dark:ring-white/10">
                                 <ImageWithFallback
                                     src={partner.logoUrl}
                                     alt={partner.name}
-                                    className="h-10 w-auto object-contain opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0 dark:brightness-0 dark:invert dark:opacity-50 dark:hover:opacity-90"
+                                    className="h-10 w-auto object-contain opacity-80 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
                                     fallback={
-                                        <span className="text-lg font-bold text-slate-400 dark:text-slate-600">{partner.name}</span>
+                                        <span className="text-lg font-bold text-slate-400">{partner.name}</span>
                                     }
                                 />
                             </div>
@@ -338,13 +338,13 @@ export default async function HomePage() {
                 ) : (
                     <InfiniteSlider gap={32} speed={30} speedOnHover={10} reverse className="py-2">
                         {certifications.map((item) => (
-                            <div key={`${item.title}-${item.year}`} className="flex h-16 w-28 shrink-0 items-center justify-center">
+                            <div key={`${item.title}-${item.year}`} className="flex h-16 w-28 shrink-0 items-center justify-center rounded-xl bg-white p-2 shadow-sm ring-1 ring-slate-100 transition-shadow hover:shadow-md dark:ring-white/10">
                                 <ImageWithFallback
                                     src={item.imageUrl}
                                     alt={item.title}
-                                    className="h-10 w-auto object-contain opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0 dark:brightness-0 dark:invert dark:opacity-50 dark:hover:opacity-90"
+                                    className="h-10 w-auto object-contain opacity-80 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
                                     fallback={
-                                        <span className="text-lg font-bold text-slate-400 dark:text-slate-600">{item.title}</span>
+                                        <span className="text-lg font-bold text-slate-400">{item.title}</span>
                                     }
                                 />
                             </div>

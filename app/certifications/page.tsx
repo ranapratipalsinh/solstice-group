@@ -30,14 +30,16 @@ export default async function CertificationsPage() {
                                 key={`${item.title}-${item.year}`}
                                 className="flex w-40 shrink-0 flex-col items-center gap-3 text-center"
                             >
-                                <ImageWithFallback
-                                    src={item.imageUrl}
-                                    alt={item.title}
-                                    className="h-14 w-auto object-contain opacity-70 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0 dark:brightness-0 dark:invert dark:opacity-60 dark:hover:opacity-90"
-                                    fallback={
-                                        <span className="text-lg font-bold text-slate-400 dark:text-slate-600">{item.title}</span>
-                                    }
-                                />
+                                <div className="flex h-20 w-full items-center justify-center rounded-xl bg-white p-3 shadow-sm ring-1 ring-slate-100 transition-shadow hover:shadow-md dark:ring-white/10">
+                                    <ImageWithFallback
+                                        src={item.imageUrl}
+                                        alt={item.title}
+                                        className="h-14 w-auto object-contain opacity-80 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
+                                        fallback={
+                                            <span className="text-lg font-bold text-slate-400">{item.title}</span>
+                                        }
+                                    />
+                                </div>
                                 <p className="text-xs font-semibold uppercase tracking-[0.15em] text-slate-500 dark:text-slate-400">
                                     {item.title}
                                     {(item.issuer || item.year) && (

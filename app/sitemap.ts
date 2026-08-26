@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { getCompanies } from '@/lib/cms/companies';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://solstice-group.onrender.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://group.solsticellp.com';
 
 const STATIC_ROUTES = [
     '',
