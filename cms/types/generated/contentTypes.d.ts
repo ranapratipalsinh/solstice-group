@@ -483,40 +483,6 @@ export interface ApiAboutPageAboutPage extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiBlogPostBlogPost extends Struct.CollectionTypeSchema {
-  collectionName: 'blog_posts';
-  info: {
-    description: 'News / Blog articles';
-    displayName: 'Blog Post';
-    pluralName: 'blog-posts';
-    singularName: 'blog-post';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    content: Schema.Attribute.Text;
-    coverImage: Schema.Attribute.Media<'images'>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    excerpt: Schema.Attribute.Text;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::blog-post.blog-post'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    publishedDate: Schema.Attribute.Date;
-    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiCertificationCertification
   extends Struct.CollectionTypeSchema {
   collectionName: 'certifications';
@@ -636,37 +602,6 @@ export interface ApiContactSubmissionContactSubmission
     message: Schema.Attribute.Text & Schema.Attribute.Required;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     phone: Schema.Attribute.String;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiCsrPageCsrPage extends Struct.SingleTypeSchema {
-  collectionName: 'csr_page';
-  info: {
-    description: 'Corporate social responsibility page content';
-    displayName: 'CSR Page';
-    pluralName: 'csr-pages';
-    singularName: 'csr-page';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    body: Schema.Attribute.Text;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    heading: Schema.Attribute.String;
-    images: Schema.Attribute.Media<'images', true>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::csr-page.csr-page'
-    > &
-      Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -990,38 +925,6 @@ export interface ApiTeamMemberTeamMember extends Struct.CollectionTypeSchema {
     photo: Schema.Attribute.Media<'images'>;
     publishedAt: Schema.Attribute.DateTime;
     role: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiTestimonialTestimonial extends Struct.CollectionTypeSchema {
-  collectionName: 'testimonials';
-  info: {
-    description: 'Client and partner testimonials';
-    displayName: 'Testimonial';
-    pluralName: 'testimonials';
-    singularName: 'testimonial';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    clientCompany: Schema.Attribute.String;
-    clientName: Schema.Attribute.String & Schema.Attribute.Required;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::testimonial.testimonial'
-    > &
-      Schema.Attribute.Private;
-    photo: Schema.Attribute.Media<'images'>;
-    publishedAt: Schema.Attribute.DateTime;
-    quote: Schema.Attribute.Text;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1540,11 +1443,9 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::about-page.about-page': ApiAboutPageAboutPage;
-      'api::blog-post.blog-post': ApiBlogPostBlogPost;
       'api::certification.certification': ApiCertificationCertification;
       'api::company.company': ApiCompanyCompany;
       'api::contact-submission.contact-submission': ApiContactSubmissionContactSubmission;
-      'api::csr-page.csr-page': ApiCsrPageCsrPage;
       'api::event.event': ApiEventEvent;
       'api::gallery-item.gallery-item': ApiGalleryItemGalleryItem;
       'api::home-page.home-page': ApiHomePageHomePage;
@@ -1554,7 +1455,6 @@ declare module '@strapi/strapi' {
       'api::site-copy.site-copy': ApiSiteCopySiteCopy;
       'api::site-setting.site-setting': ApiSiteSettingSiteSetting;
       'api::team-member.team-member': ApiTeamMemberTeamMember;
-      'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

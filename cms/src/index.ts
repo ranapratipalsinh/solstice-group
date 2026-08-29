@@ -1,9 +1,7 @@
 const READ_ONLY_APIS = [
   'company',
   'team-member',
-  'blog-post',
   'gallery-item',
-  'testimonial',
   'certification',
   'partner',
   'industry',
@@ -11,7 +9,7 @@ const READ_ONLY_APIS = [
   'event',
 ];
 
-const SINGLE_TYPE_APIS = ['home-page', 'about-page', 'csr-page', 'site-setting', 'site-copy'];
+const SINGLE_TYPE_APIS = ['home-page', 'about-page', 'site-setting', 'site-copy'];
 
 const SEED_COMPANIES = [
   {
