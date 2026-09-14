@@ -10,6 +10,8 @@ export type HomePage = {
     stats: Stat[];
     heroSlideUrls: string[];
     heroVideoUrl: string | null;
+    heroSlideMobileUrls: string[];
+    heroVideoMobileUrl: string | null;
     whoWeAreHeading: string;
     whoWeAreBody: string;
     impactCardHeading: string;
@@ -22,13 +24,15 @@ type RawHomePage = {
     stats: Stat[];
     heroSlides: StrapiMedia[];
     heroVideo: StrapiMedia | null;
+    heroSlidesMobile: StrapiMedia[];
+    heroVideoMobile: StrapiMedia | null;
     whoWeAreHeading: string | null;
     whoWeAreBody: string | null;
     impactCardHeading: string | null;
 };
 
 export async function getHomePage(): Promise<HomePage | null> {
-    const raw = await strapiFindOne<RawHomePage>('/home-page?populate=heroSlides,heroVideo');
+    const raw = await strapiFindOne<RawHomePage>('/home-page?populate=heroSlides,heroVideo,heroSlidesMobile,heroVideoMobile');
     if (!raw) return null;
     return {
         heroHeading: raw.heroHeading,
@@ -37,6 +41,8 @@ export async function getHomePage(): Promise<HomePage | null> {
         stats: raw.stats ?? [],
         heroSlideUrls: (raw.heroSlides || []).map((slide) => strapiMediaUrl(slide.url)).filter((url): url is string => Boolean(url)),
         heroVideoUrl: strapiMediaUrl(raw.heroVideo?.url),
+        heroSlideMobileUrls: (raw.heroSlidesMobile || []).map((slide) => strapiMediaUrl(slide.url)).filter((url): url is string => Boolean(url)),
+        heroVideoMobileUrl: strapiMediaUrl(raw.heroVideoMobile?.url),
         whoWeAreHeading: raw.whoWeAreHeading ?? '',
         whoWeAreBody: raw.whoWeAreBody ?? '',
         impactCardHeading: raw.impactCardHeading ?? '',

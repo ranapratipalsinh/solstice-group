@@ -75,7 +75,12 @@ export default async function HomePage() {
         <div>
             {/* Hero */}
             <section className="relative flex min-h-[600px] items-center justify-center overflow-hidden md:min-h-screen">
-                <HeroSlider images={homePage?.heroSlideUrls ?? []} videoUrl={homePage?.heroVideoUrl} />
+                <HeroSlider
+                    images={homePage?.heroSlideUrls ?? []}
+                    videoUrl={homePage?.heroVideoUrl}
+                    mobileImages={homePage?.heroSlideMobileUrls ?? []}
+                    mobileVideoUrl={homePage?.heroVideoMobileUrl}
+                />
                 <div className="absolute inset-0 bg-gradient-to-r from-solstice-950/85 via-solstice-950/55 to-solstice-950/20" />
                 <div className="container relative z-10">
                     <div className="mx-auto w-full max-w-3xl p-8 text-center sm:p-12 md:ml-0 md:w-auto md:max-w-2xl md:px-6 md:py-16 md:text-left">
