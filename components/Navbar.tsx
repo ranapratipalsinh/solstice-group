@@ -43,7 +43,7 @@ export function Navbar({ companies }: { companies: { href: string; label: string
     }, [isMobileOpen]);
 
     return (
-        <header className="sticky top-0 z-50 border-b border-slate-200 bg-white dark:border-slate-800 dark:bg-solstice-950">
+        <header className="sticky top-0 z-50 border-b border-slate-200 bg-white dark:border-slate-800 dark:bg-solstice-900">
             <div className="container flex items-center justify-between py-5">
                 <Link href="/" className="flex items-center overflow-hidden rounded-xl" onClick={closeAll}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -99,7 +99,7 @@ export function Navbar({ companies }: { companies: { href: string; label: string
             </div>
 
             {isMobileOpen && (
-                <nav className="md:hidden border-t border-slate-200 bg-white px-4 py-4 dark:border-slate-800 dark:bg-solstice-950">
+                <nav className="md:hidden border-t border-slate-200 bg-white px-4 py-4 dark:border-slate-800 dark:bg-solstice-900">
                     <div className="flex flex-col gap-1 text-sm font-semibold text-slate-700 dark:text-slate-300">
                         {primaryNavItems.map((item) => (
                             <Link

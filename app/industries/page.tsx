@@ -23,7 +23,7 @@ export default async function IndustriesPage() {
                 description="Solstice Group operates across distinct business verticals, each led by a dedicated subsidiary company."
             />
 
-            <section className="bg-white py-16 dark:bg-solstice-950 sm:py-20">
+            <section className="bg-white py-16 dark:bg-solstice-900 sm:py-20">
                 <div className="container grid gap-6 md:grid-cols-2">
                     {industries.map((industry, index) => {
                         const company = companies.find((item) => item.slug === industry.companySlug);

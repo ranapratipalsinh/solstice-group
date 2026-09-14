@@ -32,7 +32,7 @@ export default async function CompaniesPage() {
                 </ScrollReveal>
             </section>
 
-            <section className="bg-white py-16 dark:bg-solstice-950 sm:py-20">
+            <section className="bg-white py-16 dark:bg-solstice-900 sm:py-20">
                 <div className="container">
                     <CompanyLinearCards companies={companies} />
                 </div>

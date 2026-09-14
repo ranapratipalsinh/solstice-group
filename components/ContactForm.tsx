@@ -53,7 +53,7 @@ export function ContactForm({ enquiryTypes }: { enquiryTypes: EnquiryType[] }) {
                         name="name"
                         type="text"
                         required
-                        className="w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-solstice-500 dark:border-slate-700 dark:bg-solstice-950 dark:text-white dark:placeholder-slate-500"
+                        className="w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-solstice-500 dark:border-slate-700 dark:bg-solstice-900 dark:text-white dark:placeholder-slate-500"
                         placeholder="Your name"
                     />
                 </div>
@@ -63,7 +63,7 @@ export function ContactForm({ enquiryTypes }: { enquiryTypes: EnquiryType[] }) {
                         id="company"
                         name="company"
                         type="text"
-                        className="w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-solstice-500 dark:border-slate-700 dark:bg-solstice-950 dark:text-white dark:placeholder-slate-500"
+                        className="w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-solstice-500 dark:border-slate-700 dark:bg-solstice-900 dark:text-white dark:placeholder-slate-500"
                         placeholder="Your company (optional)"
                     />
                 </div>
@@ -76,7 +76,7 @@ export function ContactForm({ enquiryTypes }: { enquiryTypes: EnquiryType[] }) {
                         name="email"
                         type="email"
                         required
-                        className="w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-solstice-500 dark:border-slate-700 dark:bg-solstice-950 dark:text-white dark:placeholder-slate-500"
+                        className="w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-solstice-500 dark:border-slate-700 dark:bg-solstice-900 dark:text-white dark:placeholder-slate-500"
                         placeholder="Your email"
                     />
                 </div>
@@ -86,7 +86,7 @@ export function ContactForm({ enquiryTypes }: { enquiryTypes: EnquiryType[] }) {
                         id="phone"
                         name="phone"
                         type="tel"
-                        className="w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-solstice-500 dark:border-slate-700 dark:bg-solstice-950 dark:text-white dark:placeholder-slate-500"
+                        className="w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-solstice-500 dark:border-slate-700 dark:bg-solstice-900 dark:text-white dark:placeholder-slate-500"
                         placeholder="Your phone (optional)"
                     />
                 </div>
@@ -97,7 +97,7 @@ export function ContactForm({ enquiryTypes }: { enquiryTypes: EnquiryType[] }) {
                     id="enquiryType"
                     name="enquiryType"
                     defaultValue={enquiryTypes.find((type) => type.value === 'general')?.value ?? enquiryTypes[0]?.value}
-                    className="w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-solstice-500 dark:border-slate-700 dark:bg-solstice-950 dark:text-white"
+                    className="w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-solstice-500 dark:border-slate-700 dark:bg-solstice-900 dark:text-white"
                 >
                     {enquiryTypes.map((type) => (
                         <option key={type.value} value={type.value}>
@@ -113,7 +113,7 @@ export function ContactForm({ enquiryTypes }: { enquiryTypes: EnquiryType[] }) {
                     name="message"
                     required
                     rows={5}
-                    className="w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-solstice-500 dark:border-slate-700 dark:bg-solstice-950 dark:text-white dark:placeholder-slate-500"
+                    className="w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-solstice-500 dark:border-slate-700 dark:bg-solstice-900 dark:text-white dark:placeholder-slate-500"
                     placeholder="How can we help?"
                 />
             </div>

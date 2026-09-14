@@ -60,7 +60,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
             </head>
             <body>
-                <div className="flex min-h-screen flex-col bg-white text-slate-900 dark:bg-solstice-950 dark:text-slate-100">
+                <div className="flex min-h-screen flex-col bg-white text-slate-900 dark:bg-solstice-900 dark:text-slate-100">
                     <Navbar companies={companyNavItems} />
                     <main className="flex-1">{children}</main>
                     <Footer />

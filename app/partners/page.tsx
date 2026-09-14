@@ -21,7 +21,7 @@ export default async function PartnersPage() {
                 description="Click through a card to cycle, or select the centered one to visit their website."
             />
 
-            <section className="bg-white py-16 dark:bg-solstice-950 sm:py-20">
+            <section className="bg-white py-16 dark:bg-solstice-900 sm:py-20">
                 {partners.length === 0 ? (
                     <div className="container">
                         <p className="text-center text-slate-600 dark:text-slate-400">Partner and client logos will appear here once added in the CMS.</p>

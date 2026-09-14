@@ -13,7 +13,7 @@ export default async function PrivacyPolicyPage() {
     return (
         <div>
             <PageHeader eyebrow="Legal" title="Privacy Policy" />
-            <section className="bg-white py-16 dark:bg-solstice-950 sm:py-20">
+            <section className="bg-white py-16 dark:bg-solstice-900 sm:py-20">
                 <div className="container max-w-3xl space-y-8 text-slate-600 dark:text-slate-400">
                     <p className="text-sm text-slate-500 dark:text-slate-500">Last updated: 2026</p>
 

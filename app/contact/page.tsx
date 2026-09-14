@@ -21,7 +21,7 @@ export default async function ContactPage() {
                 description="Reach out for business enquiries, partnership discussions, or general information about our group and subsidiary companies."
             />
 
-            <section className="bg-white py-16 dark:bg-solstice-950 sm:py-20">
+            <section className="bg-white py-16 dark:bg-solstice-900 sm:py-20">
                 <div className="container grid gap-10 lg:grid-cols-[0.9fr_0.8fr]">
                     <ScrollReveal>
                         <div className="space-y-6">

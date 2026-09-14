@@ -13,7 +13,7 @@ export default function AdminPage() {
         <div>
             <PageHeader eyebrow="Admin" title="Manage this site in Strapi" />
 
-            <section className="bg-white py-16 dark:bg-solstice-950 sm:py-20">
+            <section className="bg-white py-16 dark:bg-solstice-900 sm:py-20">
                 <div className="container">
                     <div className="rounded-3xl bg-solstice-50 p-8 shadow-sm dark:bg-solstice-900 sm:p-10">
                         <p className="text-lg leading-8 text-slate-600 dark:text-slate-400">

@@ -50,7 +50,7 @@ export default async function CompanyDetailPage({ params }: Props) {
             <PageHeader eyebrow={company.name} title={company.tagline} description={company.description} />
 
             {/* About the Company */}
-            <section className="bg-white py-16 dark:bg-solstice-950 sm:py-20">
+            <section className="bg-white py-16 dark:bg-solstice-900 sm:py-20">
                 <div className="container grid gap-8 lg:grid-cols-[1fr_0.7fr]">
                     <div>
                         <h2 className="font-display text-2xl font-semibold text-slate-950 dark:text-white">About {company.name}</h2>
@@ -101,7 +101,7 @@ export default async function CompanyDetailPage({ params }: Props) {
             )}
 
             {/* Industries / Markets Served */}
-            <section className="bg-white py-16 dark:bg-solstice-950 sm:py-20">
+            <section className="bg-white py-16 dark:bg-solstice-900 sm:py-20">
                 <div className="container grid gap-8 md:grid-cols-2">
                     {industry && (
                         <div className="rounded-3xl border border-slate-200 bg-solstice-50 p-7 dark:border-slate-700/60 dark:bg-solstice-900">
@@ -159,7 +159,7 @@ export default async function CompanyDetailPage({ params }: Props) {
 
             {/* Certifications */}
             {certifications.length > 0 && (
-                <section className="bg-white py-16 dark:bg-solstice-950 sm:py-20">
+                <section className="bg-white py-16 dark:bg-solstice-900 sm:py-20">
                     <div className="container">
                         <h2 className="font-display text-2xl font-semibold text-slate-950 dark:text-white">Certifications</h2>
                         <div className="mt-8 flex flex-wrap gap-6">

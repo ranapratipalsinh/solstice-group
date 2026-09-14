@@ -32,7 +32,7 @@ export async function getTeamMembers(): Promise<TeamMember[]> {
     return items.map(mapTeamMember);
 }
 
-export async function getFounder(): Promise<TeamMember | null> {
+export async function getFounders(): Promise<TeamMember[]> {
     const members = await getTeamMembers();
-    return members.find((member) => member.category === 'founder') ?? null;
+    return members.filter((member) => member.category === 'founder');
 }

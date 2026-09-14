@@ -11,11 +11,15 @@ export function FounderSpotlight({
     role,
     photoUrl,
     description,
+    reverse = false,
+    tinted = false,
 }: {
     name: string;
     role: string;
     photoUrl: string | null;
     description: string;
+    reverse?: boolean;
+    tinted?: boolean;
 }) {
     const sectionRef = useRef<HTMLDivElement>(null);
     const textRef = useRef<HTMLDivElement>(null);
@@ -79,21 +83,32 @@ export function FounderSpotlight({
         .join('');
 
     return (
-        <section ref={sectionRef} className="relative overflow-hidden bg-white py-24 dark:bg-solstice-950 sm:py-32">
+        <section
+            ref={sectionRef}
+            className={`relative overflow-hidden py-24 sm:py-32 ${
+                tinted ? 'bg-solstice-50 dark:bg-solstice-950' : 'bg-white dark:bg-solstice-900'
+            }`}
+        >
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(15,156,99,0.06),transparent_55%)]" />
 
             <div className="container relative z-10">
                 <div className="grid gap-14 lg:grid-cols-[0.9fr_1fr] lg:items-center">
-                    <div ref={textRef} className="will-change-transform" style={{ opacity: 0, transform: 'translateY(32px)' }}>
-                        <p className="text-xs font-semibold uppercase tracking-[0.35em] text-solstice-700 dark:text-solstice-400">Leadership</p>
+                    <div
+                        ref={textRef}
+                        className={`will-change-transform ${reverse ? 'lg:order-2' : 'lg:order-1'}`}
+                        style={{ opacity: 0, transform: 'translateY(32px)' }}
+                    >
+                        <p className="text-xs font-semibold uppercase tracking-[0.35em] text-solstice-700 dark:text-solstice-400">{role}</p>
                         <div className="mt-5 h-px w-16 bg-solstice-500/60" />
-                        <h2 className="mt-6 font-display text-4xl font-semibold text-slate-950 dark:text-white sm:text-5xl">Our Founder</h2>
+                        <h2 className="mt-6 font-display text-4xl font-semibold text-slate-950 dark:text-white sm:text-5xl">{name}</h2>
                         <p className="mt-6 max-w-lg text-base leading-8 text-slate-600 dark:text-slate-400 sm:text-lg">{description}</p>
-                        <p className="mt-8 text-lg font-semibold text-slate-950 dark:text-white">{name}</p>
-                        <p className="mt-1 text-xs font-semibold uppercase tracking-[0.25em] text-solstice-700 dark:text-solstice-400">{role}</p>
                     </div>
 
-                    <div ref={imageRef} className="will-change-transform" style={{ opacity: 0, transform: 'translateY(56px) scale(0.94)' }}>
+                    <div
+                        ref={imageRef}
+                        className={`will-change-transform ${reverse ? 'lg:order-1' : 'lg:order-2'}`}
+                        style={{ opacity: 0, transform: 'translateY(56px) scale(0.94)' }}
+                    >
                         <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] shadow-[0_30px_80px_-20px_rgba(15,156,99,0.25)] ring-1 ring-solstice-200 dark:ring-solstice-800/50">
                             {photoUrl ? (
                                 // eslint-disable-next-line @next/next/no-img-element

@@ -22,7 +22,7 @@ export default async function ProjectsPage() {
                 description="Events, launches, and initiatives delivered by our subsidiary companies."
             />
 
-            <section className="bg-white py-16 dark:bg-solstice-950 sm:py-20">
+            <section className="bg-white py-16 dark:bg-solstice-900 sm:py-20">
                 <div className="container">
                     {events.length === 0 ? (
                         <ScrollReveal>

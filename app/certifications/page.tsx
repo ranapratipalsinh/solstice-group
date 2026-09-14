@@ -18,7 +18,7 @@ export default async function CertificationsPage() {
         <div>
             <PageHeader eyebrow="Certifications & Awards" title="Recognized for quality and trust" />
 
-            <section className="bg-white py-16 dark:bg-solstice-950 sm:py-20">
+            <section className="bg-white py-16 dark:bg-solstice-900 sm:py-20">
                 {certifications.length === 0 ? (
                     <div className="container">
                         <p className="text-center text-slate-600 dark:text-slate-400">Certifications and awards will appear here once added in the CMS.</p>
@@ -34,7 +34,7 @@ export default async function CertificationsPage() {
                                     <ImageWithFallback
                                         src={item.imageUrl}
                                         alt={item.title}
-                                        className="h-14 w-auto object-contain opacity-80 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
+                                        className="h-14 w-auto object-contain transition-all duration-300"
                                         fallback={
                                             <span className="text-lg font-bold text-slate-400">{item.title}</span>
                                         }

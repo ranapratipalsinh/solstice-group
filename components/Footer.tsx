@@ -17,7 +17,7 @@ export async function Footer() {
     const [settings, companies] = await Promise.all([getSiteSettings(), getCompanies()]);
 
     return (
-        <footer className="border-t border-solstice-700 bg-solstice-800 text-solstice-100 dark:border-solstice-900 dark:bg-solstice-950">
+        <footer className="border-t border-solstice-700 bg-solstice-800 text-solstice-100 dark:border-solstice-800 dark:bg-solstice-900">
             <div className="container py-16 sm:py-20">
                 <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
                     <div>

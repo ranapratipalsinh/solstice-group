@@ -85,7 +85,7 @@ export default async function AboutPage() {
             />
 
             {/* Who We Are */}
-            <section className="bg-white py-16 dark:bg-solstice-950 sm:py-20">
+            <section className="bg-white py-16 dark:bg-solstice-900 sm:py-20">
                 <div className="container max-w-3xl text-center">
                     <ScrollReveal>
                         <p className="text-sm font-bold uppercase tracking-wider text-solstice-600 dark:text-solstice-400">Who We Are</p>
@@ -116,7 +116,7 @@ export default async function AboutPage() {
             </section>
 
             {/* Vision & Mission */}
-            <section id="vision-mission" className="scroll-mt-24 bg-white py-16 dark:bg-solstice-950 sm:py-20">
+            <section id="vision-mission" className="scroll-mt-24 bg-white py-16 dark:bg-solstice-900 sm:py-20">
                 <div className="container">
                     <ScrollReveal className="mb-10 text-center">
                         <p className="text-sm font-bold uppercase tracking-wider text-solstice-600 dark:text-solstice-400">Vision &amp; Mission</p>
@@ -165,7 +165,7 @@ export default async function AboutPage() {
             </section>
 
             {/* Founder & Leadership teasers */}
-            <section className="bg-white py-16 dark:bg-solstice-950 sm:py-20">
+            <section className="bg-white py-16 dark:bg-solstice-900 sm:py-20">
                 <div className="container grid gap-6 md:grid-cols-2">
                     <ScrollReveal delayMs={200}>
                         <div className="h-full rounded-3xl border border-slate-200 bg-solstice-50 p-7 shadow-sm dark:border-slate-700/60 dark:bg-solstice-900">

@@ -111,7 +111,7 @@ export default async function HomePage() {
             </section>
 
             {/* Who We Are */}
-            <section className="bg-white py-24 dark:bg-solstice-950">
+            <section className="bg-white py-24 dark:bg-solstice-900">
                 <div className="container">
                     <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
                         <ScrollReveal>
@@ -149,7 +149,7 @@ export default async function HomePage() {
             </section>
 
             {/* Our Business Ecosystem */}
-            <section className="bg-white py-24 dark:bg-solstice-950">
+            <section className="bg-white py-24 dark:bg-solstice-900">
                 <div className="container">
                     <ScrollReveal className="text-center">
                         <p className="text-sm font-bold uppercase tracking-wider text-solstice-600 dark:text-solstice-400">Group Structure</p>
@@ -201,7 +201,7 @@ export default async function HomePage() {
             </section>
 
             {/* Impact Stats Bar */}
-            <section className="border-y border-slate-100 bg-white py-12 dark:border-slate-800 dark:bg-solstice-950">
+            <section className="border-y border-slate-100 bg-white py-12 dark:border-slate-800 dark:bg-solstice-900">
                 <div className="container max-w-5xl">
                     <div className="grid grid-cols-1 gap-4 divide-y divide-slate-100 text-center sm:grid-cols-3 sm:divide-x sm:divide-y-0 dark:divide-slate-800">
                         {stats.map((stat, index) => (
@@ -214,7 +214,7 @@ export default async function HomePage() {
             </section>
 
             {/* Sustainability & Impact */}
-            <section className="relative overflow-hidden bg-white py-24 dark:bg-solstice-950">
+            <section className="relative overflow-hidden bg-white py-24 dark:bg-solstice-900">
                 <div className="container">
                     <div className="flex flex-col items-center gap-16 lg:flex-row">
                         <ScrollReveal className="w-full lg:w-1/2">
@@ -304,7 +304,7 @@ export default async function HomePage() {
             </section>
 
             {/* Partner Brands */}
-            <section className="overflow-hidden border-t border-slate-100 bg-white py-12 dark:border-slate-800 dark:bg-solstice-950">
+            <section className="overflow-hidden border-t border-slate-100 bg-white py-12 dark:border-slate-800 dark:bg-solstice-900">
                 <div className="container mb-6">
                     <h3 className="font-display text-2xl font-bold text-solstice-800 dark:text-white">Partners &amp; Clients</h3>
                 </div>
@@ -317,7 +317,7 @@ export default async function HomePage() {
                                 <ImageWithFallback
                                     src={partner.logoUrl}
                                     alt={partner.name}
-                                    className="h-10 w-auto object-contain opacity-80 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
+                                    className="h-10 w-auto object-contain transition-all duration-300"
                                     fallback={
                                         <span className="text-lg font-bold text-slate-400">{partner.name}</span>
                                     }
@@ -329,7 +329,7 @@ export default async function HomePage() {
             </section>
 
             {/* Certifications & Awards */}
-            <section className="overflow-hidden border-t border-slate-100 bg-white py-12 dark:border-slate-800 dark:bg-solstice-950">
+            <section className="overflow-hidden border-t border-slate-100 bg-white py-12 dark:border-slate-800 dark:bg-solstice-900">
                 <div className="container mb-6">
                     <h3 className="font-display text-2xl font-bold text-solstice-800 dark:text-white">Certifications &amp; Awards</h3>
                 </div>
@@ -342,7 +342,7 @@ export default async function HomePage() {
                                 <ImageWithFallback
                                     src={item.imageUrl}
                                     alt={item.title}
-                                    className="h-10 w-auto object-contain opacity-80 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
+                                    className="h-10 w-auto object-contain transition-all duration-300"
                                     fallback={
                                         <span className="text-lg font-bold text-slate-400">{item.title}</span>
                                     }

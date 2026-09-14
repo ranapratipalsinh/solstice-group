@@ -22,7 +22,7 @@ export default async function LeadershipPage() {
                 description="Directors and executives who set the strategy and governance for the group and its subsidiaries."
             />
 
-            <section className="bg-white py-16 dark:bg-solstice-950 sm:py-20">
+            <section className="bg-white py-16 dark:bg-solstice-900 sm:py-20">
                 <div className="container">
                     {members.length === 0 ? (
                         <p className="text-center text-slate-600 dark:text-slate-400">Leadership profiles will appear here once added in the CMS.</p>
