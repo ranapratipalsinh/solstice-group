@@ -15,7 +15,7 @@ export default async function PrivacyPolicyPage() {
             <PageHeader eyebrow="Legal" title="Privacy Policy" />
             <section className="bg-white py-16 dark:bg-solstice-900 sm:py-20">
                 <div className="container max-w-3xl space-y-8 text-slate-600 dark:text-slate-400">
-                    <p className="text-sm text-slate-500 dark:text-slate-500">Last updated: 2026</p>
+                    <p className="text-sm text-slate-500 dark:text-slate-400">Last updated: 2026</p>
 
                     <div className="space-y-3">
                         <h2 className="font-display text-xl font-semibold text-slate-950 dark:text-white">1. Introduction</h2>

@@ -60,18 +60,18 @@ export default async function CompanyDetailPage({ params }: Props) {
                             {industry ? ` in ${industry.toLowerCase()}` : ''} to the group&apos;s wider portfolio of businesses.
                         </p>
                     </div>
-                    <div className="rounded-3xl bg-solstice-50 p-8 shadow-sm dark:bg-solstice-900">
-                        <p className="text-sm uppercase tracking-[0.2em] text-solstice-700 dark:text-solstice-400">Contact</p>
-                        {industry && <p className="mt-4 text-slate-700 dark:text-slate-400">Industry: {industry}</p>}
-                        {company.headquarters && <p className="mt-2 text-slate-700 dark:text-slate-400">Headquarters: {company.headquarters}</p>}
-                        {company.contactEmail && <p className="mt-2 text-slate-700 dark:text-slate-400">Email: {company.contactEmail}</p>}
-                        {company.contactPhone && <p className="mt-2 text-slate-700 dark:text-slate-400">Phone: {company.contactPhone}</p>}
+                    <div className="rounded-3xl bg-solstice-50 p-8 shadow-sm">
+                        <p className="text-sm uppercase tracking-[0.2em] text-solstice-700">Contact</p>
+                        {industry && <p className="mt-4 text-slate-700">Industry: {industry}</p>}
+                        {company.headquarters && <p className="mt-2 text-slate-700">Headquarters: {company.headquarters}</p>}
+                        {company.contactEmail && <p className="mt-2 text-slate-700">Email: {company.contactEmail}</p>}
+                        {company.contactPhone && <p className="mt-2 text-slate-700">Phone: {company.contactPhone}</p>}
                         {company.website && (
                             <a
                                 href={company.website}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="mt-5 inline-block text-sm font-semibold text-solstice-700 hover:text-solstice-900 dark:text-solstice-400 dark:hover:text-solstice-300"
+                                className="mt-5 inline-block text-sm font-semibold text-solstice-700 hover:text-solstice-800"
                             >
                                 Visit website
                             </a>
@@ -82,10 +82,10 @@ export default async function CompanyDetailPage({ params }: Props) {
 
             {/* What We Do / Capabilities */}
             {company.services.length > 0 && (
-                <section className="bg-solstice-50 py-16 dark:bg-solstice-900 sm:py-20">
+                <section className="bg-solstice-50 py-16 sm:py-20">
                     <div className="container">
-                        <h2 className="font-display text-2xl font-semibold text-slate-950 dark:text-white">What We Do</h2>
-                        <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">Products, services, and capabilities</p>
+                        <h2 className="font-display text-2xl font-semibold text-slate-950">What We Do</h2>
+                        <p className="mt-2 text-sm text-slate-500">Products, services, and capabilities</p>
                         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
                             {company.services.map((service) => (
                                 <div
@@ -104,22 +104,22 @@ export default async function CompanyDetailPage({ params }: Props) {
             <section className="bg-white py-16 dark:bg-solstice-900 sm:py-20">
                 <div className="container grid gap-8 md:grid-cols-2">
                     {industry && (
-                        <div className="rounded-3xl border border-slate-200 bg-solstice-50 p-7 dark:border-slate-700/60 dark:bg-solstice-900">
-                            <h3 className="text-lg font-semibold text-slate-950 dark:text-white">Industry</h3>
-                            <p className="mt-3 leading-7 text-slate-600 dark:text-slate-400">{industry}</p>
-                            <Link href="/industries" className="mt-4 inline-block text-sm font-semibold text-solstice-700 hover:text-solstice-900 dark:text-solstice-400 dark:hover:text-solstice-300">
+                        <div className="rounded-3xl border border-slate-200 bg-solstice-50 p-7 dark:border-slate-700/60">
+                            <h3 className="text-lg font-semibold text-slate-950">Industry</h3>
+                            <p className="mt-3 leading-7 text-slate-600">{industry}</p>
+                            <Link href="/industries" className="mt-4 inline-block text-sm font-semibold text-solstice-700 hover:text-solstice-800">
                                 See all industries →
                             </Link>
                         </div>
                     )}
                     {regions.length > 0 && (
-                        <div className="rounded-3xl border border-slate-200 bg-solstice-50 p-7 dark:border-slate-700/60 dark:bg-solstice-900">
-                            <h3 className="text-lg font-semibold text-slate-950 dark:text-white">Markets Served</h3>
-                            <p className="mt-3 leading-7 text-slate-600 dark:text-slate-400">
+                        <div className="rounded-3xl border border-slate-200 bg-solstice-50 p-7 dark:border-slate-700/60">
+                            <h3 className="text-lg font-semibold text-slate-950">Markets Served</h3>
+                            <p className="mt-3 leading-7 text-slate-600">
                                 As part of Solstice Group, {company.name} benefits from the group&apos;s presence across {regions.length} markets:{' '}
                                 {regions.map((r) => r.name).join(', ')}.
                             </p>
-                            <Link href="/global-presence" className="mt-4 inline-block text-sm font-semibold text-solstice-700 hover:text-solstice-900 dark:text-solstice-400 dark:hover:text-solstice-300">
+                            <Link href="/global-presence" className="mt-4 inline-block text-sm font-semibold text-solstice-700 hover:text-solstice-800">
                                 View global presence →
                             </Link>
                         </div>
@@ -129,9 +129,9 @@ export default async function CompanyDetailPage({ params }: Props) {
 
             {/* Projects / Portfolio */}
             {projects.length > 0 && (
-                <section className="bg-solstice-50 py-16 dark:bg-solstice-900 sm:py-20">
+                <section className="bg-solstice-50 py-16 sm:py-20">
                     <div className="container">
-                        <h2 className="font-display text-2xl font-semibold text-slate-950 dark:text-white">Projects &amp; Events</h2>
+                        <h2 className="font-display text-2xl font-semibold text-slate-950">Projects &amp; Events</h2>
                         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                             {projects.map((project) => (
                                 <article
@@ -169,7 +169,7 @@ export default async function CompanyDetailPage({ params }: Props) {
                                         src={cert.imageUrl}
                                         alt={cert.title}
                                         className="h-14 w-auto object-contain"
-                                        fallback={<span className="text-lg font-bold text-slate-400 dark:text-slate-600">{cert.title}</span>}
+                                        fallback={<span className="text-lg font-bold text-slate-500">{cert.title}</span>}
                                     />
                                     <p className="text-xs font-semibold uppercase tracking-[0.15em] text-slate-500 dark:text-slate-400">{cert.title}</p>
                                 </div>
@@ -188,7 +188,7 @@ export default async function CompanyDetailPage({ params }: Props) {
                     <p className="mx-auto mt-3 max-w-xl text-sm text-solstice-100">{siteCopy.companyCtaDescription}</p>
                     <Link
                         href="/contact"
-                        className="mt-6 inline-flex items-center justify-center rounded-full bg-solstice-500 px-8 py-3 text-sm font-semibold text-solstice-950 transition-colors hover:bg-white"
+                        className="mt-6 inline-flex items-center justify-center rounded-full bg-white px-8 py-3 text-sm font-semibold text-solstice-700 transition-colors hover:bg-solstice-50 hover:text-solstice-800"
                     >
                         Contact Solstice Group
                     </Link>

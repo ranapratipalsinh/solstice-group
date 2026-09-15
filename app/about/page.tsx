@@ -95,19 +95,19 @@ export default async function AboutPage() {
             </section>
 
             {/* Our Story */}
-            <section id="our-story" className="scroll-mt-24 bg-solstice-50 py-16 dark:bg-solstice-900 sm:py-20">
+            <section id="our-story" className="scroll-mt-24 bg-solstice-50 py-16 sm:py-20">
                 <div className="container max-w-3xl">
                     <ScrollReveal className="text-center">
-                        <p className="text-sm font-bold uppercase tracking-wider text-solstice-600 dark:text-solstice-400">Our Story</p>
-                        <h2 className="mt-3 font-display text-3xl font-bold text-solstice-800 dark:text-white">How the group came together</h2>
+                        <p className="text-sm font-bold uppercase tracking-wider text-solstice-600">Our Story</p>
+                        <h2 className="mt-3 font-display text-3xl font-bold text-slate-950">How the group came together</h2>
                     </ScrollReveal>
                     <div className="mt-14 space-y-10 border-l-2 border-solstice-200 pl-8 dark:border-solstice-700">
                         {timeline.map((stage) => (
                             <ScrollReveal key={stage.title}>
                                 <div className="relative">
-                                    <span className="absolute -left-[2.55rem] top-1 h-4 w-4 rounded-full border-4 border-solstice-50 bg-solstice-500 dark:border-solstice-900" />
-                                    <h3 className="font-display text-lg font-semibold text-slate-950 dark:text-white">{stage.title}</h3>
-                                    <p className="mt-2 leading-7 text-slate-600 dark:text-slate-400">{stage.description}</p>
+                                    <span className="absolute -left-[2.55rem] top-1 h-4 w-4 rounded-full border-4 border-solstice-50 bg-solstice-500" />
+                                    <h3 className="font-display text-lg font-semibold text-slate-950">{stage.title}</h3>
+                                    <p className="mt-2 leading-7 text-slate-600">{stage.description}</p>
                                 </div>
                             </ScrollReveal>
                         ))}
@@ -123,13 +123,13 @@ export default async function AboutPage() {
                     </ScrollReveal>
                     <div className="grid gap-8 lg:grid-cols-2">
                         <ScrollReveal delayMs={200}>
-                            <div className="h-full rounded-3xl bg-solstice-50 p-8 dark:bg-solstice-900">
-                                <h3 className="font-display text-xl font-semibold text-slate-950 dark:text-white">Our Mission</h3>
-                                <p className="mt-3 leading-7 text-slate-700 dark:text-slate-400">{mission}</p>
+                            <div className="h-full rounded-3xl bg-solstice-50 p-8">
+                                <h3 className="font-display text-xl font-semibold text-slate-950">Our Mission</h3>
+                                <p className="mt-3 leading-7 text-slate-700">{mission}</p>
                             </div>
                         </ScrollReveal>
                         <ScrollReveal delayMs={400}>
-                            <div className="h-full rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-solstice-900">
+                            <div className="h-full rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-solstice-800">
                                 <h3 className="font-display text-xl font-semibold text-slate-950 dark:text-white">Our Vision</h3>
                                 <p className="mt-3 leading-7 text-slate-700 dark:text-slate-400">{vision}</p>
                             </div>
@@ -139,11 +139,11 @@ export default async function AboutPage() {
             </section>
 
             {/* Our Values */}
-            <section className="bg-solstice-50 py-16 dark:bg-solstice-900 sm:py-20">
+            <section className="bg-solstice-50 py-16 sm:py-20">
                 <div className="container">
                     <ScrollReveal className="mb-10 text-center">
-                        <p className="text-sm font-bold uppercase tracking-wider text-solstice-600 dark:text-solstice-400">Our Values</p>
-                        <h2 className="mt-3 font-display text-3xl font-bold text-solstice-800 dark:text-white">What guides every company in the group</h2>
+                        <p className="text-sm font-bold uppercase tracking-wider text-solstice-600">Our Values</p>
+                        <h2 className="mt-3 font-display text-3xl font-bold text-slate-950">What guides every company in the group</h2>
                     </ScrollReveal>
                     <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                         {values.map((value, index) => {
@@ -168,19 +168,19 @@ export default async function AboutPage() {
             <section className="bg-white py-16 dark:bg-solstice-900 sm:py-20">
                 <div className="container grid gap-6 md:grid-cols-2">
                     <ScrollReveal delayMs={200}>
-                        <div className="h-full rounded-3xl border border-slate-200 bg-solstice-50 p-7 shadow-sm dark:border-slate-700/60 dark:bg-solstice-900">
-                            <h3 className="text-lg font-semibold text-slate-950 dark:text-white">Founder Message</h3>
-                            <p className="mt-3 leading-7 text-slate-600 dark:text-slate-400">{founderTeaser}</p>
-                            <Link href="/founder-message" className="mt-4 inline-block text-sm font-semibold text-solstice-700 hover:text-solstice-900 dark:text-solstice-400 dark:hover:text-solstice-300">
+                        <div className="h-full rounded-3xl border border-slate-200 bg-solstice-50 p-7 shadow-sm dark:border-slate-700/60">
+                            <h3 className="text-lg font-semibold text-slate-950">Founder Message</h3>
+                            <p className="mt-3 leading-7 text-slate-600">{founderTeaser}</p>
+                            <Link href="/founder-message" className="mt-4 inline-block text-sm font-semibold text-solstice-700 hover:text-solstice-800">
                                 Read the founder message →
                             </Link>
                         </div>
                     </ScrollReveal>
                     <ScrollReveal delayMs={400}>
-                        <div className="h-full rounded-3xl border border-slate-200 bg-solstice-50 p-7 shadow-sm dark:border-slate-700/60 dark:bg-solstice-900">
-                            <h3 className="text-lg font-semibold text-slate-950 dark:text-white">Leadership Team</h3>
-                            <p className="mt-3 leading-7 text-slate-600 dark:text-slate-400">{leadershipTeaser}</p>
-                            <Link href="/leadership" className="mt-4 inline-block text-sm font-semibold text-solstice-700 hover:text-solstice-900 dark:text-solstice-400 dark:hover:text-solstice-300">
+                        <div className="h-full rounded-3xl border border-slate-200 bg-solstice-50 p-7 shadow-sm dark:border-slate-700/60">
+                            <h3 className="text-lg font-semibold text-slate-950">Leadership Team</h3>
+                            <p className="mt-3 leading-7 text-slate-600">{leadershipTeaser}</p>
+                            <Link href="/leadership" className="mt-4 inline-block text-sm font-semibold text-solstice-700 hover:text-solstice-800">
                                 Meet the team →
                             </Link>
                         </div>

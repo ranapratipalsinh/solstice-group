@@ -36,14 +36,14 @@ export default async function CertificationsPage() {
                                         alt={item.title}
                                         className="h-14 w-auto object-contain transition-all duration-300"
                                         fallback={
-                                            <span className="text-lg font-bold text-slate-400">{item.title}</span>
+                                            <span className="text-lg font-bold text-slate-500">{item.title}</span>
                                         }
                                     />
                                 </div>
                                 <p className="text-xs font-semibold uppercase tracking-[0.15em] text-slate-500 dark:text-slate-400">
                                     {item.title}
                                     {(item.issuer || item.year) && (
-                                        <span className="mt-0.5 block font-normal tracking-normal text-slate-400 dark:text-slate-500">
+                                        <span className="mt-0.5 block font-normal tracking-normal text-slate-500 dark:text-slate-400">
                                             {[item.issuer, item.year].filter(Boolean).join(' · ')}
                                         </span>
                                     )}

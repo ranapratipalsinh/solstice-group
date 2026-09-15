@@ -5,53 +5,53 @@
 :root {
     color-scheme: light;
 
-    /* shadcn-style tokens, tied to the Solstice brand green so drop-in
+    /* shadcn-style tokens, tied to the Solstice brand green (#00864D) so drop-in
        shadcn components (bg-primary, bg-card, border-border, ...) render
        on-brand instead of needing per-component class overrides. */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 157 53% 15%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 157 53% 15%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 154 100% 22%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --popover-foreground: 157 53% 15%;
+    --primary: 155 100% 26%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 155 52% 94%;
+    --secondary-foreground: 157 53% 15%;
+    --muted: 158 22% 97%;
+    --muted-foreground: 155 7% 48%;
+    --accent: 155 52% 94%;
+    --accent-foreground: 157 53% 15%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 154 100% 22%;
+    --border: 155 21% 89%;
+    --input: 155 21% 89%;
+    --ring: 155 100% 26%;
     --radius: 0.5rem;
 }
 
 .dark {
     color-scheme: dark;
 
-    --background: 222 47% 6%;
-    --foreground: 210 40% 98%;
-    --card: 222 44% 9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222 44% 9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 154 65% 45%;
-    --primary-foreground: 222 47% 6%;
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 217 33% 17%;
-    --accent-foreground: 210 40% 98%;
+    --background: 155 100% 26%;
+    --foreground: 0 0% 100%;
+    --card: 155 100% 22%;
+    --card-foreground: 0 0% 100%;
+    --popover: 155 100% 22%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 155 100% 26%;
+    --secondary: 155 100% 22%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 155 100% 22%;
+    --muted-foreground: 156 32% 82%;
+    --accent: 155 100% 22%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
-    --border: 217 33% 20%;
-    --input: 217 33% 20%;
-    --ring: 154 65% 45%;
+    --border: 154 46% 52%;
+    --input: 154 46% 52%;
+    --ring: 0 0% 100%;
 }
 
 html {
@@ -61,19 +61,24 @@ html {
 body {
     margin: 0;
     font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
-    background: #f8fafc;
-    color: #0f172a;
+    background: #ffffff;
+    color: #123b2b;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .dark body {
-    background: #06482b;
-    color: #f1f5f9;
+    background: #00864d;
+    color: #ffffff;
 }
 
 ::selection {
-    background: #2f8f57;
+    background: #00864d;
     color: white;
+}
+
+.dark ::selection {
+    background: #ffffff;
+    color: #00864d;
 }
 
 button,
@@ -135,32 +140,32 @@ html.mobile-nav-open .floating-action {
 }
 
 .dark .glass {
-    background: rgba(15, 23, 21, 0.55);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 111, 64, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .glass-card {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(234, 251, 242, 0.8));
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(15, 156, 99, 0.2);
-    box-shadow: 0 8px 32px rgba(4, 90, 52, 0.05);
+    border: 1px solid rgba(0, 134, 77, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 111, 64, 0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .glass-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(15, 156, 99, 0.15);
-    border-color: rgba(15, 156, 99, 0.4);
+    box-shadow: 0 12px 40px rgba(0, 134, 77, 0.15);
+    border-color: rgba(0, 134, 77, 0.4);
 }
 
 .dark .glass-card {
-    background: linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(6, 78, 59, 0.35));
-    border: 1px solid rgba(93, 210, 156, 0.15);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, rgba(0, 111, 64, 0.85), rgba(0, 134, 77, 0.35));
+    border: 1px solid rgba(77, 189, 141, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 .dark .glass-card:hover {
-    box-shadow: 0 12px 40px rgba(93, 210, 156, 0.12);
-    border-color: rgba(93, 210, 156, 0.35);
+    box-shadow: 0 12px 40px rgba(77, 189, 141, 0.2);
+    border-color: rgba(77, 189, 141, 0.45);
 }

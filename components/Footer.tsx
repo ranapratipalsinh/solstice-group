@@ -17,12 +17,12 @@ export async function Footer() {
     const [settings, companies] = await Promise.all([getSiteSettings(), getCompanies()]);
 
     return (
-        <footer className="border-t border-solstice-700 bg-solstice-800 text-solstice-100 dark:border-solstice-800 dark:bg-solstice-900">
+        <footer className="border-t border-solstice-700 bg-solstice-800 text-solstice-100 dark:border-solstice-700 dark:bg-solstice-800">
             <div className="container py-16 sm:py-20">
                 <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
                     <div>
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src="/logos/solstice-group-logo.png" alt="Solstice Trading International LLP" className="h-12 w-auto rounded-lg" />
+                        <img src={settings.logoUrl || '/logos/solstice-group-logo.png'} alt="Solstice Trading International LLP" className="h-12 w-auto rounded-lg" />
                         <p className="mt-4 text-sm text-solstice-200">{settings.legalEntityName}</p>
                         {settings.socialLinks.length > 0 && (
                             <div className="mt-5 flex items-center gap-3">

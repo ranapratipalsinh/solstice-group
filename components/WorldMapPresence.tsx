@@ -23,10 +23,10 @@ export async function WorldMapPresence({ regions }: { regions: Region[] }) {
         (region): region is Region & { isoCode: string } => Boolean(region.isoCode)
     );
     const highlightRules = highlighted
-        .map((region) => `.landxx.${region.isoCode}{fill:${region.isHeadquarters ? '#2cb87c' : '#00703f'}}`)
+        .map((region) => `.landxx.${region.isoCode}{fill:${region.isHeadquarters ? '#D1F0E3' : '#4DBD8D'}}`)
         .join('');
 
-    const overrideStyle = `<style>#ocean{fill:none!important;stroke:none!important}.landxx,.antxx{fill:none;stroke:#e2e8f0;stroke-width:1.6;stroke-linejoin:round}${highlightRules}</style>`;
+    const overrideStyle = `<style>#ocean{fill:none!important;stroke:none!important}.landxx,.antxx{fill:none;stroke:#DDE9E4;stroke-width:1.6;stroke-linejoin:round}${highlightRules}</style>`;
     const svgMarkup = baseSvg.replace(/<\/svg>$/, `${overrideStyle}</svg>`);
 
     const markers = regions.filter(

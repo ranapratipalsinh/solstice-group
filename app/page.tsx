@@ -81,7 +81,7 @@ export default async function HomePage() {
                     mobileImages={homePage?.heroSlideMobileUrls ?? []}
                     mobileVideoUrl={homePage?.heroVideoMobileUrl}
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-solstice-950/85 via-solstice-950/55 to-solstice-950/20" />
+                <div className="absolute inset-0 bg-gradient-to-r from-solstice-800/85 via-solstice-800/55 to-solstice-800/20 dark:from-solstice-700/85 dark:via-solstice-700/55 dark:to-solstice-700/20" />
                 <div className="container relative z-10">
                     <div className="mx-auto w-full max-w-3xl p-8 text-center sm:p-12 md:ml-0 md:w-auto md:max-w-2xl md:px-6 md:py-16 md:text-left">
                         <h1 className="animate-fade-in-up font-display text-4xl font-bold leading-tight tracking-tight text-white drop-shadow-md sm:text-5xl md:text-6xl">
@@ -100,7 +100,7 @@ export default async function HomePage() {
                         >
                             <Link
                                 href="/companies"
-                                className="inline-flex items-center justify-center rounded-full border border-transparent bg-solstice-700 px-8 py-3 text-base font-medium text-white shadow-lg transition-colors hover:bg-solstice-500"
+                                className="inline-flex items-center justify-center rounded-full border border-transparent bg-solstice-700 px-8 py-3 text-base font-medium text-white shadow-lg transition-colors hover:bg-solstice-800"
                             >
                                 Explore Our Companies
                             </Link>
@@ -121,13 +121,13 @@ export default async function HomePage() {
                     <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
                         <ScrollReveal>
                             <p className="text-sm font-bold uppercase tracking-wider text-solstice-600 dark:text-solstice-400">Who We Are</p>
-                            <h2 className="mt-3 font-display text-3xl font-bold text-solstice-800 dark:text-white md:text-4xl">
+                            <h2 className="mt-3 font-display text-3xl font-bold text-slate-950 dark:text-white md:text-4xl">
                                 {whoWeAreHeading}
                             </h2>
                             <p className="mt-6 max-w-xl leading-8 text-slate-600 dark:text-slate-400">{whoWeAreBody}</p>
                             <Link
                                 href="/about"
-                                className="mt-8 inline-flex items-center rounded-full bg-solstice-700 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-solstice-500"
+                                className="mt-8 inline-flex items-center rounded-full bg-solstice-700 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-solstice-800"
                             >
                                 Learn more about the group →
                             </Link>
@@ -138,10 +138,10 @@ export default async function HomePage() {
                                     {groupSnapshot.map((item) => (
                                         <div
                                             key={item.label}
-                                            className="rounded-3xl border border-solstice-100 bg-solstice-50 p-6 text-center dark:border-slate-700/60 dark:bg-solstice-900"
+                                            className="rounded-3xl border border-solstice-100 bg-solstice-50 p-6 text-center shadow-sm dark:border-white/20 dark:shadow-lg dark:shadow-black/10"
                                         >
-                                            <p className="font-display text-4xl font-bold text-solstice-600 dark:text-solstice-400">{item.value}</p>
-                                            <p className="mt-2 text-xs font-semibold uppercase tracking-[0.15em] text-slate-600 dark:text-slate-400">
+                                            <p className="font-display text-4xl font-bold text-solstice-600">{item.value}</p>
+                                            <p className="mt-2 text-xs font-semibold uppercase tracking-[0.15em] text-slate-600">
                                                 {item.label}
                                             </p>
                                         </div>
@@ -154,11 +154,11 @@ export default async function HomePage() {
             </section>
 
             {/* Our Business Ecosystem */}
-            <section className="bg-white py-24 dark:bg-solstice-900">
+            <section className="bg-white py-24 dark:bg-solstice-50">
                 <div className="container">
                     <ScrollReveal className="text-center">
-                        <p className="text-sm font-bold uppercase tracking-wider text-solstice-600 dark:text-solstice-400">Group Structure</p>
-                        <h2 className="mt-3 font-display text-3xl font-bold text-solstice-800 dark:text-white md:text-4xl">Our Business Ecosystem</h2>
+                        <p className="text-sm font-bold uppercase tracking-wider text-solstice-600">Group Structure</p>
+                        <h2 className="mt-3 font-display text-3xl font-bold text-slate-950 md:text-4xl">Our Business Ecosystem</h2>
                     </ScrollReveal>
                     <div className="mt-14 flex flex-col items-center">
                         <ScrollReveal>
@@ -166,13 +166,13 @@ export default async function HomePage() {
                                 Solstice Group
                             </div>
                         </ScrollReveal>
-                        <ArrowDown className="my-4 h-6 w-6 text-solstice-400" strokeWidth={1.75} aria-hidden="true" />
+                        <ArrowDown className="my-4 h-6 w-6 text-solstice-700" strokeWidth={1.75} aria-hidden="true" />
                         <div className="grid w-full max-w-3xl grid-cols-2 gap-4 sm:grid-cols-4">
                             {companies.map((company, index) => (
                                 <ScrollReveal key={company.slug} delayMs={(index + 1) * 120}>
                                     <Link
                                         href={`/companies/${company.slug}`}
-                                        className="flex h-full items-center justify-center rounded-2xl border border-solstice-200 bg-solstice-50 px-4 py-5 text-center text-sm font-semibold text-solstice-800 shadow-sm transition-all hover:-translate-y-1 hover:border-solstice-400 hover:shadow-md dark:border-slate-700/60 dark:bg-solstice-900 dark:text-white"
+                                        className="flex h-full items-center justify-center rounded-2xl border border-solstice-200 bg-solstice-50 px-4 py-5 text-center text-sm font-semibold text-slate-950 shadow-sm transition-all hover:-translate-y-1 hover:border-solstice-400 hover:shadow-md dark:bg-white dark:shadow-md"
                                     >
                                         {company.name}
                                     </Link>
@@ -206,9 +206,9 @@ export default async function HomePage() {
             </section>
 
             {/* Impact Stats Bar */}
-            <section className="border-y border-slate-100 bg-white py-12 dark:border-slate-800 dark:bg-solstice-900">
+            <section className="border-y border-slate-100 bg-white py-12 dark:border-solstice-200 dark:bg-solstice-50">
                 <div className="container max-w-5xl">
-                    <div className="grid grid-cols-1 gap-4 divide-y divide-slate-100 text-center sm:grid-cols-3 sm:divide-x sm:divide-y-0 dark:divide-slate-800">
+                    <div className="grid grid-cols-1 gap-4 divide-y divide-slate-100 text-center sm:grid-cols-3 sm:divide-x sm:divide-y-0">
                         {stats.map((stat, index) => (
                             <ScrollReveal key={stat.label} delayMs={(index + 1) * 150}>
                                 <CountUpStat value={stat.value} label={stat.label} variant="bar" />
@@ -223,7 +223,7 @@ export default async function HomePage() {
                 <div className="container">
                     <div className="flex flex-col items-center gap-16 lg:flex-row">
                         <ScrollReveal className="w-full lg:w-1/2">
-                            <h2 className="font-display text-4xl font-bold leading-tight text-solstice-800 dark:text-white md:text-5xl">
+                            <h2 className="font-display text-4xl font-bold leading-tight text-slate-950 dark:text-white md:text-5xl">
                                 Sustainability &amp;
                                 <br />
                                 <span className="font-light italic text-solstice-500 dark:text-solstice-400">Impact</span>
@@ -231,7 +231,7 @@ export default async function HomePage() {
                             <p className="mt-6 max-w-lg text-lg leading-8 text-slate-600 dark:text-slate-400">{visionStatement}</p>
                             <Link
                                 href="/about#sustainability"
-                                className="group mt-8 inline-flex items-center rounded-full bg-solstice-700 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-solstice-500"
+                                className="group mt-8 inline-flex items-center rounded-full bg-solstice-700 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-solstice-800"
                             >
                                 Read more
                                 <span className="ml-2 inline-block transition-transform group-hover:translate-x-1">→</span>
@@ -247,7 +247,7 @@ export default async function HomePage() {
                                 />
                                 {impactCardBody && (
                                     <div className="glass-card absolute bottom-6 left-6 right-6 rounded-2xl p-6">
-                                        <h3 className="text-xl font-bold text-solstice-800 dark:text-white">{impactCardHeading}</h3>
+                                        <h3 className="text-xl font-bold text-slate-950 dark:text-white">{impactCardHeading}</h3>
                                         <p className="mt-1 text-sm text-slate-700 dark:text-slate-300">{impactCardBody}</p>
                                     </div>
                                 )}
@@ -258,14 +258,14 @@ export default async function HomePage() {
             </section>
 
             {/* Leadership */}
-            <section className="bg-solstice-50 py-24 dark:bg-solstice-900">
+            <section className="bg-solstice-50 py-24">
                 <div className="container">
                     <ScrollReveal className="text-center">
-                        <h2 className="font-display text-3xl font-bold text-solstice-800 dark:text-white md:text-4xl">Leadership</h2>
-                        <div className="mx-auto mt-6 h-1 w-24 rounded-full bg-solstice-400" />
+                        <h2 className="font-display text-3xl font-bold text-slate-950 md:text-4xl">Leadership</h2>
+                        <div className="mx-auto mt-6 h-1 w-24 rounded-full bg-solstice-700" />
                     </ScrollReveal>
                     {leadershipPreview.length === 0 ? (
-                        <p className="mt-10 text-center text-slate-600 dark:text-slate-400">Leadership profiles will appear here once added in the CMS.</p>
+                        <p className="mt-10 text-center text-slate-600">Leadership profiles will appear here once added in the CMS.</p>
                     ) : (
                         <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
                             {leadershipPreview.map((member, index) => {
@@ -290,8 +290,8 @@ export default async function HomePage() {
                                                     }
                                                 />
                                             </div>
-                                            <div className="bg-gradient-to-b from-white to-solstice-50 p-6 dark:from-slate-800 dark:to-slate-900">
-                                                <h4 className="text-xl font-bold text-solstice-800 dark:text-white">{member.name}</h4>
+                                            <div className="bg-gradient-to-b from-white to-solstice-50 p-6 dark:from-solstice-800 dark:to-solstice-900">
+                                                <h4 className="text-xl font-bold text-slate-950 dark:text-white">{member.name}</h4>
                                                 <p className="mt-1 text-sm font-medium text-solstice-600 dark:text-solstice-400">{member.role}</p>
                                             </div>
                                         </div>
@@ -301,7 +301,7 @@ export default async function HomePage() {
                         </div>
                     )}
                     <div className="mt-10 text-center">
-                        <Link href="/leadership" className="text-sm font-semibold text-solstice-700 hover:text-solstice-900 dark:text-solstice-400 dark:hover:text-solstice-300">
+                        <Link href="/leadership" className="text-sm font-semibold text-solstice-700 hover:text-solstice-800">
                             Meet the full team →
                         </Link>
                     </div>
@@ -311,7 +311,7 @@ export default async function HomePage() {
             {/* Partner Brands */}
             <section className="overflow-hidden border-t border-slate-100 bg-white py-12 dark:border-slate-800 dark:bg-solstice-900">
                 <div className="container mb-6">
-                    <h3 className="font-display text-2xl font-bold text-solstice-800 dark:text-white">Partners &amp; Clients</h3>
+                    <h3 className="font-display text-2xl font-bold text-slate-950 dark:text-white">Partners &amp; Clients</h3>
                 </div>
                 {partners.length === 0 ? (
                     <p className="container text-slate-600 dark:text-slate-400">Partner logos will appear here once added in the CMS.</p>
@@ -324,7 +324,7 @@ export default async function HomePage() {
                                     alt={partner.name}
                                     className="h-10 w-auto object-contain transition-all duration-300"
                                     fallback={
-                                        <span className="text-lg font-bold text-slate-400">{partner.name}</span>
+                                        <span className="text-lg font-bold text-slate-500">{partner.name}</span>
                                     }
                                 />
                             </div>
@@ -334,22 +334,22 @@ export default async function HomePage() {
             </section>
 
             {/* Certifications & Awards */}
-            <section className="overflow-hidden border-t border-slate-100 bg-white py-12 dark:border-slate-800 dark:bg-solstice-900">
+            <section className="overflow-hidden border-t border-slate-100 bg-white py-12 dark:border-solstice-200 dark:bg-solstice-50">
                 <div className="container mb-6">
-                    <h3 className="font-display text-2xl font-bold text-solstice-800 dark:text-white">Certifications &amp; Awards</h3>
+                    <h3 className="font-display text-2xl font-bold text-slate-950">Certifications &amp; Awards</h3>
                 </div>
                 {certifications.length === 0 ? (
-                    <p className="container text-slate-600 dark:text-slate-400">Certifications and awards will appear here once added in the CMS.</p>
+                    <p className="container text-slate-600">Certifications and awards will appear here once added in the CMS.</p>
                 ) : (
                     <InfiniteSlider gap={32} speed={30} speedOnHover={10} reverse className="py-2">
                         {certifications.map((item) => (
-                            <div key={`${item.title}-${item.year}`} className="flex h-16 w-28 shrink-0 items-center justify-center rounded-xl bg-white p-2 shadow-sm ring-1 ring-slate-100 transition-shadow hover:shadow-md dark:ring-white/10">
+                            <div key={`${item.title}-${item.year}`} className="flex h-16 w-28 shrink-0 items-center justify-center rounded-xl bg-white p-2 shadow-sm ring-1 ring-slate-100 transition-shadow hover:shadow-md dark:shadow-md">
                                 <ImageWithFallback
                                     src={item.imageUrl}
                                     alt={item.title}
                                     className="h-10 w-auto object-contain transition-all duration-300"
                                     fallback={
-                                        <span className="text-lg font-bold text-slate-400">{item.title}</span>
+                                        <span className="text-lg font-bold text-slate-500">{item.title}</span>
                                     }
                                 />
                             </div>

@@ -6,10 +6,10 @@ export function RelatedCompanies({ companies, currentSlug }: { companies: Compan
     if (related.length === 0) return null;
 
     return (
-        <section className="bg-solstice-50 py-16 dark:bg-solstice-900 sm:py-20">
+        <section className="bg-solstice-50 py-16 sm:py-20">
             <div className="container">
-                <p className="text-sm font-bold uppercase tracking-wider text-solstice-600 dark:text-solstice-400">Related</p>
-                <h2 className="mt-2 font-display text-2xl font-bold text-solstice-800 dark:text-white sm:text-3xl">Other Solstice Group Companies</h2>
+                <p className="text-sm font-bold uppercase tracking-wider text-solstice-600">Related</p>
+                <h2 className="mt-2 font-display text-2xl font-bold text-slate-950 sm:text-3xl">Other Solstice Group Companies</h2>
                 <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                     {related.map((company) => (
                         <Link

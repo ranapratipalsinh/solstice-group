@@ -15,8 +15,8 @@ export default function AdminPage() {
 
             <section className="bg-white py-16 dark:bg-solstice-900 sm:py-20">
                 <div className="container">
-                    <div className="rounded-3xl bg-solstice-50 p-8 shadow-sm dark:bg-solstice-900 sm:p-10">
-                        <p className="text-lg leading-8 text-slate-600 dark:text-slate-400">
+                    <div className="rounded-3xl bg-solstice-50 p-8 shadow-sm sm:p-10">
+                        <p className="text-lg leading-8 text-slate-600">
                             Companies, team members, regions, industries, certifications, gallery items, partners, and contact submissions are all
                             managed in the Strapi admin panel.
                         </p>
@@ -24,7 +24,7 @@ export default function AdminPage() {
                             href={`${STRAPI_URL}/admin`}
                             target="_blank"
                             rel="noreferrer"
-                            className="mt-8 inline-flex items-center justify-center rounded-full bg-solstice-700 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-solstice-500"
+                            className="mt-8 inline-flex items-center justify-center rounded-full bg-solstice-700 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-solstice-800"
                         >
                             Open Strapi admin →
                         </a>

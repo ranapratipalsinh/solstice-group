@@ -22,7 +22,7 @@ const trailingNavItems = [
 
 const contactNavItem = { href: '/contact', label: "Let's Talk" };
 
-export function Navbar({ companies }: { companies: { href: string; label: string }[] }) {
+export function Navbar({ companies, logoUrl }: { companies: { href: string; label: string }[]; logoUrl?: string | null }) {
     const [isMobileOpen, setIsMobileOpen] = useState(false);
     const [isAboutOpen, setIsAboutOpen] = useState(false);
     const [isCompaniesOpen, setIsCompaniesOpen] = useState(false);
@@ -47,7 +47,7 @@ export function Navbar({ companies }: { companies: { href: string; label: string
             <div className="container flex items-center justify-between py-5">
                 <Link href="/" className="flex items-center overflow-hidden rounded-xl" onClick={closeAll}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/logos/solstice-group-logo.png" alt="Solstice Group" className="h-14 w-auto" />
+                    <img src={logoUrl || '/logos/solstice-group-logo.png'} alt="Solstice Group" className="h-14 w-auto" />
                 </Link>
 
                 <nav className="hidden md:flex items-center gap-7 text-sm font-medium tracking-wide text-slate-600 dark:text-slate-300">
@@ -70,7 +70,7 @@ export function Navbar({ companies }: { companies: { href: string; label: string
                 <div className="flex items-center gap-3">
                     <Link
                         href={contactNavItem.href}
-                        className="hidden rounded-full bg-solstice-700 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-solstice-500 md:inline-flex"
+                        className="hidden rounded-full bg-solstice-700 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-solstice-800 dark:bg-white dark:text-solstice-700 dark:hover:bg-solstice-50 dark:hover:text-solstice-800 md:inline-flex"
                         onClick={closeAll}
                     >
                         {contactNavItem.label}
@@ -105,7 +105,7 @@ export function Navbar({ companies }: { companies: { href: string; label: string
                             <Link
                                 key={item.href}
                                 href={item.href}
-                                className="rounded-xl px-3 py-3 hover:bg-solstice-50 hover:text-solstice-700 dark:hover:bg-solstice-500/10 dark:hover:text-solstice-400"
+                                className="rounded-xl px-3 py-3 hover:bg-solstice-50 hover:text-solstice-700 dark:hover:bg-white/10 dark:hover:text-solstice-400"
                                 onClick={closeAll}
                             >
                                 {item.label}
@@ -119,7 +119,7 @@ export function Navbar({ companies }: { companies: { href: string; label: string
                             <Link
                                 key={item.href}
                                 href={item.href}
-                                className="rounded-xl px-3 py-3 hover:bg-solstice-50 hover:text-solstice-700 dark:hover:bg-solstice-500/10 dark:hover:text-solstice-400"
+                                className="rounded-xl px-3 py-3 hover:bg-solstice-50 hover:text-solstice-700 dark:hover:bg-white/10 dark:hover:text-solstice-400"
                                 onClick={closeAll}
                             >
                                 {item.label}
@@ -128,7 +128,7 @@ export function Navbar({ companies }: { companies: { href: string; label: string
 
                         <Link
                             href={contactNavItem.href}
-                            className="mt-2 rounded-xl bg-solstice-700 px-3 py-3 text-center text-white hover:bg-solstice-500"
+                            className="mt-2 rounded-xl bg-solstice-700 px-3 py-3 text-center text-white hover:bg-solstice-800 dark:bg-white dark:text-solstice-700 dark:hover:bg-solstice-50 dark:hover:text-solstice-800"
                             onClick={closeAll}
                         >
                             {contactNavItem.label}
@@ -165,12 +165,12 @@ function NavDropdown({
                 <span className="text-[10px]">▾</span>
             </button>
             {isOpen && (
-                <div className="absolute left-0 top-full w-64 rounded-2xl border border-slate-200 bg-white py-2 shadow-lg normal-case tracking-normal dark:border-slate-800 dark:bg-solstice-900">
+                <div className="absolute left-0 top-full w-64 rounded-2xl border border-slate-200 bg-white py-2 shadow-lg normal-case tracking-normal dark:border-slate-800 dark:bg-solstice-800">
                     {items.map((item) => (
                         <Link
                             key={item.href}
                             href={item.href}
-                            className="block px-4 py-2 text-sm text-slate-700 hover:bg-solstice-50 hover:text-solstice-700 dark:text-slate-300 dark:hover:bg-solstice-500/10 dark:hover:text-solstice-400"
+                            className="block px-4 py-2 text-sm text-slate-700 hover:bg-solstice-50 hover:text-solstice-700 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-solstice-400"
                             onClick={onNavigate}
                         >
                             {item.label}
@@ -199,7 +199,7 @@ function MobileNavGroup({
         <>
             <button
                 type="button"
-                className="flex items-center justify-between rounded-xl px-3 py-3 text-left hover:bg-solstice-50 hover:text-solstice-700 dark:hover:bg-solstice-500/10 dark:hover:text-solstice-400"
+                className="flex items-center justify-between rounded-xl px-3 py-3 text-left hover:bg-solstice-50 hover:text-solstice-700 dark:hover:bg-white/10 dark:hover:text-solstice-400"
                 aria-expanded={isOpen}
                 onClick={() => setIsOpen(!isOpen)}
             >
@@ -212,7 +212,7 @@ function MobileNavGroup({
                         <Link
                             key={item.href}
                             href={item.href}
-                            className="rounded-xl px-3 py-2 font-medium text-slate-600 hover:bg-solstice-50 hover:text-solstice-700 dark:text-slate-400 dark:hover:bg-solstice-500/10 dark:hover:text-solstice-400"
+                            className="rounded-xl px-3 py-2 font-medium text-slate-600 hover:bg-solstice-50 hover:text-solstice-700 dark:text-slate-400 dark:hover:bg-white/10 dark:hover:text-solstice-400"
                             onClick={onNavigate}
                         >
                             {item.label}

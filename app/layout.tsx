@@ -59,9 +59,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
             </head>
-            <body>
+            <body suppressHydrationWarning>
                 <div className="flex min-h-screen flex-col bg-white text-slate-900 dark:bg-solstice-900 dark:text-slate-100">
-                    <Navbar companies={companyNavItems} />
+                    <Navbar companies={companyNavItems} logoUrl={settings.logoUrl} />
                     <main className="flex-1">{children}</main>
                     <Footer />
                     <WhatsAppButton phoneNumber={settings.whatsappNumber} message={settings.whatsappDefaultMessage} />

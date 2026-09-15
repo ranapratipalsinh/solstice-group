@@ -86,7 +86,7 @@ export function FounderSpotlight({
         <section
             ref={sectionRef}
             className={`relative overflow-hidden py-24 sm:py-32 ${
-                tinted ? 'bg-solstice-50 dark:bg-solstice-950' : 'bg-white dark:bg-solstice-900'
+                tinted ? 'bg-solstice-50' : 'bg-white dark:bg-solstice-900'
             }`}
         >
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(15,156,99,0.06),transparent_55%)]" />
@@ -98,10 +98,10 @@ export function FounderSpotlight({
                         className={`will-change-transform ${reverse ? 'lg:order-2' : 'lg:order-1'}`}
                         style={{ opacity: 0, transform: 'translateY(32px)' }}
                     >
-                        <p className="text-xs font-semibold uppercase tracking-[0.35em] text-solstice-700 dark:text-solstice-400">{role}</p>
+                        <p className={`text-xs font-semibold uppercase tracking-[0.35em] text-solstice-700 ${tinted ? '' : 'dark:text-solstice-400'}`}>{role}</p>
                         <div className="mt-5 h-px w-16 bg-solstice-500/60" />
-                        <h2 className="mt-6 font-display text-4xl font-semibold text-slate-950 dark:text-white sm:text-5xl">{name}</h2>
-                        <p className="mt-6 max-w-lg text-base leading-8 text-slate-600 dark:text-slate-400 sm:text-lg">{description}</p>
+                        <h2 className={`mt-6 font-display text-4xl font-semibold text-slate-950 sm:text-5xl ${tinted ? '' : 'dark:text-white'}`}>{name}</h2>
+                        <p className={`mt-6 max-w-lg text-base leading-8 text-slate-600 sm:text-lg ${tinted ? '' : 'dark:text-slate-400'}`}>{description}</p>
                     </div>
 
                     <div

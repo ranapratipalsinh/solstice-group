@@ -56,7 +56,7 @@ export function CompanyLinearCards({ companies }: { companies: Company[] }) {
                                     <Icon className="h-3.5 w-3.5" strokeWidth={2} />
                                 </span>
                             </div>
-                            <DialogTitle className="text-xl font-bold text-solstice-800 dark:text-white">{company.name}</DialogTitle>
+                            <DialogTitle className="text-xl font-bold text-slate-950 dark:text-white">{company.name}</DialogTitle>
                             <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{company.tagline}</p>
                         </DialogTrigger>
 
@@ -101,7 +101,7 @@ export function CompanyLinearCards({ companies }: { companies: Company[] }) {
                                         )}
                                         <Link
                                             href={`/companies/${company.slug}`}
-                                            className="mt-6 inline-block text-sm font-semibold text-solstice-700 hover:text-solstice-900 dark:text-solstice-400 dark:hover:text-solstice-300"
+                                            className="mt-6 inline-block text-sm font-semibold text-solstice-700 hover:text-solstice-800 dark:text-solstice-400 dark:hover:text-solstice-300"
                                         >
                                             Visit company page →
                                         </Link>

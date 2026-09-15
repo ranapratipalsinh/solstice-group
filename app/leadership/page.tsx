@@ -37,7 +37,7 @@ export default async function LeadershipPage() {
 
                                 return (
                                     <ScrollReveal key={member.name} delayMs={((index % 3) + 1) * 200}>
-                                        <div className="group h-full overflow-hidden rounded-3xl border border-slate-200 bg-solstice-50 shadow-sm dark:border-slate-700/60 dark:bg-solstice-900">
+                                        <div className="group h-full overflow-hidden rounded-3xl border border-slate-200 bg-solstice-50 shadow-sm dark:border-slate-700/60">
                                             <div className="relative h-64 overflow-hidden bg-solstice-100 dark:bg-solstice-500/10">
                                                 <ImageWithFallback
                                                     src={member.photoUrl}
@@ -51,9 +51,9 @@ export default async function LeadershipPage() {
                                                 />
                                             </div>
                                             <div className="p-7">
-                                                <h2 className="text-xl font-semibold text-slate-950 dark:text-white">{member.name}</h2>
-                                                <p className="mt-1 text-sm uppercase tracking-[0.2em] text-solstice-700 dark:text-solstice-400">{member.role}</p>
-                                                {member.bio && <p className="mt-4 leading-7 text-slate-600 dark:text-slate-400">{member.bio}</p>}
+                                                <h2 className="text-xl font-semibold text-slate-950">{member.name}</h2>
+                                                <p className="mt-1 text-sm uppercase tracking-[0.2em] text-solstice-700">{member.role}</p>
+                                                {member.bio && <p className="mt-4 leading-7 text-slate-600">{member.bio}</p>}
                                             </div>
                                         </div>
                                     </ScrollReveal>

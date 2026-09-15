@@ -174,7 +174,7 @@ const InteractiveImageBentoGallery: React.FC<
                 key={item.id}
                 variants={itemVariants}
                 className={cn(
-                  "group relative flex h-full min-h-[15rem] w-full min-w-[15rem] cursor-pointer items-end overflow-hidden rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition-shadow duration-300 ease-in-out hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-solstice-500 focus-visible:ring-offset-2 dark:border-slate-700/60 dark:bg-solstice-900",
+                  "group relative flex h-full min-h-[15rem] w-full min-w-[15rem] cursor-pointer items-end overflow-hidden rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition-shadow duration-300 ease-in-out hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-solstice-500 focus-visible:ring-offset-2 dark:border-slate-700/60 dark:bg-solstice-800",
                   item.span,
                 )}
                 whileHover={{ scale: 1.02 }}
@@ -189,7 +189,7 @@ const InteractiveImageBentoGallery: React.FC<
                   alt={item.title}
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   fallback={
-                    <div className="absolute inset-0 flex items-center justify-center bg-slate-100 text-sm text-slate-400 dark:bg-solstice-800">
+                    <div className="absolute inset-0 flex items-center justify-center bg-slate-100 text-sm text-slate-500 dark:bg-solstice-800 dark:text-slate-400">
                       Image unavailable
                     </div>
                   }

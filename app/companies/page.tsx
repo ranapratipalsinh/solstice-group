@@ -20,7 +20,7 @@ export default async function CompaniesPage() {
                 className="relative flex min-h-[60vh] items-center overflow-hidden bg-cover bg-center py-20 text-center text-white"
                 style={{ backgroundImage: "url('/hero/city-skyline-night.jpg')" }}
             >
-                <div className="absolute inset-0 bg-gradient-to-b from-solstice-800/60 via-solstice-800/45 to-solstice-800/70" />
+                <div className="absolute inset-0 bg-gradient-to-b from-solstice-800/60 via-solstice-800/45 to-solstice-800/70 dark:from-solstice-700/60 dark:via-solstice-700/45 dark:to-solstice-700/70" />
                 <ScrollReveal className="container relative z-10">
                     <p className="text-sm font-semibold uppercase tracking-[0.3em] text-solstice-300">{siteCopy.companiesHeroEyebrow}</p>
                     <h1 className="mt-4 font-display text-3xl font-semibold sm:text-4xl md:text-5xl">
