@@ -22,7 +22,11 @@ export async function Footer() {
                 <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
                     <div>
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={settings.logoUrl || '/logos/solstice-group-logo.png'} alt="Solstice Trading International LLP" className="h-12 w-auto rounded-lg" />
+                        <img
+                            src={settings.logoUrl || '/logos/solstice-group-logo.png'}
+                            alt="Solstice Trading International LLP"
+                            className="h-12 w-auto rounded-lg bg-white p-1.5"
+                        />
                         <p className="mt-4 text-sm text-solstice-200">{settings.legalEntityName}</p>
                         {settings.socialLinks.length > 0 && (
                             <div className="mt-5 flex items-center gap-3">

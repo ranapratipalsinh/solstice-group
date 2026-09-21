@@ -47,7 +47,11 @@ export function Navbar({ companies, logoUrl }: { companies: { href: string; labe
             <div className="container flex items-center justify-between py-5">
                 <Link href="/" className="flex items-center overflow-hidden rounded-xl" onClick={closeAll}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={logoUrl || '/logos/solstice-group-logo.png'} alt="Solstice Group" className="h-14 w-auto" />
+                    <img
+                        src={logoUrl || '/logos/solstice-group-logo.png'}
+                        alt="Solstice Group"
+                        className="h-14 w-auto dark:rounded-lg dark:bg-white dark:p-1.5"
+                    />
                 </Link>
 
                 <nav className="hidden md:flex items-center gap-7 text-sm font-medium tracking-wide text-slate-600 dark:text-slate-300">

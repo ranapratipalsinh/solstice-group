@@ -69,7 +69,7 @@ export function PageTransition() {
             <img
                 src="/logos/solstice-group-logo.png"
                 alt=""
-                className={`h-14 w-auto rounded-2xl transition-all duration-500 ${
+                className={`h-14 w-auto rounded-2xl bg-white p-2 transition-all duration-500 ${
                     isCovering ? 'scale-100 opacity-100' : 'scale-95 opacity-0'
                 }`}
             />
