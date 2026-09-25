@@ -7,7 +7,6 @@ import React, {
   useMemo,
   useRef,
   useState,
-  forwardRef
 } from 'react';
 import {
   motion,
@@ -17,7 +16,7 @@ import {
   Variant,
 } from 'motion/react';
 import { cn } from '@/lib/utils';
-import { XIcon, Plus } from 'lucide-react';
+import { XIcon } from 'lucide-react';
 
 interface DialogContextType {
   isOpen: boolean;
@@ -375,98 +374,6 @@ function DialogClose({ children, className, variants }: DialogCloseProps) {
     </motion.button>
   );
 }
-
-interface ComponentItem {
-  id: number;
-  url: { src: string };
-  title: string;
-  description: string;
-  tags: string[];
-}
-
-interface ComponentProps {
-  items: ComponentItem[];
-}
-
-const Component = forwardRef<HTMLDivElement, ComponentProps>(({ items }, ref) => {
-  return (
-    <div ref={ref} className='flex gap-4'>
-      {items.map((item) => {
-        return (
-          <React.Fragment key={item.id}>
-            <Dialog
-              transition={{
-                type: 'spring',
-                bounce: 0.05,
-                duration: 0.5,
-              }}
-            >
-              <DialogTrigger
-                style={{
-                  borderRadius: '12px',
-                }}
-                className='flex w-full flex-col overflow-hidden  border    dark:bg-black bg-gray-300 hover:bg-gray-200 dark:hover:bg-gray-950'
-              >
-                <DialogImage
-                  src={item.url.src}
-                  alt=''
-                  className=' h-64 w-full object-cover'
-                />
-                <div className='flex flex-grow flex-row items-end justify-between p-3'>
-                  <div>
-                    <DialogTitle className='text-zinc-950 text-xl dark:text-zinc-50'>
-                      {item.title}
-                    </DialogTitle>
-                  </div>
-                  <button className='absolute bottom-2 right-2 p-2 dark:bg-gray-900 bg-gray-400 hover:bg-gray-500 rounded-full dark:hover:bg-gray-800'>
-                    <Plus className='w-6 h-6' />
-                  </button>
-                </div>
-              </DialogTrigger>
-              <DialogContainer className='pt-20'>
-                <DialogContent
-                  style={{
-                    borderRadius: '24px',
-                  }}
-                  className=' relative flex h-full mx-auto flex-col overflow-y-auto border dark:bg-black bg-gray-300 hover:bg-gray-200 dark:hover:bg-gray-950 lg:w-[900px] w-[80%] '
-                >
-                  <DialogImage
-                    src={item.url.src}
-                    alt=''
-                    className='h-full  object-contain w-[60%] mx-auto'
-                  />
-                  <div className='p-6'>
-                    <DialogTitle className='text-5xl text-zinc-950 dark:text-zinc-50'>
-                      {item.title}
-                    </DialogTitle>
-
-                    <DialogDescription
-                      disableLayoutAnimation
-                      variants={{
-                        initial: { opacity: 0, scale: 0.8, y: -40 },
-                        animate: { opacity: 1, scale: 1, y: 0 },
-                        exit: { opacity: 0, scale: 0.8, y: -50 },
-                      }}
-                    >
-                      <p className='mt-2 text-zinc-500 dark:text-zinc-500'>
-                        {item.description}
-                      </p>
-                    </DialogDescription>
-                  </div>
-                  <DialogClose className='text-zinc-50  dark:bg-gray-900 bg-gray-400 p-4 hover:bg-gray-500 rounded-full dark:hover:bg-gray-800' />
-                </DialogContent>
-              </DialogContainer>
-            </Dialog>
-          </React.Fragment>
-        );
-      })}
-    </div>
-  );
-});
-
-Component.displayName = 'Component';
-
-export default Component;
 
 export {
   Dialog,
