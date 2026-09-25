@@ -12,6 +12,18 @@ export interface SharedEnquiryType extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedLegalSection extends Struct.ComponentSchema {
+  collectionName: 'components_shared_legal_sections';
+  info: {
+    displayName: 'Legal Section';
+    icon: 'feather';
+  };
+  attributes: {
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface SharedMilestone extends Struct.ComponentSchema {
   collectionName: 'components_shared_milestones';
   info: {
@@ -67,6 +79,7 @@ declare module '@strapi/strapi' {
   export namespace Public {
     export interface ComponentSchemas {
       'shared.enquiry-type': SharedEnquiryType;
+      'shared.legal-section': SharedLegalSection;
       'shared.milestone': SharedMilestone;
       'shared.social-link': SharedSocialLink;
       'shared.value': SharedValue;

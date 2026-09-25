@@ -98,12 +98,23 @@ npm run start    # run a production build locally
 
 ## Content model (Strapi)
 
-Collection types: `Company`, `TeamMember`, `JobOpening`, `JobApplication`,
-`BlogPost`, `GalleryItem`, `Certification`, `Partner`, `Industry`, `Region`,
-`Event`, `ContactSubmission`.
+Collection types: `Company`, `TeamMember` (categorized `founder` / `director`
+/ `leadership` — the founder-message page renders every `founder` entry),
+`GalleryItem`, `Certification`, `Partner`, `Industry`, `Region`, `Event`,
+`ContactSubmission`.
 
-Single types: `HomePage` (hero heading/subheading, hero slider images, stats),
-`AboutPage`, `SiteSettings`.
+Single types:
+- `HomePage` — hero heading/subheading, desktop *and* mobile hero
+  slides/video (mobile falls back to a plain brand-color background if left
+  empty, rather than reusing the desktop crop), stats, "Who We Are" copy.
+- `AboutPage`, `SiteSettings` (incl. the site logo — falls back to the static
+  file in `public/logos/` if left empty), `SiteCopy`.
+- `PrivacyPolicy`, `TermsAndConditions`, `CookiePolicy` — each a
+  `lastUpdated` string plus a repeatable `sections` component
+  (`title`/`description`), so sections can be added, removed, or reordered
+  without a code change. The Contact section on each page is the one
+  exception: it's hardcoded in the page component so it always pulls the
+  live email/address from `SiteSettings` instead of risking going stale.
 
 To add/update content, log into the Strapi admin and use the Content Manager —
 no deploy required for content changes, only for code changes.
@@ -130,9 +141,27 @@ with a normal persistent filesystem does not have this problem.)
 
 ## Design notes
 
-- Brand color is defined once as the `solstice` Tailwind color scale
-  (`tailwind.config.ts`) and reused everywhere — there is no second color
-  system anywhere on the site.
+- Brand color system: `tailwind.config.ts` defines the `solstice` scale
+  (brand green, flat hex per step) and a brand-tinted `slate` scale (also
+  flat hex — neutrals/text tinted green instead of Tailwind's default
+  blue-gray), reused via ordinary `dark:` utility pairs (`text-slate-600
+  dark:text-slate-400`) the same way the rest of Tailwind works. Deliberately
+  *not* CSS-variable-driven at the scale level — a step's value must stay
+  constant regardless of `.dark`, since some elements pair light/dark
+  classes explicitly while others (e.g. text on a flat light-green card)
+  intentionally use only the light-mode class in both themes; only the
+  shadcn-style `--background`/`--foreground`/etc. tokens in
+  `app/globals.css` are genuinely CSS-variable/mode-driven. There is no
+  second, unrelated color system anywhere on the site — light mode is
+  white/light-green with brand-green accents, dark mode uses the brand
+  green itself as the page background (deliberately not black) with
+  white/light-mint text.
+- `components/CustomCursor.tsx` is a global, reusable custom cursor (a dot
+  that tracks the pointer almost instantly plus a ring that trails behind on
+  a softer spring, both via `motion` motion values so mouse movement never
+  triggers a React re-render). Desktop (fine-pointer) only, detected live via
+  `pointerType` so hybrid touch+mouse devices behave correctly either way;
+  skipped entirely under `prefers-reduced-motion`.
 - Site-wide font is Inter, loaded via `next/font/google` in `app/layout.tsx`
   and exposed as the `font-display`/`font-sans` Tailwind utilities.
 - `components/ImageWithFallback.tsx` wraps any CMS-sourced image so a missing
