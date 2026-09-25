@@ -6,6 +6,7 @@ import { Footer } from '@/components/Footer';
 import { ScrollToTopButton } from '@/components/ScrollToTopButton';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { PageTransition } from '@/components/PageTransition';
+import { CustomCursor } from '@/components/CustomCursor';
 import { getSiteSettings } from '@/lib/cms/settings';
 import { getCompanies } from '@/lib/cms/companies';
 
@@ -68,6 +69,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                     <ScrollToTopButton />
                 </div>
                 <PageTransition />
+                <CustomCursor />
             </body>
         </html>
     );
