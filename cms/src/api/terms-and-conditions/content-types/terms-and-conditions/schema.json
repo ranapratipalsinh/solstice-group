@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "terms_and_conditions",
+  "info": {
+    "singularName": "terms-and-conditions",
+    "pluralName": "terms-and-conditions-pages",
+    "displayName": "Terms & Conditions",
+    "description": "Editable content for the Terms & Conditions page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "lastUpdated": { "type": "string" },
+    "sections": { "type": "component", "repeatable": true, "component": "shared.legal-section" }
+  }
+}

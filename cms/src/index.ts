@@ -9,7 +9,15 @@ const READ_ONLY_APIS = [
   'event',
 ];
 
-const SINGLE_TYPE_APIS = ['home-page', 'about-page', 'site-setting', 'site-copy'];
+const SINGLE_TYPE_APIS = [
+  'home-page',
+  'about-page',
+  'site-setting',
+  'site-copy',
+  'privacy-policy',
+  'terms-and-conditions',
+  'cookie-policy',
+];
 
 const SEED_COMPANIES = [
   {
@@ -116,6 +124,91 @@ const SEED_EVENTS = [
   },
 ];
 
+// The final "Contact" section on each legal page is intentionally NOT part
+// of these seeds - it's rendered by the frontend using the live email/address
+// from Site Settings, so it can never drift out of sync with that source of
+// truth. Only the substantive policy sections live here.
+const SEED_PRIVACY_POLICY = {
+  lastUpdated: 'Last updated: 2026',
+  sections: [
+    {
+      title: '1. Introduction',
+      description:
+        'Solstice Group ("we", "us", "our") respects your privacy. This policy explains what information we collect through this website, how we use it, and the choices you have.',
+    },
+    {
+      title: '2. Information We Collect',
+      description:
+        'We collect information you voluntarily provide through our contact and enquiry forms, such as your name, company, email address, phone number, and the content of your message. We do not knowingly collect sensitive personal information through this site.',
+    },
+    {
+      title: '3. How We Use Your Information',
+      description:
+        'We use the information you submit solely to respond to your enquiry, evaluate business or partnership requests, and communicate with you about the subject of your message. We do not sell your personal information to third parties.',
+    },
+    {
+      title: '4. Data Retention',
+      description:
+        'We retain enquiry submissions only as long as reasonably necessary to address your request and for our legitimate business record-keeping.',
+    },
+    {
+      title: '5. Your Rights',
+      description:
+        'You may request access to, correction of, or deletion of the personal information you have submitted to us by contacting us using the details below.',
+    },
+  ],
+};
+
+const SEED_TERMS_AND_CONDITIONS = {
+  lastUpdated: 'Last updated: 2026',
+  sections: [
+    {
+      title: '1. Acceptance of Terms',
+      description: 'By accessing this website, you agree to be bound by these terms. If you do not agree, please do not use this site.',
+    },
+    {
+      title: '2. Use of Content',
+      description:
+        'All text, images, logos, and other content on this website belong to Solstice Group and its subsidiary companies unless otherwise noted. You may not reproduce, distribute, or use this content commercially without our written permission.',
+    },
+    {
+      title: '3. No Warranty',
+      description:
+        'This website and its content are provided "as is". While we aim to keep information accurate and current, we make no warranty as to its completeness or accuracy.',
+    },
+    {
+      title: '4. Enquiries and Business Dealings',
+      description:
+        'Submitting an enquiry through this website does not create a binding business relationship. Any commercial arrangement with Solstice Group or its subsidiary companies is subject to a separate written agreement.',
+    },
+    {
+      title: '5. Changes to These Terms',
+      description:
+        'We may update these terms from time to time. Continued use of the website after changes are posted constitutes acceptance of the revised terms.',
+    },
+  ],
+};
+
+const SEED_COOKIE_POLICY = {
+  lastUpdated: 'Last updated: 2026',
+  sections: [
+    {
+      title: '1. What Are Cookies',
+      description: 'Cookies are small text files stored on your device that help websites function correctly and remember your preferences.',
+    },
+    {
+      title: '2. How We Use Cookies and Similar Technology',
+      description:
+        "This website does not use advertising or third-party tracking cookies. It stores your light/dark theme preference in your browser's local storage, a similar technology to cookies, purely so the site remembers your choice between visits.",
+    },
+    {
+      title: '3. Managing This Data',
+      description:
+        "You can clear your browser's local storage and cookies through your browser settings at any time. Doing so may reset your theme preference but will not affect your ability to browse the site.",
+    },
+  ],
+};
+
 const SEED_HOME_PAGE = {
   heroHeading: 'Solstice Group of Companies',
   heroSubheading: 'We Build Businesses That Grow Globally',
@@ -196,6 +289,29 @@ async function seedHomePage(strapi: any) {
   await strapi.documents('api::home-page.home-page').create({ data: SEED_HOME_PAGE, status: 'published' });
 }
 
+async function seedPrivacyPolicy(strapi: any) {
+  const existing = await strapi.documents('api::privacy-policy.privacy-policy').findFirst();
+  if (existing) return;
+
+  await strapi.documents('api::privacy-policy.privacy-policy').create({ data: SEED_PRIVACY_POLICY, status: 'published' });
+}
+
+async function seedTermsAndConditions(strapi: any) {
+  const existing = await strapi.documents('api::terms-and-conditions.terms-and-conditions').findFirst();
+  if (existing) return;
+
+  await strapi
+    .documents('api::terms-and-conditions.terms-and-conditions')
+    .create({ data: SEED_TERMS_AND_CONDITIONS, status: 'published' });
+}
+
+async function seedCookiePolicy(strapi: any) {
+  const existing = await strapi.documents('api::cookie-policy.cookie-policy').findFirst();
+  if (existing) return;
+
+  await strapi.documents('api::cookie-policy.cookie-policy').create({ data: SEED_COOKIE_POLICY, status: 'published' });
+}
+
 export default {
   register() {},
 
@@ -206,5 +322,8 @@ export default {
     await seedRegions(strapi);
     await seedEvents(strapi);
     await seedHomePage(strapi);
+    await seedPrivacyPolicy(strapi);
+    await seedTermsAndConditions(strapi);
+    await seedCookiePolicy(strapi);
   },
 };

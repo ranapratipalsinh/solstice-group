@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_shared_legal_sections",
+  "info": {
+    "displayName": "Legal Section",
+    "icon": "feather"
+  },
+  "options": {},
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "description": { "type": "text", "required": true }
+  }
+}
